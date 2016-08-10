@@ -2,9 +2,10 @@ package com.niit.ecommercemain.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
+
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,7 @@ public class category_dao_impl implements category_dao
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+	@Override
 	public void savecategory(category category) {
 		
 		sessionFactory.getCurrentSession().save(category);
@@ -28,17 +29,17 @@ public class category_dao_impl implements category_dao
 	}
 
 	@SuppressWarnings({ "deprecation", "unchecked" })
-	
+	@Override
 	public List<category> allcategory() {
 		return (List<category>)sessionFactory.getCurrentSession().createQuery("from category").list();
 	}
-
+	@Override
 	public category getcategoryid(String id) {
 		String hql = "from category where id=" + id;
 		Query query = (Query) sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
-		List<category> listCategory = (List<category>) query.getResultList();
+		List<category> listCategory = (List<category>) query.list();
 		
 		
 		if (listCategory != null && !listCategory.isEmpty()) {
@@ -47,12 +48,12 @@ public class category_dao_impl implements category_dao
 		
 		return null;
 	}
-
+	@Override
 	public void updatecategory(category category) {
 		sessionFactory.getCurrentSession().update(category);
 		
 	}
-
+	@Override
 	public void deletecategory(String id) {
 		category CategoryToDelete = new category();
 		CategoryToDelete.setId(id);

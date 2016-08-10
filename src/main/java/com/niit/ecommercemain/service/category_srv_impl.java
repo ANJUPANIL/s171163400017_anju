@@ -2,7 +2,7 @@ package com.niit.ecommercemain.service;
 
 import java.util.List;
 
-import javax.persistence.Query;
+
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class category_srv_impl implements category_srv
 	public category getcategoryid(String id) {
 		return cd.getcategoryid(id);
 		
-	}
+	}                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 	
 	
 	public void updatecategory(category category) {
