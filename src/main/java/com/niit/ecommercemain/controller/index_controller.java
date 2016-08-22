@@ -14,6 +14,7 @@ public class index_controller {
 		return "index";
 	}
 
+
 	@RequestMapping(value="/contactus")
 	public String contactus()
 	{

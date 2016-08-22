@@ -98,8 +98,7 @@
 							<td><form:label path="product_image">Image:</form:label></td>
            					<td><input type="file" name="prdfile" /></td>
            					<td><img src="${pdata.getProduct_image()}" height="150px" width="150px"></td>
-           					<td>${pdata.getProduct_image()}</td>
-           					
+           					           					
 				</tr>
 				
 				<tr>
