@@ -9,40 +9,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.ecommercemain.dao.category_dao;
-import com.niit.ecommercemain.model.category;
+import com.niit.ecommercemain.dao.brand_dao;
+import com.niit.ecommercemain.model.brand;
 
 @Service
 @Transactional
-public class category_srv_impl implements category_srv 
+public class brand_srv_impl implements brand_srv 
 {
 	@Autowired
-	category_dao cd;
+	brand_dao cd;
 	
-	
-	public void savecategory(category cat) {
-		cd.savecategory(cat);
+	@Override
+	public void savebrand(brand brand) {
+		
+		cd.savebrand(brand);
+		System.out.println(brand.getId());
+		
+	}
+	@Override
+	public List<brand> allbrand() {
+		return cd.allbrand();
 		
 	}
 	
-	public List<category> allcategory() {
-		return cd.allcategory();
-		
-	}
-	
-	public category getcategoryid(String id) {
-		return cd.getcategoryid(id);
+	@Override
+	public brand getbrandid(String id) {
+		return cd.getbrandid(id);
 		
 	}                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 	
-	public void updatecategory(category cat) {
+	@Override
+	public void updatebrand(brand brand) {
 		
-		cd.updatecategory(cat);
+		cd.updatebrand(brand);
 	}
 	
-	
-	public void deletecategory(String id) {
-		cd.deletecategory(id);
+	@Override
+	public void deletebrand(String id) {
+		cd.deletebrand(id);
 		
 	}
 

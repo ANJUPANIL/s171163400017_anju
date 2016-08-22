@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +20,43 @@
 <title>Shopping Cart</title>
 
 </head>
+<style>
+  #toTop{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	cursor: pointer;
+	display: none;
+	border-radius: 50%;
+}
+ 
+  </style>
+
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $(".tip-right").tooltip({placement : 'right'});
+
+    });
+    
+    $(document).ready(function(){
+        $('body').append('<div id="toTop" class="btn btn-info"><span class=" glyphicon glyphicon-arrow-up"></span></div>');
+      	$(window).scroll(function () {
+  			if ($(this).scrollTop() != 0) {
+  				$('#toTop').fadeIn();
+  			} else {
+  				$('#toTop').fadeOut();
+  			}
+  		}); 
+      $('#toTop').click(function(){
+          $("html, body").animate({ scrollTop: 0 }, 600);
+          return false;
+      });
+  });
+
+    </script>
+
 
 
 <body>
@@ -26,7 +65,7 @@
 		<div class="container">
 			
 			<!-- Logo text or image -->
-			<a class="logo" href="index"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
+			<a class="logo" href="/"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
 					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
 			</a>
 			<form class="navbar-form navbar-right" role="search">
@@ -36,7 +75,7 @@
 				<button type="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-search"></span>
 				</button>&nbsp;
-				<button type="submit" class="btn btn-default">
+				<button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="View your shopping cart">
 					<span class="glyphicon glyphicon-shopping-cart"></span>
 				</button>
 			</form>
@@ -55,9 +94,9 @@
 						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;<a
 					href="page-about-us.html"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-heart-empty"></span>Wish list</i></a>&nbsp;&nbsp; <a
-					href="page-about-us.html"><i class="fa fa-angle-right"><span
+					href="registration"><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
-					href="contact-us.html"><i class="fa fa-angle-right"><span
+					href="adminhome"><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
 			</div>
 			<!-- PHONE/EMAIL -->
@@ -86,12 +125,11 @@
 			<div class="container-fluid">
 
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="category">HOME</a></li>
+					<li class="active"><a href="#">HOME</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">SHOP <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-
 							<li><a href="#">Mobiles</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="#">Laptops</a></li>
@@ -118,7 +156,7 @@
 <!-- slider part -->
 	</header>
 	<div id="carousel-example" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
+	<ol class="carousel-indicators">
 			<li data-target="#carousel-example" data-slide-to="0" class="active"></li>
 			<li data-target="#carousel-example" data-slide-to="1"></li>
 			<li data-target="#carousel-example" data-slide-to="2"></li>
@@ -128,7 +166,7 @@
 			<div class="item active">
 				<a href="#"><img
 					src="resources/images/banner02.jpg"
-					width="100%" height:="225px" max-height="225px"></a>
+						width="1600" height="600"></a>
 				<div class="carousel-caption">
 					<button type="button" class="btn btn-primary">SHOP NOW!</button>
 					<p>
@@ -139,7 +177,7 @@
 			</div>
 			<div class="item">
 				<a href="#"><img
-					src="resources/images/banner2.jpg"  width="auto" height:="225px" max-height="225px"></a>
+					src="resources/images/banner2.jpg" width="1600" height="600"></a>
 				<div class="carousel-caption">
 					<h2>
 						<font color="black">iPhone 6s</font>
@@ -252,7 +290,7 @@
 
 <div class="container">
 	<div class="row well"> <div class="col-xs-8 col-sm-6 col-md-12">
-		<h2><center>Browse Our Categories</center></h2><br>
+		<h3><center><font color="blue">Browse Our Categories</font></center></h3><br>
               
 <!-- vertical 1 -->
  
@@ -448,7 +486,7 @@
                   <p>Give us your email and you will be daily updated with the latest events, in detail!</p>
                   <div class="clear"> </div>
                   <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+                    <input type="email" name="email" id="email" class="form-control input-md" placeholder="Email Address">
 				</div>
                   <a class="btn btn-primary btn-sm" href="#">Subcribe</a> </div>
                   

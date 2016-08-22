@@ -9,40 +9,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.ecommercemain.dao.category_dao;
-import com.niit.ecommercemain.model.category;
+import com.niit.ecommercemain.dao.supplier_dao;
+import com.niit.ecommercemain.model.supplier;
 
 @Service
 @Transactional
-public class category_srv_impl implements category_srv 
+public class supplier_srv_impl implements supplier_srv 
 {
 	@Autowired
-	category_dao cd;
+	supplier_dao cd;
 	
 	
-	public void savecategory(category cat) {
-		cd.savecategory(cat);
+	public void savesupplier(supplier cat) {
+		cd.savesupplier(cat);
 		
 	}
 	
-	public List<category> allcategory() {
-		return cd.allcategory();
+	public List<supplier> allsupplier() {
+		return cd.allsupplier();
 		
 	}
 	
-	public category getcategoryid(String id) {
-		return cd.getcategoryid(id);
+	public supplier getsupplierid(String id) {
+		return cd.getsupplierid(id);
 		
 	}                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 	
-	public void updatecategory(category cat) {
+	public void updatesupplier(supplier cat) {
 		
-		cd.updatecategory(cat);
+		cd.updatesupplier(cat);
 	}
 	
 	
-	public void deletecategory(String id) {
-		cd.deletecategory(id);
+	public void deletesupplier(String id) {
+		cd.deletesupplier(id);
 		
 	}
 

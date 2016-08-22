@@ -22,43 +22,30 @@ public class category_dao_impl implements category_dao
 	@Autowired
 	private SessionFactory sessionFactory;
 	@Override
-	public void savecategory(category category) {
+	public void savecategory(category cat) {
 		
-		sessionFactory.getCurrentSession().save(category);
+		sessionFactory.getCurrentSession().save(cat);
 		
 	}
 
-	@SuppressWarnings({ "deprecation", "unchecked" })
+	@SuppressWarnings("unchecked" )
 	@Override
 	public List<category> allcategory() {
 		return (List<category>)sessionFactory.getCurrentSession().createQuery("from category").list();
 	}
 	@Override
 	public category getcategoryid(String id) {
-		String hql = "from category where id=" + id;
-		Query query = (Query) sessionFactory.getCurrentSession().createQuery(hql);
-		
-		@SuppressWarnings("unchecked")
-		List<category> listCategory = (List<category>) query.list();
-		
-		
-		if (listCategory != null && !listCategory.isEmpty()) {
-			return listCategory.get(0);
-		}
-		
-		return null;
+		return (category) sessionFactory.getCurrentSession().get(category.class, new String(id));
+	
 	}
 	@Override
-	public void updatecategory(category category) {
-		sessionFactory.getCurrentSession().update(category);
+	public void updatecategory(category cat) {
+		sessionFactory.getCurrentSession().update(cat);
 		
 	}
 	@Override
 	public void deletecategory(String id) {
-		category CategoryToDelete = new category();
-		CategoryToDelete.setId(id);
-		sessionFactory.getCurrentSession().delete(CategoryToDelete);
-		
+		sessionFactory.getCurrentSession().createQuery("delete from category where category_id = '"+id+"'").executeUpdate();
 	}
 
 

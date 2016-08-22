@@ -9,40 +9,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.ecommercemain.dao.category_dao;
-import com.niit.ecommercemain.model.category;
+import com.niit.ecommercemain.dao.product_dao;
+import com.niit.ecommercemain.model.product;
 
 @Service
 @Transactional
-public class category_srv_impl implements category_srv 
+public class product_srv_impl implements product_srv 
 {
 	@Autowired
-	category_dao cd;
+	product_dao pd;
 	
 	
-	public void savecategory(category cat) {
-		cd.savecategory(cat);
+	public void saveproduct(product cat) {
+		pd.saveproduct(cat);
 		
 	}
 	
-	public List<category> allcategory() {
-		return cd.allcategory();
+	public List<product> allproduct() {
+		return pd.allproduct();
 		
 	}
 	
-	public category getcategoryid(String id) {
-		return cd.getcategoryid(id);
+	public product getproductid(String id) {
+		return pd.getproductid(id);
 		
 	}                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 	
-	public void updatecategory(category cat) {
+	public void updateproduct(product cat) {
 		
-		cd.updatecategory(cat);
+		pd.updateproduct(cat);
 	}
 	
 	
-	public void deletecategory(String id) {
-		cd.deletecategory(id);
+	public void deleteproduct(String id) {
+		pd.deleteproduct(id);
 		
 	}
 

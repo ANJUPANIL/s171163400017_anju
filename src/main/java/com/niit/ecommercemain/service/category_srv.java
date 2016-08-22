@@ -6,10 +6,10 @@ import com.niit.ecommercemain.model.category;
 
 public interface category_srv {
 	
-	public void savecategory(category category);
+	public void savecategory(category cat);
 	public List<category> allcategory();
 	public category getcategoryid(String id);
-	public void updatecategory(category category);
+	public void updatecategory(category cat);
 	public void deletecategory(String id);
 
 }

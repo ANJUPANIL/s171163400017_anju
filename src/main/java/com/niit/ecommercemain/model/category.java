@@ -2,8 +2,9 @@ package com.niit.ecommercemain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -23,6 +24,26 @@ public class category {
 	@Column(name="category_des")
 	private String des;
 	
+	@Column(name="brand_id")
+	private String brand_id;
+	
+	public String getBrand_id() {
+		return brand_id;
+	}
+	public void setBrand_id(String brand_id) {
+		this.brand_id = brand_id;
+	}
+	/*@OneToOne
+	@JoinColumn(name = "brand_id")
+	private brand brandobj;
+	
+	
+	public brand getBrandobj() {
+		return brandobj;
+	}
+	public void setBrandobj(brand brandobj) {
+		this.brandobj = brandobj;
+	}*/
 	public String getId() {
 		return id;
 	}
