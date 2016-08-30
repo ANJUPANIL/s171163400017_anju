@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -48,14 +47,26 @@
 					</td>
 				</tr>
 				<tr class="form-group">
-					<td style="width: 25%">
-						<form:label path="brand_id">Brand:</form:label>
-					</td>
-					<td> 
-						<form:input path="brand_id" size="40" class="form-control" value="${cdata.brand_id}"/><br /> 
-						<form:errors path="brand_id" cssClass="error" />
-					</td>
-				</tr>
+				<td><form:label path="brands.brand_id">Brand</form:label></td>
+				<td>
+					<form:select path="brands.brand_id" class="form-control">
+                            <c:forEach items="${brand}" var="brandlist">
+                            <c:choose>
+                                <c:when test="${brandlist.brand_id == cdata.brands.brand_id}">
+                                    <form:option value="${brandlist.brand_id}" selected="${brandlist.brand_id}">${brandlist.brand_name}</form:option>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:option value="${brandlist.brand_id}">${brandlist.brand_name}</form:option>
+                                </c:otherwise>
+                            </c:choose>
+                               
+                            </c:forEach>
+                    </form:select>
+                        			
+					<br /> 
+						<form:errors path="brands.brand_id" cssClass="error" />
+				</td>
+			</tr>	
 				<tr class="form-group">
 					<td style="width: 25%">
 						<form:label path="des">Description:</form:label>

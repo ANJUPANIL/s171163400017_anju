@@ -23,7 +23,7 @@ public class supplier_dao_impl implements supplier_dao
 	private SessionFactory sessionFactory;
 	@Override
 	public void savesupplier(supplier s) {
-		
+		s.setStatus(true);
 		sessionFactory.getCurrentSession().save(s);
 		
 	}
@@ -31,7 +31,7 @@ public class supplier_dao_impl implements supplier_dao
 	@SuppressWarnings("unchecked" )
 	@Override
 	public List<supplier> allsupplier() {
-		return (List<supplier>)sessionFactory.getCurrentSession().createQuery("from supplier").list();
+		return (List<supplier>)sessionFactory.getCurrentSession().createQuery("from supplier where status=true").list();
 	}
 	@Override
 	public supplier getsupplierid(String id) {
@@ -40,12 +40,13 @@ public class supplier_dao_impl implements supplier_dao
 	}
 	@Override
 	public void updatesupplier(supplier s) {
+		s.setStatus(true);
 		sessionFactory.getCurrentSession().update(s);
 		
 	}
 	@Override
 	public void deletesupplier(String id) {
-		sessionFactory.getCurrentSession().createQuery("delete from supplier where sup_id = '"+id+"'").executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update supplier set status=false where sup_id = '"+id+"'").executeUpdate();
 	}
 
 

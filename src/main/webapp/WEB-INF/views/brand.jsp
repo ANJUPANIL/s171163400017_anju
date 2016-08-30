@@ -18,6 +18,7 @@
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 <title>brand</title>
 </head>
 
@@ -50,7 +51,7 @@
 	} 
 	
 	
-
+	
 	</script>
 
 
@@ -63,7 +64,8 @@
 					src="resources/images/logo.jpg" width="150" height="100" />
 			</a>
 			<div class="pull-right nav hidden-xs">
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+				<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user"></span>Welcome Admin</i>&nbsp; &nbsp;
+				<a href="logout"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-off"></span>Logout</i></a>
 		</div>
 	</header>
@@ -71,7 +73,7 @@
 			<div class="container-fluid">
 
 				<ul class="nav navbar-nav">
-					<li><a href="#">HOME</a></li>
+					<li><a href="adminhome">HOME</a></li>
 					<li class="active"><a href="brand">BRAND</a></li>
 					<li><a href="category">CATEGORY</a></li>
 					<li><a href="supplier">SUPPLIER</a></li>
@@ -88,11 +90,11 @@
    					<div class="form-group">
     				<tr>
 					<td style="width: 25%">
-						<form:label path="id">Brand ID:</form:label>
+						<form:label path="brand_id">Brand ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="id" size="40"  class="form-control"/><br /> 
-						<form:errors path="id" cssClass="error" />
+						<form:input path="brand_id" size="40"  class="form-control"/><br /> 
+						<form:errors path="brand_id" cssClass="error" />
 					</td>
 				
 				</tr>
@@ -100,11 +102,11 @@
 				<div class="form-group">
 				<tr>
 					<td style="width: 25%">
-						<form:label path="name">Brand Name:</form:label>
+						<form:label path="brand_name">Brand Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" /><br /> 
-						<form:errors path="name" cssClass="error" />
+						<form:input path="brand_name" size="40" class="form-control" /><br /> 
+						<form:errors path="brand_name" cssClass="error" />
 					</td>
 				</tr>
 				</div>
@@ -145,13 +147,15 @@
 							<td>Operation</td>
 						</tr>
 						<tr data-ng-repeat="bd in brands | filter:searchTerm">
-							<td style="font-weight: bold;">{{bd.id}}</td>
-							<td>{{bd.name}}</td>
+							<td style="font-weight: bold;">{{bd.brand_id}}</td>
+							<td>{{bd.brand_name}}</td>
 							
 							<td>
-								<a href="editbrand?id={{bd.id}}"  class="btn btn-primary" role="button" style="width: 92px">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="delbrand?id={{bd.id}}"  class="btn btn-warning" role="button" style="width: 92px">Delete</a>
-							</td>
+								<a href="editbrand?id={{bd.brand_id}}"  class="btn btn-primary" role="button" style="width: 92px">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								
+								<a href="delbrand?id={{bd.brand_id}}"  class="btn btn-warning" role="button" style="width: 92px" 
+									onclick="return confirm('Are you sure..!Do you want to delete?');return false;">Delete</a>
+						</td>
 						</tr>
 					</table>
 			</td>

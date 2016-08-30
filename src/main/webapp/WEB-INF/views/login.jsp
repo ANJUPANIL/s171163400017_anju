@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,6 +36,9 @@
     font-weight: bold;
     padding-bottom: 20px;
 }
+#login h3 {
+	color: #1fa67b;
+}
 #login .form-group {
     margin-bottom: 25px;
     
@@ -53,32 +56,86 @@
 .btn-custom:hover,
 .btn-custom:focus {
     color: #fff;
+    
+}
+#footer {
+    color: #6d6d6d;
+    font-size: 12px;
+    text-align: center;
+}
+#footer p {
+    margin-bottom: 0;
+}
+#footer a {
+    color: inherit;
 }
 }
 </style>
-<body>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $(".tip-right").tooltip({placement : 'right'});
+
+    });
+    
+    function myFunction() {
+    	alert("${msg}")
+        
+    }
+</script>
+<body>	
+<header id="topNav" class="topHead">
+		<!-- remove class="topHead" if no topHead used! -->
+		<div class="container">
+			
+			<!-- Logo text or image -->
+			<a class="logo" href="/"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
+					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
+			</a>
+			
+			<!-- PHONE/EMAIL -->
+			<div>
+			<span class="quick-contact pull-left"> <i class="fa fa-phone"></i><span
+				class="glyphicon glyphicon-earphone"></span> 1800-555-1234 &bull; <a
+				class="hidden-xs" href="mailto:mail@yourdomain.com">mail@domain.com</a>
+			</span> 
+			</div>
+			<div class="pull-right nav hidden-xs">
+				 <a href="index" data-toggle="tooltip" data-placement="right" title="Back to home..Click here..."><i class="fa fa-angle-right"><span
+						class="glyphicon glyphicon-home"></span></i> Home</a>&nbsp;&nbsp;&nbsp;&nbsp; 
+				 <a href="registration" data-toggle="tooltip" data-placement="right" title="New to Eletech?Register here..."><i class="fa fa-angle-right"><span
+						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; 
+			<!-- /LINKS -->
+			</div>
+			<div>
+				<hr width=100% color="green" align=left>
+			</div>
+		</div>
+</header>
+
+	
 <section id="login">
     <div class="container">
     	<div class="row">
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
                 <h1>Log in with your email account</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+               
+                    <form:form method="POST" action="loginsubmit" commandName="check_login">
                         <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                            <form:label path="user_id" class="sr-only">Email</form:label>
+                            <form:input path="user_id" class="form-control" placeholder="somebody@example.com" />
+                            <form:errors path="user_id" cssClass="error"/>
                         </div>
                         <div class="form-group">
-                            <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                            <form:label path="password" class="sr-only">Password</form:label>
+                            <form:password path="password" class="form-control" placeholder="Password" />
+                            <form:errors path="password" cssClass="error"/>
                         </div>
-                        <div class="checkbox">
-                            <span class="character-checkbox" onclick="showPassword()"></span>
-                            <span class="label">Show password</span>
-                        </div>
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
-                    </form>
-                    <a href="adminhome" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Log in">
+                    </form:form>
+                    
                     <hr>
         	    </div>
     		</div> <!-- /.col-xs-12 -->
@@ -86,5 +143,15 @@
     </div> <!-- /.container -->
 </section>
 
+<footer id="footer" align="center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Page © - 2016</p>
+                <p>Powered by <strong><a href="index">Eletech</a></strong></p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

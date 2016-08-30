@@ -23,7 +23,7 @@ public class category_dao_impl implements category_dao
 	private SessionFactory sessionFactory;
 	@Override
 	public void savecategory(category cat) {
-		
+		cat.setStatus(true);
 		sessionFactory.getCurrentSession().save(cat);
 		
 	}
@@ -31,7 +31,7 @@ public class category_dao_impl implements category_dao
 	@SuppressWarnings("unchecked" )
 	@Override
 	public List<category> allcategory() {
-		return (List<category>)sessionFactory.getCurrentSession().createQuery("from category").list();
+		return (List<category>)sessionFactory.getCurrentSession().createQuery("from category where status=true").list();
 	}
 	@Override
 	public category getcategoryid(String id) {
@@ -40,12 +40,15 @@ public class category_dao_impl implements category_dao
 	}
 	@Override
 	public void updatecategory(category cat) {
+		cat.setStatus(true);
 		sessionFactory.getCurrentSession().update(cat);
+		
 		
 	}
 	@Override
 	public void deletecategory(String id) {
-		sessionFactory.getCurrentSession().createQuery("delete from category where category_id = '"+id+"'").executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update category set status=false where category_id = '"+id+"'").executeUpdate();
+		
 	}
 
 

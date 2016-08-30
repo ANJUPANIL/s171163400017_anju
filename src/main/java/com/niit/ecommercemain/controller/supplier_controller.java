@@ -2,6 +2,8 @@ package com.niit.ecommercemain.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +44,7 @@ public class supplier_controller {
 	}
 	
 	@RequestMapping(value = "/savesupplier", method = RequestMethod.POST)
-	public ModelAndView savesupplier(@ModelAttribute("save_supplier") supplier s, Model model) {
+	public ModelAndView savesupplier(@Valid @ModelAttribute("save_supplier") supplier s, Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
 		System.out.println("supplier ID :" + s.getId());
@@ -76,7 +78,7 @@ public class supplier_controller {
 	}
 
 	@RequestMapping(value = "/update_supplier", method = RequestMethod.POST)
-	public ModelAndView editsupplier(@ModelAttribute("edit_supplier") supplier c) {
+	public ModelAndView editsupplier(@Valid @ModelAttribute("edit_supplier") supplier c) {
 		ModelAndView mv;
 		sup.updatesupplier(c);
 		System.out.println("in editsupplier id:");

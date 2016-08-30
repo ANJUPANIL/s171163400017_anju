@@ -4,8 +4,6 @@ import java.util.List;
 
 
 
-import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,7 +22,7 @@ public class brand_dao_impl implements brand_dao
 	
 	@Override
 	public void savebrand(brand brand) {
-		
+		brand.setStatus(true);
 		sessionFactory.getCurrentSession().save(brand);
 		
 	}
@@ -32,7 +30,7 @@ public class brand_dao_impl implements brand_dao
 	@SuppressWarnings("unchecked" )
 	@Override
 	public List<brand> allbrand() {
-		return (List<brand>)sessionFactory.getCurrentSession().createQuery("from brand").list();
+		return (List<brand>)sessionFactory.getCurrentSession().createQuery("from brand where status=true").list();
 	}
 	
 	@Override
@@ -42,13 +40,14 @@ public class brand_dao_impl implements brand_dao
 	
 	@Override
 	public void updatebrand(brand brand) {
+		brand.setStatus(true);
 		sessionFactory.getCurrentSession().update(brand);
 		
 	}
 	
 	@Override
 	public void deletebrand(String id) {
-		sessionFactory.getCurrentSession().createQuery("delete from brand where brand_id = '"+id+"'").executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update brand set status=false where brand_id = '"+id+"'").executeUpdate();
 		
 	}
 	

@@ -1,12 +1,16 @@
 package com.niit.ecommercemain.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -16,34 +20,41 @@ public class category {
 	@Id
 	/**@GeneratedValue**/
 	@Column(name="category_id")
+	@NotEmpty(message="Please enter a valid category Id")
 	private String id;
 	
 	@Column(name="category_name")
+	@NotEmpty(message="Please enter category name")
 	private String name;
 	
 	@Column(name="category_des")
 	private String des;
 	
-	@Column(name="brand_id")
-	private String brand_id;
+	@Column(name="status")
+	private boolean status;
 	
-	public String getBrand_id() {
-		return brand_id;
+	public boolean isStatus() {
+		return status;
 	}
-	public void setBrand_id(String brand_id) {
-		this.brand_id = brand_id;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
-	/*@OneToOne
-	@JoinColumn(name = "brand_id")
-	private brand brandobj;
+
+	@ManyToOne
+	@JoinColumn(name="brand_id")
+	private brand brands;
 	
-	
-	public brand getBrandobj() {
-		return brandobj;
+	public brand getBrands() {
+		return brands;
 	}
-	public void setBrandobj(brand brandobj) {
-		this.brandobj = brandobj;
-	}*/
+	public void setBrands(brand brands) {
+		this.brands = brands;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="category_id")
+    private Set<product> product;
+    
 	public String getId() {
 		return id;
 	}

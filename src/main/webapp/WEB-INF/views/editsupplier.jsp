@@ -24,7 +24,7 @@
 <form:form method="POST" commandName="edit_supplier"
 		action="${pageContext.request.contextPath}/update_supplier">
 			<div align="center" class="table-responsive">
-			<h2>Edit supplier&nbsp;&nbsp;&nbsp;</h2>
+			<h2>Edit Supplier&nbsp;&nbsp;&nbsp;</h2>
    							
    				<table style="width: 40%">
    					
@@ -58,7 +58,7 @@
 					</td>
 				</tr>
 				
-			<tr class="form-group">
+			  <tr class="form-group">
 							<td><form:label path="city">City:</form:label></td>
 							<td><form:input path="city" class="form-control" value="${sdata.city}" /><br /> 
 							<form:errors path="city" cssClass="error" /></td>

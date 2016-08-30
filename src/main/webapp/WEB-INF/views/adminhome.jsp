@@ -24,7 +24,8 @@
 					src="resources/images/logo.jpg" width="150" height="100" />
 			</a>
 			<div class="pull-right nav hidden-xs">
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+				<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user"></span>Welcome Admin</i>&nbsp; &nbsp;
+				<a href="logout"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-off"></span>Logout</i></a>
 		</div>
 	</header>

@@ -22,20 +22,13 @@ public class index_controller {
 		return "contactus";
 	}
 	
-	@RequestMapping(value="/login")
-	public ModelAndView login()
+	@RequestMapping(value="/blog")
+	public String blog()
 	{
-		ModelAndView mv=new ModelAndView("login");
-		mv.addObject("User click Login",true);
-		return mv;
+		System.out.println("inside blog controller");
+		return "blog";
 	}
-	@RequestMapping(value="/registration")
-	public ModelAndView registration()
-	{
-		ModelAndView mv=new ModelAndView("registration");
-		mv.addObject("User click register",true);
-		return mv;
-	}
+	
 	
 
 }

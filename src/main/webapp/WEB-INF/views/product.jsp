@@ -34,6 +34,11 @@
 		}
 		
 </style>
+<%
+request.setAttribute("selectedbrand","selectedbrand");
+
+%> 
+
 <script type="text/javascript">
 	var app = angular.module('app', []);
 	app.controller('product_controller', [ '$scope', '$http', product_controller ]);
@@ -47,10 +52,32 @@
 				}).error(function() {
 					$scope.error = "An Error has occured while loading posts!";
 				}); 
-	} 
+		
+	}
+	
+	function listcat($scope)
+	{
+		
+		
+		 var bid = $('#brand_id').val();
+		$.ajax({
+        type: "POST",
+        traditional: true,
+       url:"/product_controller/listcat",
+        data: JSON.stringify(Token),
+        success: function (result) {
+           alert("Token");
+           $scope.cats = data;
+        },
+        error: function (result) {
+          alert("oops");
+        }
+      });
+	}
 	
 	
 </script>
+
 <body>
 <header id="topNav" class="topHead">
 		<!-- remove class="topHead" if no topHead used! -->
@@ -61,7 +88,9 @@
 					src="resources/images/logo.jpg" width="150" height="100" />
 			</a>
 			<div class="pull-right nav hidden-xs">
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+				<i class="fa fa-angle-left" style="color:#0000CD">
+						<span class="glyphicon glyphicon-user"></span>Welcome Admin</i>&nbsp; &nbsp;
+				<a href="logout"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-off"></span>Logout</i></a>
 		</div>
 	</header>
@@ -69,7 +98,7 @@
 			<div class="container-fluid">
 
 				<ul class="nav navbar-nav">
-					<li><a href="#">HOME</a></li>
+					<li><a href="adminhome">HOME</a></li>
 					<li><a href="brand">BRAND</a></li>
 					<li><a href="category">CATEGORY</a></li>
 					<li><a href="supplier">SUPPLIER</a></li>
@@ -115,28 +144,25 @@
 						<form:errors path="des" cssClass="error" />
 					</td>
 				</tr>
-				
-				<tr class="form-group">
-				<td><form:label path="category_id">Category</form:label></td>
-				<td><select name="category_id"  class="form-control">
-						<c:forEach items="${category}" var="category">
-    					<option value="${category.id}">${category.name}</option>
-						</c:forEach>
-					</select><br /> 
-						<form:errors path="category_id" cssClass="error" />
+
+			
+
+		<tr class="form-group">
+				<td><form:label path="brands.brand_id">Brand</form:label></td>
+				<td><form:select path="brands.brand_id" class="form-control" items="${brand}" itemValue="brand_id" itemLabel="brand_name" />
+					<br /> 
+						<form:errors path="brands.brand_id" cssClass="error" />
 				</td>
 			</tr>	
+				
 			
 			<tr class="form-group">
-				<td><form:label path="brand_id">Brand</form:label></td>
-				<td><select name="brand_id"  class="form-control">
-						<c:forEach items="${brand}" var="brand">
-    					<option value="${brand.id}">${brand.name}</option>
-						</c:forEach>
-					</select><br /> 
-						<form:errors path="brand_id" cssClass="error" />
+				<td><form:label path="categoryobj.id">Category</form:label></td>
+				<td><form:select path="categoryobj.id" class="form-control" items="${category}" itemValue="id" itemLabel="name" />
+					<br /> 
+						<form:errors path="categoryobj.id" cssClass="error" />
 				</td>
-			</tr>		
+			</tr>	
 			
 			<tr class="form-group">
 				<td><form:label path="product_type">Type</form:label></td>
@@ -146,20 +172,17 @@
     					<option value="Top Rated">Top Rated</option>
     					<option value="On Sale">On Sale</option>
     					
-						
+						 
 					</select><br /> 
 						<form:errors path="product_type" cssClass="error" />
 				</td>
 			</tr>	
 			
 			<tr class="form-group">
-				<td><form:label path="sup_id">Supplier</form:label></td>
-				<td><select name="sup_id"  class="form-control">
-						<c:forEach items="${supplier}" var="supplier">
-    					<option value="${supplier.id}">${supplier.name}</option>
-						</c:forEach>
-					</select><br /> 
-						<form:errors path="sup_id" cssClass="error" />
+				<td><form:label path="sup.id">Supplier</form:label></td>
+				<td><form:select path="sup.id" class="form-control" items="${supplier}" itemValue="id" itemLabel="name" />
+					<br /> 
+						<form:errors path="sup.id" cssClass="error" />
 				</td>
 			</tr>	
 				
@@ -199,7 +222,7 @@
 	<br /><br />
 	
 <div class="row"  data-ng-app="app" data-ng-controller="product_controller" align="center">
-        <div class="panel panel-primary filterable" style="width: 90%">
+        <div class="panel panel-primary filterable" style="width: 95%">
             <div class="panel-heading" align="left">
                 <h3 class="panel-title">List All Product</h3>
                 <div class="pull-right">
@@ -228,10 +251,10 @@
 							<td style="font-weight: bold;">{{p.id}}</td>
 							<td>{{p.name}}</td>
 							<td>{{p.des}}</td>
-							<td>{{p.category_id}}</td>
-							<td>{{p.brand_id}}</td>
+							<td>{{p.categoryobj.name}}</td>
+							<td>{{p.brands.brand_name}}</td>
 							<td>{{p.product_type}}</td>
-							<td>{{p.sup_id}}</td>
+							<td>{{p.sup.name}}</td>
 							<td>{{p.price}}</td>
 							<td>{{p.discount}}</td>
 							<td><img src="<c:out value='{{p.product_image}}' />" width="150px"
@@ -239,7 +262,8 @@
 							
 							<td>
 								<a href="editproduct?id={{p.id}}"  class="btn btn-primary" role="button" style="width: 92px">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="delproduct?id={{p.id}}"  class="btn btn-warning" role="button" style="width: 92px">Delete</a>
+								<a href="delproduct?id={{p.id}}"  class="btn btn-warning" role="button" style="width: 92px"
+								onclick="return confirm('Are you sure..!Do you want to delete?');return false;">Delete</a>
 							</td>
 						</tr>
 					</table>

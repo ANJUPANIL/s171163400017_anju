@@ -26,7 +26,7 @@
 			<div align="center" class="table-responsive">
 			<h2>Edit product&nbsp;&nbsp;&nbsp;</h2>
    							
-   				<table style="width: 40%">
+   				<table style="width: 45%" align="center">
    					
     				<tr class="form-group">
 					<td style="width: 25%">
@@ -59,15 +59,43 @@
 				</tr>
 				
 			<tr class="form-group">
-							<td><form:label path="category_id">Category:</form:label></td>
-							<td><form:input path="category_id" class="form-control" value="${pdata.category_id}" /><br /> 
-							<form:errors path="category_id" cssClass="error" /></td>
+							<td><form:label path="categoryobj.id">Category:</form:label></td>
+							<td>
+								<form:select path="categoryobj.id" class="form-control">
+                            	<c:forEach items="${category}" var="catlist">
+                            	<c:choose>
+                                <c:when test="${catlist.id == pdata.categoryobj.id}">
+                                    <form:option value="${catlist.id}" selected="${catlist.id}">${catlist.name}</form:option>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:option value="${catlist.id}">${catlist.name}</form:option>
+                                </c:otherwise>
+                            </c:choose>
+                               
+                            </c:forEach>
+								</form:select> <br/>
+							<form:errors path="categoryobj.id" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
-							<td><form:label path="brand_id">Brand:</form:label></td>
-							<td><form:input path="brand_id" class="form-control" value="${pdata.brand_id}" /><br /> 
-							<form:errors path="brand_id" cssClass="error" /></td>
+							<td><form:label path="brands.brand_id">Brand:</form:label></td>
+							<td> 
+								
+								<form:select path="brands.brand_id" class="form-control">
+                            	<c:forEach items="${brand}" var="brandlist">
+                            	<c:choose>
+                                <c:when test="${brandlist.brand_id == pdata.brands.brand_id}">
+                                    <form:option value="${brandlist.brand_id}" selected="${brandlist.brand_id}">${brandlist.brand_name}</form:option>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:option value="${brandlist.brand_id}">${brandlist.brand_name}</form:option>
+                                </c:otherwise>
+                            </c:choose>
+                               
+                            </c:forEach>
+                    </form:select><br/>
+								
+							<form:errors path="brands.brand_id" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
@@ -77,9 +105,23 @@
 				</tr>
 				
 				<tr class="form-group">
-							<td><form:label path="sup_id">Supplier:</form:label></td>
-							<td><form:input path="sup_id" class="form-control" value="${pdata.sup_id}" /><br /> 
-							<form:errors path="sup_id" cssClass="error" /></td>
+							<td><form:label path="sup.id">Supplier:</form:label></td>
+							<td>
+								<form:select path="sup.id" class="form-control">
+                            	<c:forEach items="${supplier}" var="suplist">
+                            	<c:choose>
+                                <c:when test="${suplist.id == pdata.sup.id}">
+                                    <form:option value="${suplist.id}" selected="${suplist.id}">${suplist.name}</form:option>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:option value="${suplist.id}">${suplist.name}</form:option>
+                                </c:otherwise>
+                            </c:choose>
+                               
+                            </c:forEach>
+								</form:select> <br/>
+								
+							<form:errors path="sup.id" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">

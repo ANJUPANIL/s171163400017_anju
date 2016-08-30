@@ -3,6 +3,9 @@ package com.niit.ecommercemain.controller;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.ecommercemain.model.UtilityFunctions;
 import com.niit.ecommercemain.model.brand;
 import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.model.product;
@@ -24,8 +26,6 @@ import com.niit.ecommercemain.service.brand_srv;
 import com.niit.ecommercemain.service.category_srv;
 import com.niit.ecommercemain.service.product_srv;
 import com.niit.ecommercemain.service.supplier_srv;
-
-
 
 @Controller
 public class product_controller {
@@ -50,29 +50,30 @@ public class product_controller {
 	@ResponseBody
 	public List<product> getallproduct() {
 		System.out.println("show products controller");
-		List<category> showcat = cs.allcategory();
-		List<brand> showbrand = bs.allbrand();
-		List<supplier> showsupplier = s.allsupplier();
+		
 		List<product> lsts = ps.allproduct();
-		for(int i=0;i<lsts.size();i++)
-		{
-			if(lsts.get(i).getCategory_id().equals(showcat.get(i).getId()))
-			{
-				lsts.get(i).setCategory_id(showcat.get(i).getName());
-			}
-			if(lsts.get(i).getBrand_id().equals(showbrand.get(i).getId()))
-			{
-				lsts.get(i).setBrand_id(showbrand.get(i).getName());
-			}
-			if(lsts.get(i).getSup_id().equals(showsupplier.get(i).getId()))
-			{
-				lsts.get(i).setSup_id(showsupplier.get(i).getName());
-			}
-			
-		}
+	
 		return lsts;
 	}
 	
+	/*@RequestMapping(value = "/listcat")
+	@ResponseBody
+	public List<category> listcat(HttpServletRequest request,
+            HttpServletResponse response) {
+		System.out.println("List category of product");
+		String bid=request.getParameter("selectedbrand");
+		List<category> showcat = cs.allcategory();
+		List<category> cat=new ArrayList<category>();
+		for(int j=0;j<showcat.size();j++)
+		{	
+			if(bid.equals(showcat.get(j).getBrand_id()))
+			{
+				cat.add(cs.getcategoryid(showcat.get(j).getId()));
+			}
+		}
+		return cat;
+	}
+	*/
 	@RequestMapping(value="/product")
 	public ModelAndView producthome()
 	{
@@ -81,6 +82,7 @@ public class product_controller {
 		List<category> showcat = cs.allcategory();
 		List<brand> showbrand = bs.allbrand();
 		List<supplier> showsupplier = s.allsupplier();
+		
 		mv.addObject("category", showcat);
 		mv.addObject("brand", showbrand);
 		mv.addObject("supplier", showsupplier);
@@ -93,7 +95,7 @@ public class product_controller {
 	}
 	
 	@RequestMapping(value = "/saveproduct", method = RequestMethod.POST)
-	public ModelAndView saveproduct(@ModelAttribute("save_product") product c, Model model) {
+	public ModelAndView saveproduct(@Valid @ModelAttribute("save_product") product c, Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
 		System.out.println("product ID :" + c.getId());
@@ -123,9 +125,17 @@ public class product_controller {
 	
 	@RequestMapping(value = "/editproduct",method=RequestMethod.GET)
 	public ModelAndView updateproduct(@RequestParam("id") String id) {
+		ModelAndView mv = new ModelAndView("editproduct");
 		System.out.println("in edit product id:"+id);
 		oldproduct= ps.getproductid(id);
-		return new ModelAndView("editproduct","pdata", oldproduct);
+		List<brand> showbrand = bs.allbrand();
+		List<category> showcat = cs.allcategory();
+		List<supplier> showsup = s.allsupplier();
+		mv.addObject("brand", showbrand);
+		mv.addObject("category", showcat);
+		mv.addObject("supplier", showsup);
+		mv.addObject("pdata", oldproduct);
+		return mv;
 	}
 	
 	@ModelAttribute("edit_product")
@@ -135,7 +145,7 @@ public class product_controller {
 	}
 
 	@RequestMapping(value = "/update_product", method = RequestMethod.POST)
-	public ModelAndView editproduct(@ModelAttribute("edit_product") product c) {
+	public ModelAndView editproduct(@Valid @ModelAttribute("edit_product") product c) {
 		String pimage=oldproduct.getProduct_image();
 		System.out.println("pimage"+pimage);
 		

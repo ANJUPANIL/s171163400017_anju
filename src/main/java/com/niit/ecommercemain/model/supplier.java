@@ -4,6 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="Supplier")
@@ -13,27 +17,47 @@ public class supplier {
 	 private String id;
 	 
 	 @Column(name="sup_name")
+	 @NotEmpty(message="Please enter a name")
 	 private String name;
 	 
 	 @Column(name="sup_address")
+	 @NotEmpty(message="Please enter supplier address")
 	 private String address;
 	 
 	 @Column(name="sup_city")
+	 @NotEmpty(message="Please enter supplier city")
 	 private String city;
 	 
 	 @Column(name="sup_state")
+	 @NotEmpty(message="Please enter supplier state")
 	 private String state;
 	 
 	 @Column(name="sup_pincode")
+	 @NotEmpty(message="Please enter pincode")
 	 private String pin;
 	 
+	 @NotEmpty(message = "Please enter contact details.")
+	 @Size(min = 10, max = 10, message = "Please enter a valid contact number")
 	 @Column(name="sup_contact")
 	 private String contact;
 	 
+	 @NotEmpty(message = "Please enter Email address.")
+	 @Email(message = "Invalid Email..please enter a valid Email address.")
 	 @Column(name="sup_email")
 	 private String email;
 	 
-	 public String getId() {
+	 @Column(name="status")
+	 private boolean status;
+	 
+	 public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public String getId() {
 		return id;
 	}
 

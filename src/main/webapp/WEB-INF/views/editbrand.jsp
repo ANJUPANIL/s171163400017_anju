@@ -31,22 +31,22 @@
    					<div class="form-group">
     				<tr>
 					<td style="width: 25%">
-						<form:label path="id">Brand ID:</form:label>
+						<form:label path="brand_id">Brand ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="id" size="40" class="form-control" value="${bdata.id}"/><br /> 
-						<form:errors path="id" cssClass="error" />
+						<form:input path="brand_id" size="40" class="form-control" value="${bdata.brand_id}"/><br /> 
+						<form:errors path="brand_id" cssClass="error" />
 					</td>
 				</tr>
 				</div>
 				<div class="form-group">
 				<tr>
 					<td style="width: 25%">
-						<form:label path="name">Brand Name:</form:label>
+						<form:label path="brand_name">Brand Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" value="${bdata.name}"/><br /> 
-						<form:errors path="name" cssClass="error" />
+						<form:input path="brand_name" size="40" class="form-control" value="${bdata.brand_name}"/><br /> 
+						<form:errors path="brand_name" cssClass="error" />
 					</td>
 				</tr>
 				</div>

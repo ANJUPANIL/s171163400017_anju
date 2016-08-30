@@ -65,14 +65,14 @@
 		<div class="container">
 			
 			<!-- Logo text or image -->
-			<a class="logo" href="/"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
+			<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
 					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
 			</a>
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
-				<button type="submit" class="btn btn-default">
+				<button type="submit" class="btn btn-default" >
 					<span class="glyphicon glyphicon-search"></span>
 				</button>&nbsp;
 				<button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="View your shopping cart">
@@ -96,7 +96,7 @@
 						class="glyphicon glyphicon-heart-empty"></span>Wish list</i></a>&nbsp;&nbsp; <a
 					href="registration"><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
-					href="adminhome"><i class="fa fa-angle-right"><span
+					href="login"><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
 			</div>
 			<!-- PHONE/EMAIL -->
@@ -118,10 +118,8 @@
 	
 <!-- Logo part -->
 	
-	<header>
 <!-- nav -->
-
-		<nav class="navbar navbar-inverse navbar-fixed">
+	<nav class="navbar navbar-inverse navbar-fixed">
 			<div class="container-fluid">
 
 				<ul class="nav navbar-nav">
@@ -147,14 +145,14 @@
 
 
 					<li><a href="#">ABOUT</a></li>
-					<li><a href="#">BLOG</a></li>
+					<li><a href="blog">BLOG</a></li>
 					<li><a href="contactus">CONTACTS</a></li>
 				</ul>
 			</div>
 		</nav>
 		
 <!-- slider part -->
-	</header>
+	
 	<div id="carousel-example" class="carousel slide" data-ride="carousel">
 	<ol class="carousel-indicators">
 			<li data-target="#carousel-example" data-slide-to="0" class="active"></li>
@@ -242,7 +240,7 @@
   <div class="col-md-4">
   <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><center><font color="blue">NEW PRODUCTS</font></center></h3>
+    <h3 class="panel-title"><center><font color="blue"><a href="#">NEW PRODUCTS</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/newproduct1.jpg" width="150" height="125"></div>
@@ -257,7 +255,7 @@
 
   <div class="col-md-4"><div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><center><font color="blue">ON SALE</font></center></h3>
+    <h3 class="panel-title"><center><font color="blue"><a href="#">ON SALE</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/onsale1.JPG" width="150" height="125"></div>
@@ -272,7 +270,7 @@
 </div></div>
   <div class="col-md-4"><div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><center><font color="blue">TOP RATED PRODUCTS</font></center></h3>
+    <h3 class="panel-title"><center><font color="blue"><a href="#">TOP RATED PRODUCTS</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/toprated1.png" width="150" height="125"></div>

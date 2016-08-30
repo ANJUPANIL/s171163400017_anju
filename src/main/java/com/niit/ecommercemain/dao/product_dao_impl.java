@@ -21,7 +21,7 @@ public class product_dao_impl implements product_dao
 	private SessionFactory sessionFactory;
 	@Override
 	public void saveproduct(product p) {
-		
+		p.setStatus(true);
 		sessionFactory.getCurrentSession().save(p);
 		
 	}
@@ -29,7 +29,7 @@ public class product_dao_impl implements product_dao
 	@SuppressWarnings("unchecked" )
 	@Override
 	public List<product> allproduct() {
-		return (List<product>)sessionFactory.getCurrentSession().createQuery("from product").list();
+		return (List<product>)sessionFactory.getCurrentSession().createQuery("from product where status=true").list();
 	}
 	@Override
 	public product getproductid(String id) {
@@ -38,12 +38,13 @@ public class product_dao_impl implements product_dao
 	}
 	@Override
 	public void updateproduct(product p) {
+		p.setStatus(true);
 		sessionFactory.getCurrentSession().update(p);
 		
 	}
 	@Override
 	public void deleteproduct(String id) {
-		sessionFactory.getCurrentSession().createQuery("delete from product where product_id = '"+id+"'").executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update product set status=false where product_id = '"+id+"'").executeUpdate();
 	}
 
 

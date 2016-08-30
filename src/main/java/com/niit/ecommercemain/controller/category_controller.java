@@ -1,6 +1,9 @@
 package com.niit.ecommercemain.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,28 +34,19 @@ public class category_controller {
 	@ResponseBody
 	public List<category> getallcategory() {
 		System.out.println("show categorys controller");
-		List<brand> showbrand = bs.allbrand();
 		
 		List<category> lsts = cs.allcategory();
-		for(int i=0;i<lsts.size();i++)
-		{
-			String b=showbrand.get(i).getId();
-			if(lsts.get(i).getBrand_id().equals(b))
-			{
-				String name=showbrand.get(i).getName();
-				lsts.get(i).setBrand_id(name);
-			}
-		}
+		
 		return lsts;
 	}
 	
 	@RequestMapping(value="/category")
 	public ModelAndView categoryhome()
 	{
-		
+		ModelAndView mv = new ModelAndView("category");
 		List<brand> showbrand=bs.allbrand();
-		
-		return new ModelAndView("category","brand",showbrand);
+		mv.addObject("brand",showbrand);
+		return mv;
 	}
 	
 	@ModelAttribute("save_category")
@@ -61,7 +55,7 @@ public class category_controller {
 	}
 	
 	@RequestMapping(value = "/savecategory", method = RequestMethod.POST)
-	public ModelAndView savecategory(@ModelAttribute("save_category") category c, Model model) {
+	public ModelAndView savecategory(@Valid @ModelAttribute("save_category") category c, Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
 		System.out.println("category ID :" + c.getId());
@@ -84,9 +78,15 @@ public class category_controller {
 	@RequestMapping(value = "/editcategory",method=RequestMethod.GET)
 	public ModelAndView updatecategory(@RequestParam("id") String id) {
 		
+		ModelAndView mv = new ModelAndView("editcategory");
 		System.out.println("in updatecategory id:"+id);
 		category oldcategory = cs.getcategoryid(id);
-		return new ModelAndView("editcategory","cdata", oldcategory);
+		List<brand> showbrand = bs.allbrand();
+		mv.addObject("brand", showbrand);
+		mv.addObject("cdata", oldcategory);
+		
+		return mv;
+		
 	}
 	
 	@ModelAttribute("edit_category")
@@ -96,7 +96,7 @@ public class category_controller {
 	}
 
 	@RequestMapping(value = "/update_category", method = RequestMethod.POST)
-	public ModelAndView editcategory(@ModelAttribute("edit_category") category c) {
+	public ModelAndView editcategory(@Valid @ModelAttribute("edit_category") category c) {
 		ModelAndView mv;
 		cs.updatecategory(c);
 		System.out.println("in editcategory id:");

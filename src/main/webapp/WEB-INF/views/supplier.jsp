@@ -61,7 +61,9 @@
 					src="resources/images/logo.jpg" width="150" height="100" />
 			</a>
 			<div class="pull-right nav hidden-xs">
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+				<i class="fa fa-angle-left" style="color:#0000CD">
+						<span class="glyphicon glyphicon-user"></span>Welcome Admin</i>&nbsp; &nbsp;
+				<a href="logout"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-off"></span>Logout</i></a>
 		</div>
 	</header>
@@ -69,7 +71,7 @@
 			<div class="container-fluid">
 
 				<ul class="nav navbar-nav">
-					<li><a href="#">HOME</a></li>
+					<li><a href="adminhome">HOME</a></li>
 					<li><a href="brand">BRAND</a></li>
 					<li><a href="category">CATEGORY</a></li>
 					<li class="active"><a href="supplier">SUPPLIER</a></li>
@@ -132,6 +134,7 @@
 							<td><form:label path="pin">Pincode:</form:label></td>
 							<td><form:input path="pin" class="form-control" /><br /> 
 							<form:errors path="pin" cssClass="error" /></td>
+				</tr>
 				</tr>
 				
 				<tr class="form-group">
@@ -199,7 +202,8 @@
 							
 							<td>
 								<a href="editsupplier?id={{sp.id}}"  class="btn btn-primary" role="button" style="width: 92px">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="delsupplier?id={{sp.id}}"  class="btn btn-warning" role="button" style="width: 92px">Delete</a>
+								<a href="delsupplier?id={{sp.id}}"  class="btn btn-warning" role="button" style="width: 92px"
+								onclick="return confirm('Are you sure..!Do you want to delete?');return false;">Delete</a>
 							</td>
 						</tr>
 					</table>

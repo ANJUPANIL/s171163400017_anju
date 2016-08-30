@@ -153,6 +153,9 @@
       </div>
 	</div>
 </div>
+<br>
+<br>
+<br>
 </body>
 
 <!-- footer part -->

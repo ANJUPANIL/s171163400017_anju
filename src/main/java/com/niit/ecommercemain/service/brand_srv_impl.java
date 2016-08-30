@@ -23,7 +23,7 @@ public class brand_srv_impl implements brand_srv
 	public void savebrand(brand brand) {
 		
 		cd.savebrand(brand);
-		System.out.println(brand.getId());
+		System.out.println(brand.getBrand_id());
 		
 	}
 	@Override

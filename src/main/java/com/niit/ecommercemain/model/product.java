@@ -4,9 +4,12 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -29,14 +32,42 @@ public class product {
 	@Column(name="product_type")
 	private String product_type;
 	
-	@Column(name="category_id")
-	private String category_id;
+	@OneToOne
+	@JoinColumn(name="category_id")
+	private category categoryobj ;
 	
-	@Column(name="brand_id")
-	private String brand_id;
+	public category getCategoryobj() {
+		return categoryobj;
+	}
+
+	public void setCategoryobj(category categoryobj) {
+		this.categoryobj = categoryobj;
+	}
+
+	public brand getBrands() {
+		return brands;
+	}
+
+	public void setBrands(brand brands) {
+		this.brands = brands;
+	}
+
+	public supplier getSup() {
+		return sup;
+	}
+
+	public void setSup(supplier sup) {
+		this.sup = sup;
+	}
+
+	@OneToOne
+	@JoinColumn(name="brand_id")
+	private brand brands;
 	
-	@Column(name="sup_id")
-	private String sup_id;
+	@OneToOne
+	@JoinColumn(name="sup_id")
+	private supplier sup ;
+	
 	
 	@Column(name="product_price")
 	private int price;
@@ -44,7 +75,18 @@ public class product {
 	@Column(name="product_discount")
 	private double discount;
 	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	transient private MultipartFile prdfile;
+	
+	 @Column(name="status")
+	 private boolean status;
 	
 
 	public MultipartFile getPrdfile() {
@@ -55,13 +97,6 @@ public class product {
 		this.prdfile = prdfile;
 	}
 
-	public String getBrand_id() {
-		return brand_id;
-	}
-
-	public void setBrand_id(String brand_id) {
-		this.brand_id = brand_id;
-	}
 
 	public double getDiscount() {
 		return discount;
@@ -104,22 +139,6 @@ public class product {
 
 	public void setProduct_type(String product_type) {
 		this.product_type = product_type;
-	}
-
-	public String getCategory_id() {
-		return category_id;
-	}
-
-	public void setCategory_id(String category_id) {
-		this.category_id = category_id;
-	}
-
-	public String getSup_id() {
-		return sup_id;
-	}
-
-	public void setSup_id(String sup_id) {
-		this.sup_id = sup_id;
 	}
 
 	public int getPrice() {

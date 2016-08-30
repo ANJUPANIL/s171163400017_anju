@@ -1,6 +1,9 @@
 package com.niit.ecommercemain.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.niit.ecommercemain.model.UtilityFunctions;
 import com.niit.ecommercemain.model.brand;
 import com.niit.ecommercemain.service.brand_srv;
-
-
 
 @Controller
 public class brand_controller {
@@ -36,8 +37,6 @@ public class brand_controller {
 	@RequestMapping(value="/brand")
 	public ModelAndView brandhome()
 	{
-		
-		
 		return new ModelAndView("brand");
 	}
 	
@@ -47,11 +46,11 @@ public class brand_controller {
 	}
 	
 	@RequestMapping(value = "/savebrand", method = RequestMethod.POST)
-	public ModelAndView savebrand(@ModelAttribute("save_brand") brand b, Model model) {
+	public ModelAndView savebrand(@Valid @ModelAttribute("save_brand") brand b, Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
-		System.out.println("Brand ID :" + b.getId());
-		System.out.println("Brand Name :" + b.getName());
+		System.out.println("Brand ID :" + b.getBrand_id());
+		System.out.println("Brand Name :" + b.getBrand_name());
 		mv = new ModelAndView("brand");
 		try
 		{
@@ -80,7 +79,7 @@ public class brand_controller {
 	}
 
 	@RequestMapping(value = "/update_brand", method = RequestMethod.POST)
-	public ModelAndView editbrand(@ModelAttribute("edit_brand") brand c) {
+	public ModelAndView editbrand(@Valid @ModelAttribute("edit_brand") brand c) {
 		ModelAndView mv;
 		bs.updatebrand(c);
 		System.out.println("in editbrand id:");
