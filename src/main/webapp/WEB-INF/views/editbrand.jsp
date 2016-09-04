@@ -26,19 +26,20 @@
 			<div align="center" class="table-responsive">
 			<h2>Edit Brand&nbsp;&nbsp;&nbsp;</h2>
    							
-   				<table style="width: 40%">
+   				<table style="width: 40%" class="table-striped table-condensed">
    					
    					<div class="form-group">
-    				<tr>
+    				<tr style="font-weight: bold;">
 					<td style="width: 25%">
-						<form:label path="brand_id">Brand ID:</form:label>
+						<form:label path="brand_id" >Brand ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="brand_id" size="40" class="form-control" value="${bdata.brand_id}"/><br /> 
+						 ${bdata.brand_id}<form:input type="hidden" path="brand_id" size="40" class="form-control" value="${bdata.brand_id}" /><br />  
 						<form:errors path="brand_id" cssClass="error" />
 					</td>
 				</tr>
 				</div>
+				
 				<div class="form-group">
 				<tr>
 					<td style="width: 25%">
@@ -55,6 +56,7 @@
 					<td colspan="2">
 						<button type="submit" class="btn btn-success"
 							style="width: 150px;">Submit</button>
+						
 					</td>
 				</tr>
 				<tr>

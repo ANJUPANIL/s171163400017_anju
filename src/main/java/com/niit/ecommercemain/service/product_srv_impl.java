@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecommercemain.dao.product_dao;
+import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.model.product;
 
 @Service
@@ -44,6 +45,17 @@ public class product_srv_impl implements product_srv
 	public void deleteproduct(String id) {
 		pd.deleteproduct(id);
 		
+	}
+
+	@Override
+	public List<product> getcategorylist(String categoryname) {
+		return pd.getcategorylist(categoryname);
+	}
+
+	@Override
+	public List<product> getbrandlist(String categoryname, String brandname) {
+		
+		return pd.getbrandlist(categoryname,brandname);
 	}
 
 }

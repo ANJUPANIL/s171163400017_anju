@@ -14,13 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.ecommercemain.model.UtilityFunctions;
 import com.niit.ecommercemain.model.brand;
 import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.service.brand_srv;
 import com.niit.ecommercemain.service.category_srv;
-
-
 
 @Controller
 public class category_controller {

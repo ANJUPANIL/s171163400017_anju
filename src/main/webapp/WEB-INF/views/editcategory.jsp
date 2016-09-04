@@ -25,14 +25,14 @@
 			<div align="center" class="table-responsive">
 			<h2>Edit Category&nbsp;&nbsp;&nbsp;</h2>
    							
-   				<table style="width: 40%">
+   				<table style="width: 40%" class="table-striped table-condensed">
    					
-    				<tr class="form-group">
+    				<tr class="form-group" style="font-weight: bold;">
 					<td style="width: 25%">
 						<form:label path="id">Category ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="id" size="40" class="form-control" value="${cdata.id}" /><br /> 
+						 ${cdata.id}<form:input type="hidden" path="id" size="40" class="form-control" value="${cdata.id}" /><br /> 
 						<form:errors path="id" cssClass="error" />
 					</td>
 				</tr>

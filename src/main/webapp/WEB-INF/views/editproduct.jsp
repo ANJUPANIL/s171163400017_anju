@@ -26,14 +26,14 @@
 			<div align="center" class="table-responsive">
 			<h2>Edit product&nbsp;&nbsp;&nbsp;</h2>
    							
-   				<table style="width: 45%" align="center">
+   				<table style="width: 45%" align="center" class="table-striped table-condensed">
    					
-    				<tr class="form-group">
+    				<tr class="form-group" style="font-weight: bold;">
 					<td style="width: 25%">
 						<form:label path="id">Product ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="id" size="40" class="form-control" value="${pdata.id}" /><br /> 
+						 ${pdata.id}<form:input type="hidden" path="id" size="40" class="form-control" value="${pdata.id}" /><br /> 
 						<form:errors path="id" cssClass="error" />
 					</td>
 				</tr>
@@ -102,6 +102,7 @@
 							<td><form:label path="product_type">Type:</form:label></td>
 							<td><form:input path="product_type" class="form-control" value="${pdata.product_type}" /><br /> 
 							<form:errors path="product_type" cssClass="error" /></td>
+							
 				</tr>
 				
 				<tr class="form-group">

@@ -8,10 +8,18 @@ import com.niit.ecommercemain.model.product;
 public interface product_dao 
 {
 	public void saveproduct(product p);
+	
 	public List<product> allproduct();
+	
 	public product getproductid(String id);
+	
 	public void updateproduct(product p);
+	
 	public void deleteproduct(String id);
+	
+	public List<product> getcategorylist(String categoryname);
+	
+	public List<product> getbrandlist(String categoryname,String brandname);
 	
 	
 }

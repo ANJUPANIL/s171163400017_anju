@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecommercemain.dao.category_dao;
+import com.niit.ecommercemain.model.brand;
 import com.niit.ecommercemain.model.category;
 
 @Service
@@ -37,6 +38,7 @@ public class category_srv_impl implements category_srv
 	
 	public void updatecategory(category cat) {
 		
+		
 		cd.updatecategory(cat);
 	}
 	
@@ -45,5 +47,13 @@ public class category_srv_impl implements category_srv
 		cd.deletecategory(id);
 		
 	}
+
+	
+	public List<category> getbrandlist(String categoryname) {
+		
+		return cd.getbrandlist(categoryname);
+	}
+
+	
 
 }

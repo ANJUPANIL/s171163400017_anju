@@ -185,7 +185,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <p>Page © - 2016</p>
-                <p>Powered by <strong><a href="#">Eletech</a></strong></p>
+                <p>Powered by <strong><a href="index">Eletech</a></strong></p>
             </div>
         </div>
     </div>

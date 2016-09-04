@@ -6,12 +6,15 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.ecommercemain.model.brand;
 import com.niit.ecommercemain.model.category;
+import com.niit.ecommercemain.model.product;
 
 
 
@@ -50,7 +53,22 @@ public class category_dao_impl implements category_dao
 		sessionFactory.getCurrentSession().createQuery("update category set status=false where category_id = '"+id+"'").executeUpdate();
 		
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<category> getbrandlist(String categoryname)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("Select c from category c join c.brands b where " +  
+					" c.name = '" + categoryname + "' and b.status=true");
+		return (List<category>) query.list();
+	}
 
+	
+	
+
+		
+	
 
 
 }

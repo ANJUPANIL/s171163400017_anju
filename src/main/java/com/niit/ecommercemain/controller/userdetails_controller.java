@@ -58,6 +58,7 @@ public class userdetails_controller {
 		if(result.hasErrors())
 			{
 				mv = new ModelAndView("registration");
+				return mv;
 			}
 			else
 			{
@@ -66,9 +67,10 @@ public class userdetails_controller {
 			us.saveuser(b.getUser_id(), b.getPassword());
 			mv=new ModelAndView("redirect:login");
 			mv.addObject("msg","Registered Successfully......");
+			return mv;
 			}
 			
-		return mv;
+		
 		
 	}
 	@RequestMapping(value = "/edituserdetails",method=RequestMethod.GET)
@@ -152,9 +154,12 @@ public class userdetails_controller {
 			return "adminhome";
 		}
 		
-		@RequestMapping("/userhome")
-		public String userlogin(){
-			return "userhome";
+		@RequestMapping(value="/userhome")
+		public ModelAndView userhome()
+		{
+			System.out.println("userhome");
+			return new ModelAndView("userhome");
+			
 		}
 		
 		@RequestMapping("index")
