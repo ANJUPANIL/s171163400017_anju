@@ -19,6 +19,19 @@
 <title>Cart</title>
 </head>
 <body>
+<header id="topNav" class="topHead">
+		<!-- remove class="topHead" if no topHead used! -->
+		<div class="container">
+			
+			<!-- Logo text or image -->
+			<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
+					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
+			</a>
+			<h3 style="color:#0000CD">CART</h3>
+		</div>
+	</header>
+
+		
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -36,17 +49,11 @@
                 <tbody id="tbody">
                     <tr>
                         <td class="col-sm-1 col-md-1" style="text-align: left">
-                        <select>
-                        
-                            <option>adsad</option>
-                        </select>
+                        product name
                         </td>
-                        <td class="col-sm-1 col-md-1" style="text-align: left">
-					<select>
-                        
-                            <option>adsad</option>
-                        </select>
-                        </td>                        </td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+						price
+                        </td>                       
                         <td class="col-sm-1 col-md-1" style="text-align: left">
                         <input type="email" class="form-control" id="exampleInputEmail1" value="">
                         </td>
@@ -98,7 +105,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td>
-                        <a href="#"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
+                        <a href="userhome"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
                         </td>
                         <td>
                         <a href="#"  class="btn btn-success" role="button">Check out<span class="glyphicon glyphicon-play"></span></a>

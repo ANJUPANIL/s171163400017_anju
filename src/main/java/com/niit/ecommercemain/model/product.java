@@ -3,12 +3,14 @@ package com.niit.ecommercemain.model;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -156,6 +158,7 @@ public class product {
 	public void setProduct_image(String product_image) {
 		this.product_image = product_image;
 	}
+	
 	
 	public String getFilePath(String path1,String contextPath)
 	{

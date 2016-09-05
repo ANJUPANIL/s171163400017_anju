@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommercemain.model.cart;
 import com.niit.ecommercemain.model.userdetails;
 import com.niit.ecommercemain.model.userlogin;
+import com.niit.ecommercemain.service.cart_srv;
 import com.niit.ecommercemain.service.userdetails_srv;
 
 @Controller
@@ -26,6 +28,8 @@ public class userdetails_controller {
 	@Autowired
 	userdetails_srv us;
 	
+	@Autowired
+	cart_srv c;
 	
 	@Autowired
 	ServletContext srv;
@@ -155,10 +159,14 @@ public class userdetails_controller {
 		}
 		
 		@RequestMapping(value="/userhome")
-		public ModelAndView userhome()
+		public ModelAndView userhome(HttpSession session)
 		{
 			System.out.println("userhome");
-			return new ModelAndView("userhome");
+			String loggedinuser = (String)session.getAttribute("userid");
+			ModelAndView mv = new ModelAndView("userhome");
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+			return mv;
 			
 		}
 		

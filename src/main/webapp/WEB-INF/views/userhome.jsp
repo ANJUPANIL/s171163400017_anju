@@ -78,7 +78,7 @@ $(function(){
 						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 				
 				<a href="mycart"><i class="fa fa-angle-left" data-toggle="tooltip" data-placement="right" title="View your shopping cart"><span
-						class="glyphicon glyphicon-shopping-cart"></span>Cart</i></a>&nbsp; &nbsp;
+						class="glyphicon glyphicon-shopping-cart"></span>Cart(${cartsize})</i></a>&nbsp; &nbsp;
 				
 				<a href="logout"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-off"></span>Logout</i></a>

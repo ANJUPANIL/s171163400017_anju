@@ -29,6 +29,8 @@
 	display: none;
 	border-radius: 50%;
 }
+ .navbar { margin-bottom:0px !important; }
+.carousel-caption { margin-top:0px !important }
  
   </style>
 

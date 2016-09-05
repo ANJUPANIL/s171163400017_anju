@@ -25,7 +25,7 @@ public class cart_dao_impl implements cart_dao
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<cart> getallcart(String userid) {
-		return(List<cart>)sessionFactory.getCurrentSession().createQuery("from cart where user_name is'"+userid+"'").list();
+		return(List<cart>)sessionFactory.getCurrentSession().createQuery("from cart where user.user_id is'"+userid+"'").list();
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class cart_dao_impl implements cart_dao
 
 	@Override
 	public double gettotalamount(String userid) {
-		String hql ="select sum(total) from cart where user_name = '"+userid+"' and status = "+"false";
+		String hql ="select sum(total) from cart where user.user_id = '"+userid+"' and status = "+"false";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		double sum = (Double) (query.uniqueResult());
 		return sum;
