@@ -114,7 +114,7 @@
 		</div>
 </header>
 
-	
+	<p style="color:#008000"> ${msg}</p>
 <section id="login">
     <div class="container">
     	<div class="row">
@@ -125,12 +125,12 @@
                     <form:form method="POST" action="loginsubmit" commandName="check_login">
                         <div class="form-group">
                             <form:label path="user_id" class="sr-only">Email</form:label>
-                            <form:input path="user_id" class="form-control" placeholder="somebody@example.com" />
+                            <form:input path="user_id" class="form-control" placeholder="somebody@example.com" required="true" autofocus="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
                             <form:errors path="user_id" cssClass="error"/>
                         </div>
                         <div class="form-group">
                             <form:label path="password" class="sr-only">Password</form:label>
-                            <form:password path="password" class="form-control" placeholder="Password" />
+                            <form:password path="password" class="form-control" placeholder="Password" required="true"/>
                             <form:errors path="password" cssClass="error"/>
                         </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Log in">

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +122,7 @@
 	</header>
 	
 <!-- Logo part -->
-	
+
 <!-- nav -->
 	<nav class="navbar navbar-inverse navbar-fixed">
 			<div class="container-fluid">
@@ -130,19 +133,13 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">SHOP <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Mobiles</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Laptops</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#"> Tablets</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Desktops</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Car accessories</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Security systems</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Cameras</a></li>
+							
+							<li><c:forEach  var="category" items="${category}">
+								<li><a href="<c:url value='/productgallery?name=${category}' />">${category}</a>
+								</li>
+								<li role="separator" class="divider"></li>
+							</c:forEach></li>
+							
 						</ul></li>
 
 
@@ -486,7 +483,7 @@
                   <p>Give us your email and you will be daily updated with the latest events, in detail!</p>
                   <div class="clear"> </div>
                   <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-md" placeholder="Email Address">
+                    <input type="email" name="email" id="email" class="form-control input-md" placeholder="Email Address" required="true">
 				</div>
                   <a class="btn btn-primary btn-sm" href="#">Subcribe</a> </div>
                   

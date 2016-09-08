@@ -64,6 +64,14 @@ public class category_dao_impl implements category_dao
 		return (List<category>) query.list();
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<category> categorynamelist() {
+		
+		return (List<category>)sessionFactory.getCurrentSession().createQuery("SELECT DISTINCT name FROM category where status=true order by name asc").list();
+		
+	}
+
 	
 	
 

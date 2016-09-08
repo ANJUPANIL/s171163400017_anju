@@ -148,13 +148,11 @@
             
                 <li align="center" class="btn btn-lg btn-block btn-primary" >SHOP</li>
                
-                <li><a href="shopproduct?name=Cameras">Cameras</a></li>
-                <li><a href="shopproduct?name=Car Accessories" >Car Accessories</a></li>
-                <li><a href="shopproduct?name=Desktops" >Desktops</a></li>
-                <li><a href="shopproduct?name=Laptops">Laptops</a></li>
-                <li><a href="shopproduct?name=Mobiles">Mobiles</a></li>
-                <li><a href="shopproduct?name=Security Systems">Security Systems</a></li>
-                <li><a href="shopproduct?name=Tablets" >Tablets</a></li>
+                <li><c:forEach  var="category" items="${category}">
+								<li><a href="<c:url value='/shopproduct?name=${category}' />">${category}</a>
+								</li>
+								<li role="separator" class="divider"></li>
+				</c:forEach></li>
                
             </ul>
     	 </div><br/>

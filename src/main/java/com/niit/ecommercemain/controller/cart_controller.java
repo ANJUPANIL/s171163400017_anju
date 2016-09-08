@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,8 +57,7 @@ public class cart_controller {
 		}
 		else{
 			System.out.println("in else");
-			
-			
+	
 			cart cart= new cart();
 			product product= ps.getproductid(id);
 			System.out.println("cart obj");
@@ -78,8 +79,8 @@ public class cart_controller {
 			mv = new ModelAndView("shopproduct");
 			List<product> allcatproduct = ps.getcategorylist(name);
 			System.out.println("Size  "+allcatproduct.size());
-			List<category> showbrand=c.getbrandlist(name);
-			mv.addObject("brand",showbrand);
+			List<category> showcat=c.getbrandlist(name);
+			mv.addObject("cat",showcat);
 			mv.addObject("product", allcatproduct);
 			session.setAttribute("name", name);
 			
@@ -91,6 +92,93 @@ public class cart_controller {
 			return mv;
 			
 		}
+	@RequestMapping(value = "/mycart", method = RequestMethod.GET)
+	public ModelAndView mycart(HttpServletRequest request){
+		HttpSession session= request.getSession();
+		double grandtotal=0;
+		ModelAndView mv = new ModelAndView("mycart");
+		mv.addObject("cart", new cart());
+		System.out.println("In add cart controller");
+		String loggedinuser = (String)session.getAttribute("userid");
+		List<cart> cartlist = cs.getallcart(loggedinuser);
+		System.out.println("cart controller");
+		mv.addObject("cartlist",cartlist);
+		
+		mv.addObject("totalamount",cs.gettotalamount(loggedinuser));
+		mv.addObject("displaycart","true");
+		for(int i = 0;i<=cartlist.size()-1;i++)
+		{
+			grandtotal = grandtotal+cartlist.get(i).getTotal();
+			System.out.println(grandtotal);
+		}
+		mv.addObject("grandtotal", grandtotal);
+		System.out.println("hello");
+		System.out.println(grandtotal);
+		session.setAttribute("grandtotal",grandtotal);
+		return mv;
+		
+	}
+	
+	
+	@RequestMapping(value = "/delcart")
+	public String removecart(@RequestParam("id") String id){
+		System.out.println("in deletecat id:" + id);	
+		cs.deletecart(id);
+		return "redirect:/mycart";
+	}
+	
+	@RequestMapping(value="/updatecart",method=RequestMethod.GET)
+	public ModelAndView updatecart(HttpServletRequest request)
+	{
+		System.out.println("Inside update cart");
+		String id=request.getParameter("id");
+		String pid=request.getParameter("pid");
+		String quantity=request.getParameter("quantity");
+		System.out.println("QTy " + quantity);
+		int q=Integer.valueOf(quantity);
+		System.out.println("QTy  after conversion" + q);
+		double grandtotal=0;
+		
+		HttpSession session = request.getSession();
+		String loggedinuser = (String)session.getAttribute("userid");
+		
+		ModelAndView mv = new ModelAndView("mycart");
+		mv.addObject("cart", new cart());
+		
+		cart cart= new cart();
+		product product= ps.getproductid(pid);
+		System.out.println("Product name:" +product.getName());
+		System.out.println("cart obj");
+		cart.setProduct(product);
+		cart.setQuantity(q);
+		cart.setStatus(false);
+		userdetails u=us.getuserdetailsid(loggedinuser);
+		cart.setUser(u);
+		System.out.println("discount:"+(1-((double)product.getDiscount()/100)));
+		System.out.println("with quantity:"+(1-((double)product.getDiscount()/100))*(cart.getQuantity()));
+		double total = (double)((product.getPrice())*(1-((double)product.getDiscount()/100))*(cart.getQuantity()));
+		cart.setTotal(total);
+		System.out.println("total");
+		System.out.println(cart.getTotal());
+		System.out.println(cart.getUser().getUser_id());
+		
+		cs.updatecart(cart);
+		List<cart> cartlist = cs.getallcart(loggedinuser);
+		mv.addObject("cartlist",cartlist);
+		mv.addObject("totalamount",cs.gettotalamount(loggedinuser));
+		mv.addObject("displaycart","true");
+		for(int i = 0;i<=cartlist.size()-1;i++)
+		{
+			grandtotal = grandtotal+cartlist.get(i).getTotal();
+			System.out.println(grandtotal);
+		}
+		mv.addObject("grandtotal", grandtotal);
+		
+		System.out.println(grandtotal);
+		session.setAttribute("grandtotal",grandtotal);
+		
+		return mv;
+	}
 	
 	
 	

@@ -17,5 +17,7 @@ public interface category_srv {
 	public void deletecategory(String id);
 	
 	public List<category> getbrandlist(String categoryname);
+	
+	public List<category> categorynamelist();
 
 }

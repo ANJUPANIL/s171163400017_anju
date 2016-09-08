@@ -54,9 +54,6 @@ public class cart {
 	@Column
 	private double total;
 	
-	
-	
-	
 	@Column(columnDefinition = "boolean default false")
 	private boolean status;
 	

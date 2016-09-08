@@ -93,7 +93,7 @@
 						<form:label path="brand_id">Brand ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="brand_id" size="40"  class="form-control"/><br /> 
+						<form:input path="brand_id" size="40"  class="form-control" required="true" autofocus="true" /><br /> 
 						<form:errors path="brand_id" cssClass="error" />
 					</td>
 				
@@ -105,7 +105,7 @@
 						<form:label path="brand_name">Brand Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="brand_name" size="40" class="form-control" /><br /> 
+						<form:input path="brand_name" size="40" class="form-control" required="true" /><br /> 
 						<form:errors path="brand_name" cssClass="error" />
 					</td>
 				</tr>

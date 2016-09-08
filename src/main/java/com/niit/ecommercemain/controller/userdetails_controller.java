@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecommercemain.model.cart;
+import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.model.userdetails;
 import com.niit.ecommercemain.model.userlogin;
 import com.niit.ecommercemain.service.cart_srv;
+import com.niit.ecommercemain.service.category_srv;
 import com.niit.ecommercemain.service.userdetails_srv;
 
 @Controller
@@ -30,6 +32,9 @@ public class userdetails_controller {
 	
 	@Autowired
 	cart_srv c;
+	
+	@Autowired
+	category_srv catsrv;
 	
 	@Autowired
 	ServletContext srv;
@@ -65,12 +70,28 @@ public class userdetails_controller {
 				return mv;
 			}
 			else
-			{
-			
-			us.saveuserdetails(b);
-			us.saveuser(b.getUser_id(), b.getPassword());
-			mv=new ModelAndView("redirect:login");
-			mv.addObject("msg","Registered Successfully......");
+			{ 
+				int flag=0;
+				List<userdetails> allusers=us.alluserdetails();
+				for(int i=0;i<allusers.size();i++)
+				{
+					if(b.getUser_id().equals(allusers.get(i).getUser_id()))
+						{
+							flag=1;
+						}
+				}
+				if(flag==1)
+				{
+					mv = new ModelAndView("registration");
+					mv.addObject("msg","User exist with this id......");
+				}
+				else
+				{
+					us.saveuserdetails(b);
+					us.saveuser(b.getUser_id(), b.getPassword());
+					mv=new ModelAndView("redirect:login");
+					mv.addObject("msg","Registered Successfully......");
+				}
 			return mv;
 			}
 			
@@ -182,6 +203,10 @@ public class userdetails_controller {
 			session.invalidate();
 			session = request.getSession(true);
 			mv.addObject("loggedout","true");
+			List<category> showcat = catsrv.categorynamelist();
+			System.out.println("Category size: "+showcat.size());
+			
+			session.setAttribute("category", showcat);
 			return mv;
 		}
 		

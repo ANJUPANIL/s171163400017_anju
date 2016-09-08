@@ -92,7 +92,7 @@
 						<form:label path="id">Supplier ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="id" size="40"  class="form-control"/><br /> 
+						<form:input path="id" size="40"  class="form-control" required="true" autofocus="true"/><br /> 
 						<form:errors path="id" cssClass="error" />
 					</td>
 				
@@ -103,7 +103,7 @@
 						<form:label path="name">Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" /><br /> 
+						<form:input path="name" size="40" class="form-control" required="true" /><br /> 
 						<form:errors path="name" cssClass="error" />
 					</td>
 				</tr>
@@ -113,39 +113,39 @@
 						<form:label path="address">Address:</form:label>
 					</td>
 					<td> 
-						<form:textarea name="Text1" cols="40" rows="5" path="address" class="form-control" /><br /> 
+						<form:textarea name="Text1" cols="40" rows="5" path="address" class="form-control" required="true" /><br /> 
 						<form:errors path="address" cssClass="error" />
 					</td>
 				</tr>
 				
 			<tr class="form-group">
 							<td><form:label path="city">City:</form:label></td>
-							<td><form:input path="city" class="form-control" /><br /> 
+							<td><form:input path="city" class="form-control" required="true"/><br /> 
 							<form:errors path="city" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="state">State:</form:label></td>
-							<td><form:input path="state" class="form-control" /><br /> 
+							<td><form:input path="state" class="form-control" required="true" /><br /> 
 							<form:errors path="state" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="pin">Pincode:</form:label></td>
-							<td><form:input path="pin" class="form-control" /><br /> 
+							<td><form:input path="pin" class="form-control" required="true" pattern="[0-9]{6}"/><br /> 
 							<form:errors path="pin" cssClass="error" /></td>
 				</tr>
-				</tr>
+				
 				
 				<tr class="form-group">
 							<td><form:label path="email">Email ID:</form:label></td>
-							<td><form:input path="email" class="form-control" /><br /> 
+							<td><form:input path="email" class="form-control" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" /><br /> 
 							<form:errors path="email" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="contact">Contact :</form:label></td>
-							<td><form:input path="contact" class="form-control" /><br /> 
+							<td><form:input path="contact" class="form-control" required="true" pattern="[0-9]{10}" /><br /> 
 							<form:errors path="contact" cssClass="error" /></td>
 				</tr>
 				<tr>

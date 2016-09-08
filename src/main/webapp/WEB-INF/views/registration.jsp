@@ -23,7 +23,7 @@
 <style>
 
 #login {
-    padding-top: 50px
+    padding-top: 20px
 }
 #login .form-wrap {
     width: 45%;
@@ -118,62 +118,62 @@
                 	<form:form method="POST" commandName="save_userdetails" action="saveuserdetails" >
                         <div class="form-group">
                         	<div class="col-sm-4 form-group">
-                            	<form:label path="fname" class="sr-only">First Name</form:label>
-                            	<form:input path="fname" class="form-control" placeholder="First Name" />
+                            	<form:label path="fname" >First Name</form:label>
+                            	<form:input path="fname" class="form-control"  required="true" autofocus="true" />
                             	<form:errors path="fname" cssClass="error"/></td>
                         	</div>
                         
                         	<div class="col-sm-4 form-group">
-                            	<form:label path="sname" class="sr-only">Second Name</form:label>
-                            	<form:input path="sname" class="form-control" placeholder="Second Name" />
+                            	<form:label path="sname" >Second Name</form:label>
+                            	<form:input path="sname" class="form-control"  required="true" />
                             	<form:errors path="sname" cssClass="error"/>
                         	</div>
                         	<div class="col-sm-4 form-group">
-                            	<form:label path="lname" class="sr-only">Last Name</form:label>
-                            	<form:input path="lname" class="form-control" placeholder="Last Name" />
+                            	<form:label path="lname" >Last Name</form:label>
+                            	<form:input path="lname" class="form-control" required="true" />
                             	<form:errors path="lname" cssClass="error"/>
                         	</div>
                         </div> 
                         <div class="form-group">
-                            <form:label path="dob" class="sr-only">Date of Birth</form:label>
-                            <form:input path="dob" class="form-control" placeholder="Date Of Birth(dd/mm/yyyy )" />
+                            <form:label path="dob" >Date of Birth</form:label>
+                            <form:input path="dob" class="form-control" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required="true"  title="dd/mm/yyyy"/>
                             <form:errors path="dob" cssClass="error"/>
                         </div>
                         <div class="form-group">
-                            <form:label path="address" class="sr-only">Address</form:label>
-                            <form:textarea name="Text1" cols="40" rows="5"  path="address" class="form-control" placeholder="Address" />
+                            <form:label path="address" >Address</form:label>
+                            <form:textarea name="Text1" cols="40" rows="5"  path="address" class="form-control" required="true" />
                             <form:errors path="address" cssClass="error"/>
                         </div>
                         
                          <div class="form-group">
-                            <form:label path="city" class="sr-only">City</form:label>
-                            <form:input path="city" class="form-control" placeholder="City" />
+                            <form:label path="city">City</form:label>
+                            <form:input path="city" class="form-control" required="true" />
                             <form:errors path="city" cssClass="error"/>
                         </div>
                          <div class="form-group">
-                            <form:label path="contact" class="sr-only">Contact</form:label>
-                            <form:input path="contact" class="form-control" placeholder="Contact" />
+                            <form:label path="contact" >Contact</form:label>
+                            <form:input path="contact" class="form-control"  required="true" pattern="[0-9]{10}" title="Enter 10 digit contact number"/>
                             <form:errors path="contact" cssClass="error"/>
                         </div>
                          <div class="form-group">
-                            <form:label path="user_id" class="sr-only">Email ID</form:label>
-                            <form:input path="user_id" class="form-control" placeholder="somebody@example.com" />
+                            <form:label path="user_id" >Email ID</form:label>
+                            <form:input path="user_id" class="form-control" placeholder="somebody@example.com" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
                             <form:errors path="user_id" cssClass="error"/>
                         </div>
                         <div class="form-group">
-                            <form:label path="password" class="sr-only">Password</form:label>
-                            <form:password path="password" class="form-control" placeholder="Password" />
+                            <form:label path="password" >Password</form:label>
+                            <form:password path="password" class="form-control" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
                             <form:errors path="password" cssClass="error"/>
                         </div>
                         <div class="form-group">
                             
-                            <input type="password" name="cpass" id="cpass" class="form-control" placeholder="Confirm Password">
+                            <input type="password" name="cpass" id="cpass" class="form-control" placeholder="Confirm Password" required="true">
                         </div>
                        
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Register">
                         
                     </form:form>
-                  
+                 <p style="color:#FF0000"> ${msg}</p>
                     <hr>
         	    </div>
     		</div> <!-- /.col-xs-12 -->

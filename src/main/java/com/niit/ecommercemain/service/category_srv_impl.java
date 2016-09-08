@@ -54,6 +54,11 @@ public class category_srv_impl implements category_srv
 		return cd.getbrandlist(categoryname);
 	}
 
+	@Override
+	public List<category> categorynamelist() {
+		return cd.categorynamelist();
+	}
+
 	
 
 }

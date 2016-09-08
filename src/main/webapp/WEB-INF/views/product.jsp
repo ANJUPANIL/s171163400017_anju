@@ -119,7 +119,7 @@ request.setAttribute("selectedbrand","selectedbrand");
 						<form:label path="id">Product ID:</form:label>
 					</td>
 					<td> 
-						<form:input path="id" size="40"  class="form-control"/><br /> 
+						<form:input path="id" size="40"  class="form-control" required="true" autofocus="true"/><br /> 
 						<form:errors path="id" cssClass="error" />
 					</td>
 				
@@ -130,7 +130,7 @@ request.setAttribute("selectedbrand","selectedbrand");
 						<form:label path="name">Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" /><br /> 
+						<form:input path="name" size="40" class="form-control" required="true" /><br /> 
 						<form:errors path="name" cssClass="error" />
 					</td>
 				</tr>
@@ -140,7 +140,7 @@ request.setAttribute("selectedbrand","selectedbrand");
 						<form:label path="des">Description:</form:label>
 					</td>
 					<td> 
-						<form:input path="des" size="40" class="form-control" /><br /> 
+						<form:input path="des" size="40" class="form-control" required="true" /><br /> 
 						<form:errors path="des" cssClass="error" />
 					</td>
 				</tr>
@@ -188,13 +188,13 @@ request.setAttribute("selectedbrand","selectedbrand");
 				
 				<tr class="form-group">
 							<td><form:label path="price">Price:</form:label></td>
-							<td><form:input path="price" class="form-control" /><br /> 
+							<td><form:input path="price" class="form-control" required="true"/><br /> 
 							<form:errors path="price" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="discount">Discount:</form:label></td>
-							<td><form:input path="discount" class="form-control" /><br /> 
+							<td><form:input path="discount" class="form-control" required="true"/><br /> 
 							<form:errors path="discount" cssClass="error" /></td>
 				</tr>
 				

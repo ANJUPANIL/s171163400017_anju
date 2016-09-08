@@ -121,7 +121,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="name">Name</label>
               <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+                <input id="name" name="name" type="text" placeholder="Your name" class="form-control" required="true" autofocus="true">
               </div>
             </div>
     
@@ -129,7 +129,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="email">Your E-mail</label>
               <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                <input id="email" name="email" type="text" placeholder="Your email" class="form-control" required="true" >
               </div>
             </div>
     
@@ -137,7 +137,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="message">Your message</label>
               <div class="col-md-9">
-                <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+                <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" required="true"></textarea>
               </div>
             </div>
     

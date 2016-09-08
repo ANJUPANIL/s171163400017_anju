@@ -30,7 +30,6 @@
 			<h3 style="color:#0000CD">CART</h3>
 		</div>
 	</header>
-
 		
 <div class="container">
     <div class="row">
@@ -47,20 +46,23 @@
                     </tr>
                 </thead>
                 <tbody id="tbody">
+                <c:forEach items="${cartlist}" var="cartlist">
                     <tr>
                         <td class="col-sm-1 col-md-1" style="text-align: left">
-                        product name
+                        ${cartlist.product.name}
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
-						price
+						${cartlist.product.price }
                         </td>                       
-                        <td class="col-sm-1 col-md-1" style="text-align: left">
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="">
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
                         <td class="col-sm-1 col-md-1">
-                         <a href="#"  class="btn btn-danger" role="button" ><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                        
+                        <input type="text" class="form-control" id="quantity" name="quantity" value="${cartlist.quantity}" style="text-align: right" >
+                        
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>${cartlist.product.discount}%</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>${cartlist.total}</strong></td>
+                        <td class="col-sm-1 col-md-1">
+                         <a href="<c:url value='/delcart?id=${cartlist.id}' />" class="btn btn-danger" role="button" ><span class="glyphicon glyphicon-remove"></span> </a>
                             
                         </td>
                     </tr>
@@ -71,17 +73,18 @@
                         <td>   </td>
                         <td><h5> </h5></td>
                          <td class="col-sm-1 col-md-1">
-                       		 <a href="#"  class="btn btn-primary" role="button"><span class="glyphicon glyphicon-pencil"></span> Update Cart</a>
+                       		 <a href="updatecart?id=${cartlist.id}&pid=${cartlist.product.id}&quantity=${cartlist.quantity}" type="submit" class="btn btn-primary" role="button"> Update Cart</a>
                             
                         </td>
                     </tr>
+                    </c:forEach>
                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                        <td class="text-right"><h5><strong>${grandtotal}</strong></h5></td>
                     </tr>
                     <tr>
                         <td>   </td>
@@ -97,7 +100,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                        <td class="text-right"><h3><strong>${grandtotal}</strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>
@@ -116,5 +119,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
