@@ -19,5 +19,7 @@ public interface category_srv {
 	public List<category> getbrandlist(String categoryname);
 	
 	public List<category> categorynamelist();
+	
+	public List<category> categorylist(String bid);
 
 }

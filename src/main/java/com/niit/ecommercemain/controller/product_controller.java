@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecommercemain.model.brand;
+import com.niit.ecommercemain.model.cart;
 import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.model.product;
 import com.niit.ecommercemain.model.supplier;
@@ -56,24 +58,14 @@ public class product_controller {
 		return lsts;
 	}
 	
-	/*@RequestMapping(value = "/listcat")
-	@ResponseBody
-	public List<category> listcat(HttpServletRequest request,
-            HttpServletResponse response) {
-		System.out.println("List category of product");
-		String bid=request.getParameter("selectedbrand");
-		List<category> showcat = cs.allcategory();
-		List<category> cat=new ArrayList<category>();
-		for(int j=0;j<showcat.size();j++)
-		{	
-			if(bid.equals(showcat.get(j).getBrand_id()))
-			{
-				cat.add(cs.getcategoryid(showcat.get(j).getId()));
-			}
-		}
-		return cat;
+	@RequestMapping(value="/categoryonchange")
+	public List<category> categoryonchange(@RequestParam("id") String bid)
+	{
+		List<category> list=cs.categorylist(bid);
+		System.out.println("onchange controller" +list.size());
+		return list;
 	}
-	*/
+	
 	@RequestMapping(value="/product")
 	public ModelAndView producthome()
 	{
@@ -113,6 +105,7 @@ public class product_controller {
 			List<product> showall = ps.allproduct();
 			mv.addObject("product", showall);
 			mv.addObject("path",res);
+			mv.addObject("save_product",new product());
 			
 		}
 		catch(Exception ex)
@@ -184,5 +177,7 @@ public class product_controller {
 		ps.deleteproduct(id);
 			return "redirect:/product";
 		}
+		
+		
 	
 }

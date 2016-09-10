@@ -21,5 +21,8 @@ public interface product_dao
 	
 	public List<product> getbrandlist(String categoryname,String brandname);
 	
+	public List<product> getproductbytype(String type);
+	
+	public List<product> productbyname(String pname);
 	
 }

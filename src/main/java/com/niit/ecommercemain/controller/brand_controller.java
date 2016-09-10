@@ -58,6 +58,7 @@ public class brand_controller {
 			
 			List<brand> showall = bs.allbrand();
 			mv.addObject("brand", showall);
+			mv.addObject("save_brand",new brand());
 		}
 		catch(Exception ex){
 			model.addAttribute("error", ex.getMessage());

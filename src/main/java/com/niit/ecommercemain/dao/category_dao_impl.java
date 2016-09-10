@@ -72,6 +72,12 @@ public class category_dao_impl implements category_dao
 		
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<category> categorylist(String bid) {
+		return (List<category>)sessionFactory.getCurrentSession().createQuery("from category where status=true and brands.brand_id= '"+bid+"'").list();
+	}
+
 	
 	
 

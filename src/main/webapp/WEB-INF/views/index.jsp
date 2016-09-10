@@ -70,21 +70,22 @@
 		<div class="container">
 			
 			<!-- Logo text or image -->
-			<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
+			<a class="logo" href="index"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
 					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
 			</a>
-			<form class="navbar-form navbar-right" role="search">
+			<form class="navbar-form navbar-right" role="search" name="searchproduct" action="searchproduct" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+					<input type="text" class="form-control" placeholder="Search" name="pname">
 				</div>
-				<button type="submit" class="btn btn-default" >
+				<button type="submit" class="btn btn-default" value="Search" >
 					<span class="glyphicon glyphicon-search"></span>
 				</button>&nbsp;
-				<button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="View your shopping cart">
+				<a href="login"><button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="View your shopping cart">
 					<span class="glyphicon glyphicon-shopping-cart"></span>
-				</button>
+				</button></a>
 			</form>
-
+			
+			
 		</div>
 	</header>
 	
@@ -95,12 +96,10 @@
 			<!-- LINKS -->
 			
 			<div class="pull-right nav hidden-xs">
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
-						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;<a
-					href="page-about-us.html"><i class="fa fa-angle-left"><span
-						class="glyphicon glyphicon-heart-empty"></span>Wish list</i></a>&nbsp;&nbsp; <a
+				<a href="login"><i class="fa fa-angle-left"><span
+						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp; <a
 					href="registration"><i class="fa fa-angle-right"><span
-						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
+						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp; &nbsp; <a
 					href="login"><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
 			</div>
@@ -128,7 +127,7 @@
 			<div class="container-fluid">
 
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">HOME</a></li>
+					<li class="active"><a href="index">HOME</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">SHOP <span class="caret"></span></a>
@@ -143,7 +142,7 @@
 						</ul></li>
 
 
-					<li><a href="#">ABOUT</a></li>
+					<li><a href="about">ABOUT</a></li>
 					<li><a href="blog">BLOG</a></li>
 					<li><a href="contactus">CONTACTS</a></li>
 				</ul>
@@ -161,9 +160,9 @@
 
 		<div class="carousel-inner">
 			<div class="item active">
-				<a href="#"><img
+				<img
 					src="resources/images/banner02.jpg"
-						width="1600" height="600"></a>
+						width="1600" height="600">
 				<div class="carousel-caption">
 					<button type="button" class="btn btn-primary">SHOP NOW!</button>
 					<p>
@@ -173,8 +172,8 @@
 				</div>
 			</div>
 			<div class="item">
-				<a href="#"><img
-					src="resources/images/banner2.jpg" width="1600" height="600"></a>
+				<img
+					src="resources/images/banner2.jpg" width="1600" height="600">
 				<div class="carousel-caption">
 					<h2>
 						<font color="black">iPhone 6s</font>
@@ -188,8 +187,8 @@
 			</div>
 			
 			<div class="item">
-				<a href="#"><img src="resources/images/banner4.jpg"
-					width="1600" height="600"></a>
+				<img src="resources/images/banner4.jpg"
+					width="1600" height="600">
 				<div class="carousel-caption">
 					<button type="button" class="btn btn-primary">SHOP NOW!</button>
 					<p>
@@ -199,8 +198,8 @@
 				</div>
 			</div>
 			<div class="item">
-				<a href="#"><img src="resources/images/banner5.jpg"
-					width="1600" height="600"></a>
+				<img src="resources/images/banner5.jpg"
+					width="1600" height="600">
 				<div class="carousel-caption">
 					<button type="button" class="btn btn-primary">SHOP NOW!</button>
 					<p>
@@ -210,9 +209,9 @@
 				</div>
 			</div>
 			<div class="item">
-				<a href="#"><img
+				<img
 					src="resources/images/banner-01.jpg"
-					width="1600" height="600"></a>
+					width="1600" height="600">
 				<div class="carousel-caption">
 					<button type="button" class="btn btn-primary">SHOP NOW!</button>
 					<p>
@@ -239,7 +238,7 @@
   <div class="col-md-4">
   <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><center><font color="blue"><a href="#">NEW PRODUCTS</a></font></center></h3>
+    <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=New' />">NEW ARRIVALS</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/newproduct1.jpg" width="150" height="125"></div>
@@ -254,7 +253,7 @@
 
   <div class="col-md-4"><div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><center><font color="blue"><a href="#">ON SALE</a></font></center></h3>
+    <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=On Sale' />">ON SALE</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/onsale1.JPG" width="150" height="125"></div>
@@ -269,7 +268,7 @@
 </div></div>
   <div class="col-md-4"><div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><center><font color="blue"><a href="#">TOP RATED PRODUCTS</a></font></center></h3>
+    <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=Top Rated' />">TOP RATED PRODUCTS</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/toprated1.png" width="150" height="125"></div>
@@ -459,21 +458,21 @@
      <!--   <div id="accordion" class="collapse-footer">-->
         <div class="panel">
           <div class="panel-heading">
-            <h4 class="panel-title"> <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="collapsed"> <span class="glyphicon glyphicon-chevron-down"></span> </a> </h4>
+            <h4 class="panel-title">Main Navigation </h4>
           </div>
          <!--  <div class="panel-collapse collapse" id="collapseOne" style="height: 0px;">--> 
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-6">
-                  <h5 class="title"><span>Main Navigation</span></h5>
+                  
                   <div class="menu-main-menu-container">
                     <ul class="nav nav-footer" id="menu-main-menu-1">
-                      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-16"><a href="http://localhost/wpJoinRedHawk/">Home</a></li>
+                      <li class="active"><a href="index">Home</a></li>
                       
-                      <li><a href="#">About Us</a></li>
-                      <li><a href="#">Blog</a></li>
-                      <li><a href="#">Feedback</a></li>
-                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="about">About</a></li>
+                      <li><a href="blog">Blog</a></li>
+                      
+                      <li><a href="contactus">Contacts</a></li>
                     </ul>
                   </div>
                 </div>
@@ -492,9 +491,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  
+   
   
   <!-- Copyright -->
   <div class="copyright">

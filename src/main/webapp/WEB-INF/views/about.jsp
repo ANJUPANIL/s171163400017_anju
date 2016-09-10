@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,68 +18,47 @@
 </script>
 <title>Insert title here</title>
 <style type="text/css">
-.glyphicon { margin-right:5px; }
-.thumbnail
+#toTop{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	cursor: pointer;
+	display: none;
+	border-radius: 50%;
+	}
+.panel
 {
     margin-bottom: 20px;
-    padding: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
+    margin-right: 50px;
+    margin-left: 50px;
 }
-
-.item.list-group-item
-{
-    float: none;
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 10px;
-     
-    
-}
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
-    background: #428bca;
-}
-
-.item.list-group-item .list-group-image
-{
-    margin-right: 10px;
-}
-.item.list-group-item .thumbnail
-{
-    margin-bottom: 0px;
-}
-.item.list-group-item .caption
-{
-    padding: 9px 9px 0px 9px;
-}
-.item.list-group-item:nth-of-type(odd)
-{
-    background: #eeeeee;
-}
-
-.item.list-group-item:before, .item.list-group-item:after
-{
-    display: table;
-    content: " ";
-}
-
-.item.list-group-item img
-{
-    float: left;
-}
-.item.list-group-item:after
-{
-    clear: both;
-}
-.list-group-item-text
-{
-    margin: 0 0 11px;
-}
-
 
 </style>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $(".tip-right").tooltip({placement : 'right'});
+
+    });
+    
+    $(document).ready(function(){
+        $('body').append('<div id="toTop" class="btn btn-info"><span class=" glyphicon glyphicon-arrow-up"></span></div>');
+      	$(window).scroll(function () {
+  			if ($(this).scrollTop() != 0) {
+  				$('#toTop').fadeIn();
+  			} else {
+  				$('#toTop').fadeOut();
+  			}
+  		}); 
+      $('#toTop').click(function(){
+          $("html, body").animate({ scrollTop: 0 }, 600);
+          return false;
+      });
+  });
+
+    </script>
+
 </head>
 <body>
 <header id="topNav" class="topHead">
@@ -164,58 +143,35 @@
 				</ul>
 			</div>
 		</nav>
-		
-<div class="container">
-
-<c:choose>
-	<c:when test="${not empty name}">
-    <h3><b><%= session.getAttribute("name") %></b></h3>
-    <div class="well well-sm">
-        <b>Filter By Brand</b>&nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="btn-group">
-            <c:forEach items="${brand}" var="brand">
-							
-				<a href="brandgallery?name=<%= request.getParameter("name") %>&bname=${brand.brands.brand_name}"id="list" class="btn btn-default btn-sm">
-				<span class="glyphicon glyphicon-th-list"></span>${brand.brands.brand_name}</a>
-			</c:forEach>
-        </div>
-    </div><br>
-    <div id="products" class="row list-group">
-    
-     <c:forEach items="${product}" var="product">
-    
-        <div class="item  col-md-4">
-            <div class="thumbnail">
-           <br>
-                <img class="group list-group-image" src="${product.product_image}" alt="" /><br>
-                <div class="caption">
-                    <h4 class="group inner list-group-item-heading">
-                        ${product.name}</h4>
-                        <p style="color:#7f8496;"><b >Category :</b> ${product.categoryobj.name}&nbsp;&nbsp; <i style="color:red">${product.product_type} </i>
-        	</p> 
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                ${product.price}/-</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="quicklook?pid=${product.id}">Quick View</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-   </div>
-     </c:forEach> 
-      
-   </div>
-   </c:when>
-   
-   </c:choose>
-     
+		<h3 style="color:#0000CD">&nbsp;&nbsp;ABOUT</h3><br>
+		<div class="panel panel-default">
+  		<div class="panel-body">
+    		<b>About Our Store</b><br><br>
+    		<p align="justify">
+    		 Comfort is a very important thing nowadays because it is a condition of satisfaction and calmness.
+    		 It is clear that our way of life must be as comfortable as possible. Home electronics satisfy our
+    		  wishes and make our life more pleasant. We must admit that our way of life depends on quality of 
+    		  different goods of popular brands.  You know, we have many devoted customers all over the world, and this fact proves that we sell only quality commodities. 
+    		  Recipe of our success is a fair price and premium quality.We understand that it is very complicated to amaze present clients, they are so whimsical, but our products are very flexible and reliable.</p>
+  			<img src="resources/images/about.png" ><br><br>
+  			<p align="justify">
+  			Here you can find something more than just home electronics; you can find real comfort and satisfaction here! 
+  			Our goods are the combination of perfect design and an ideal functionality. We have a tremendous variety of different models. 
+  			Nowadays clients’ claims become so scrupulous that sometimes it is very hard to satisfy them. But we provide only real bestsellers and our
+  			products have a great number of options that can really help you.You’ll be amazed with its simplicity and durability.
+  			</p><br>
+  			<p align="justify">
+  			Our manufacturers and vendors provide only new technologies and it is very important because nowadays we see a furious development of electronics 
+  			industry. We also provide different economical, social and even technological researches. The main goal of their analysis is to find out the changes 
+  			of clients’ demands and other useful data. We are trying to introduce positive results of our explorations.
+  			</p><br>
+  			
+  			<p align="justify">
+  			If you want to know more information about our goods, terms, guarantees and other features, you can address our superb 24/7 support system. 
+  			Also you can save some money at our store because we always provide different promos and you can get good discount and other benefits.
+  			</p><br>
+  		
+  		</div>
 </div>
-
 </body>
 </html>

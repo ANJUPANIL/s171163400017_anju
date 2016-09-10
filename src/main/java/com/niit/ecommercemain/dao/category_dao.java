@@ -22,5 +22,9 @@ public interface category_dao
 	
 	public List<category> categorynamelist();
 	
+	public List<category> categorylist(String bid);
+	
+	
+	
 	
 }

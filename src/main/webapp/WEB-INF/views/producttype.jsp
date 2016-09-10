@@ -168,18 +168,17 @@
 <div class="container">
 
 <c:choose>
-	<c:when test="${not empty name}">
-    <h3><b><%= session.getAttribute("name") %></b></h3>
-    <div class="well well-sm">
-        <b>Filter By Brand</b>&nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="btn-group">
-            <c:forEach items="${brand}" var="brand">
-							
-				<a href="brandgallery?name=<%= request.getParameter("name") %>&bname=${brand.brands.brand_name}"id="list" class="btn btn-default btn-sm">
-				<span class="glyphicon glyphicon-th-list"></span>${brand.brands.brand_name}</a>
-			</c:forEach>
-        </div>
-    </div><br>
+	<c:when test="${not empty type}">
+		<c:choose>
+		<c:when test="${type=='New'}">
+			<h3><b>New Arrivals</b></h3>
+		</c:when>
+		<c:otherwise>
+			 <h3><b>${type}</b></h3>
+		</c:otherwise>
+		</c:choose>
+   
+    <br>
     <div id="products" class="row list-group">
     
      <c:forEach items="${product}" var="product">
@@ -189,10 +188,11 @@
            <br>
                 <img class="group list-group-image" src="${product.product_image}" alt="" /><br>
                 <div class="caption">
-                    <h4 class="group inner list-group-item-heading">
+                   <p> <h4 class="group inner list-group-item-heading">
                         ${product.name}</h4>
                         <p style="color:#7f8496;"><b >Category :</b> ${product.categoryobj.name}&nbsp;&nbsp; <i style="color:red">${product.product_type} </i>
         	</p> 
+        	 
                     <p class="group inner list-group-item-text">
                         Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                         sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
@@ -207,8 +207,9 @@
                     </div>
                 </div>
             </div>
-   </div>
+   		</div>
      </c:forEach> 
+     
       
    </div>
    </c:when>

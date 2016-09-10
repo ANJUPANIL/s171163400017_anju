@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>       
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -105,6 +106,18 @@ $(function(){
 
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="userhome">HOME</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">SHOP <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							
+							<li><c:forEach  var="category" items="${category}">
+								<li><a href="<c:url value='/shopproduct?name=${category}' />">${category}</a>
+								</li>
+								<li role="separator" class="divider"></li>
+							</c:forEach></li>
+							
+						</ul></li>
 					<li><a href="#">PROFILE</a></li>
 					<li><a href="blog">BLOG</a></li>
 					<li><a href="contactus">CONTACTS</a></li>

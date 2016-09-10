@@ -76,7 +76,15 @@
 
     });
     
-    
+    function Validate() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
 </script>
 <body>
 <header id="topNav" class="topHead">
@@ -162,15 +170,15 @@
                         </div>
                         <div class="form-group">
                             <form:label path="password" >Password</form:label>
-                            <form:password path="password" class="form-control" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
+                            <form:password path="password" class="form-control" id="password" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
                             <form:errors path="password" cssClass="error"/>
                         </div>
                         <div class="form-group">
                             
-                            <input type="password" name="cpass" id="cpass" class="form-control" placeholder="Confirm Password" required="true">
+                            <input type="password" name="cpass" id="confirm_password" class="form-control" placeholder="Confirm Password" required="true">
                         </div>
                        
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Register">
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Register" onclick="return Validate()" >
                         
                     </form:form>
                  <p style="color:#FF0000"> ${msg}</p>

@@ -294,49 +294,44 @@
 		</nav>
 <div class="container">
     <div class="row">
+    <h3 style="color:#0000CD"><b>SHOP</b></h3>
     <hr>
+   
         <div class="col-md-4">
             <div class="mag">
                 
-                <img data-toggle="magnify" src="${product.product_image}" alt="">
+                <img data-toggle="magnify" src="${product[0].product_image}" alt="">
             </div>
         </div><!--/span-->
         
         
         <div class="col-md-4">
-        	<h3 style="color:#0000CD"><b>${product.name}</b></h3>
-        	<p style="color:#7f8496;"><b>Category : </b>${product.categoryobj.name}&nbsp;&nbsp; <i style="color:red">${product.product_type} </i>
+        	<h3 style="color:#0000CD"><b>${product[0].name}</b></h3>
+        	<p style="color:#7f8496;"><b>Category : </b>${product[0].categoryobj.name}&nbsp;&nbsp; <i style="color:red">${product[0].product_type} </i>
         	</p> <br>
         	 
         	<h4>Brand </h4>
-        	&nbsp;&nbsp;${product.brands.brand_name}
+        	&nbsp;&nbsp;${product[0].brands.brand_name}
         	
         	<h4>Description </h4>
-        	&nbsp;&nbsp;${product.des}
+        	&nbsp;&nbsp;${product[0].des}
         	
         	<h4>Price </h4>
-        	&nbsp;&nbsp;${product.price}
+        	&nbsp;&nbsp;${product[0].price}
         	
         	<h4>Discount </h4>
-        	&nbsp;&nbsp;${product.discount} %
+        	&nbsp;&nbsp;${product[0].discount} %
         	
         	
         </div>
  		<div class="col-xs-12 col-md-8" align="right">
-             <a class="btn btn-primary" href="addcart?id=${product.id}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;
+             <a class="btn btn-primary" href="addcart?id=${product[0].id}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;
              <c:choose>
              <c:when test="${empty userid or loggedout ==true}">
-             	<c:choose>
-             	<c:when test="${not empty name and quick=='gallery'}">
-					<a href="productgallery?name=${product.categoryobj.name}"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
-				</c:when>	
-				<c:when test="${not empty type and quick=='type'}">
-             		<a href="producttype?type=${product.product_type}"   class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
-             	</c:when>
-             	</c:choose>
+             	<a href="productgallery?name=${product[0].categoryobj.name}"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
 			</c:when>
              <c:when test="${not empty userid }">
-             <a href="shopproduct?name=${product.categoryobj.name}"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
+             <a href="shopproduct?name=${product[0].categoryobj.name}"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
              </c:when>
              
               </c:choose>

@@ -59,6 +59,11 @@ public class category_srv_impl implements category_srv
 		return cd.categorynamelist();
 	}
 
+	@Override
+	public List<category> categorylist(String bid) {
+		return cd.categorylist(bid);
+	}
+
 	
 
 }

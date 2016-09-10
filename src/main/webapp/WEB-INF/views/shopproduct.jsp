@@ -94,6 +94,18 @@
 
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="userhome">HOME</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">SHOP <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							
+							<li><c:forEach  var="category" items="${category}">
+								<li><a href="<c:url value='/shopproduct?name=${category}' />">${category}</a>
+								</li>
+								<li role="separator" class="divider"></li>
+							</c:forEach></li>
+							
+						</ul></li>
 					<li><a href="#">PROFILE</a></li>
 					<li><a href="blog">BLOG</a></li>
 					<li><a href="contactus">CONTACTS</a></li>
@@ -116,8 +128,8 @@
                     <div class="panel panel-warning panel-pricing">
                      		<div class="panel-heading">
                             <i class="fa fa-desktop"></i>
-                           <a href="#"><img src ="${product.product_image}" width="200px" height = "200px" 
-                           data-toggle="tooltip" data-placement="right" title="Quick Look"/></a> </i>
+                           <a href="quicklook?pid=${product.id}"><img src ="${product.product_image}" width="200px" height = "200px" 
+                           data-toggle="tooltip" data-placement="right" title="Quick View"/></a> </i>
                        		 </div>
                       	 	<div class="panel-body text-center">
                         	<p style="color:red">${product.product_type}  </p>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.niit.ecommercemain.model.cart;
 import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.model.product;
+import com.niit.ecommercemain.model.userlogin;
 import com.niit.ecommercemain.service.cart_srv;
 import com.niit.ecommercemain.service.category_srv;
 import com.niit.ecommercemain.service.product_srv;
@@ -76,11 +77,28 @@ public class shopproduct_controller {
 	}
 	
 	@RequestMapping(value = "/quicklook")
-	public ModelAndView quicklook(@RequestParam(value = "pid") String pid)
+	public ModelAndView quicklook(@RequestParam(value = "pid") String pid,HttpServletRequest request)
 	{
+		HttpSession session = request.getSession();
+		String loggedinuser = (String)session.getAttribute("userid");
+		
+		
 		ModelAndView mv = new ModelAndView("quicklook");
-		product product= ps.getproductid(pid);
-		mv.addObject("product", product);
+		if (session.getAttribute("userid") == null)
+		{
+			
+				product product= ps.getproductid(pid);
+				mv.addObject("product", product);
+			
+		}
+		else{
+			product product= ps.getproductid(pid);
+			mv.addObject("product", product);
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+			
+		}
+		
 		return mv;
 	}
 	
@@ -94,7 +112,24 @@ public class shopproduct_controller {
 		List<category> showbrand=cs.getbrandlist(name);
 		mv.addObject("brand",showbrand);
 		mv.addObject("product", allcatproduct);
+		session.setAttribute("quick", "gallery");
+		//mv.addObject("name", name);
 		session.setAttribute("name", name);
+		return mv;
+	}
+	
+	@RequestMapping(value= "/producttype",method=RequestMethod.GET)
+	public ModelAndView producttype(@RequestParam("type") String type,HttpSession session){
+		System.out.println("Controller");
+		ModelAndView mv = new ModelAndView("producttype");
+		
+		List<product> allproduct = ps.getproductbytype(type);
+		System.out.println("Size  "+allproduct.size());
+		
+		mv.addObject("product", allproduct);
+		session.setAttribute("quick", "type");
+		//mv.addObject("type", type);
+		session.setAttribute("type",type);
 		return mv;
 	}
 	
@@ -112,6 +147,38 @@ public class shopproduct_controller {
 		mv.addObject("product", allcatproduct);
 	    return mv;
 	
+	}
+	
+	@RequestMapping(value = "/searchproduct",method=RequestMethod.POST)
+	public ModelAndView searchproduct(@RequestParam("pname") String pname,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String loggedinuser = (String)session.getAttribute("userid");
+		
+		
+		ModelAndView mv = new ModelAndView("searchproduct");
+		if (session.getAttribute("userid") == null)
+		{
+			
+				List<product> product= ps.productbyname(pname);
+				
+				mv.addObject("product", product);
+				
+			
+		}
+		else{
+			List<product> product= ps.productbyname(pname);
+			if(product!= null)
+			{
+			mv.addObject("product", product);
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+			}
+			else{
+				mv.addObject("emptymsg","No products were found matching your selection.");
+			}
+			
+		}
+		return mv;
 	}
 	
 }

@@ -210,5 +210,16 @@ public class userdetails_controller {
 			return mv;
 		}
 		
+		@RequestMapping(value="/profile")
+		public ModelAndView userprofile(HttpSession session)
+		{
+			System.out.println("profile");
+			String loggedinuser = (String)session.getAttribute("userid");
+			ModelAndView mv = new ModelAndView("profile");
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+			return mv;
+			
+		}
 		
 }

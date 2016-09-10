@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommercemain.model.brand;
 import com.niit.ecommercemain.model.supplier;
 import com.niit.ecommercemain.service.supplier_srv;
 
@@ -56,6 +57,7 @@ public class supplier_controller {
 			sup.savesupplier(s);
 			List<supplier> showall = sup.allsupplier();
 			mv.addObject("supplier", showall);
+			mv.addObject("save_supplier",new supplier());
 		}
 		catch(Exception ex){
 			model.addAttribute("error", ex.getMessage());

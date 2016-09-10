@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommercemain.model.cart;
 import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.model.product;
+import com.niit.ecommercemain.service.cart_srv;
 import com.niit.ecommercemain.service.category_srv;
 import com.niit.ecommercemain.service.product_srv;
 
@@ -27,6 +29,9 @@ public class index_controller {
 	@Autowired
 	product_srv ps;
 	
+	@Autowired
+	cart_srv c;
+	
 	@RequestMapping(value= "/")
 	public ModelAndView indexpage(HttpSession session){
 		System.out.println("Controller");
@@ -39,14 +44,11 @@ public class index_controller {
 	}
 	
 	
-	
-
-
-	@RequestMapping(value="/contactus")
-	public String contactus()
+	@RequestMapping(value="/about")
+	public String about()
 	{
 		System.out.println("inside contact controller");
-		return "contactus";
+		return "about";
 	}
 	
 	@RequestMapping(value="/blog")
@@ -56,6 +58,21 @@ public class index_controller {
 		return "blog";
 	}
 	
-	
+	@RequestMapping(value="/contactus")
+	public ModelAndView contactus(HttpSession session)
+	{
+		System.out.println("contactus");
+		String loggedinuser = (String)session.getAttribute("userid");
+		ModelAndView mv = new ModelAndView("contactus");
+		if (session.getAttribute("userid") != null)
+		{
+			
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+			
+		}
+		return mv;
+		
+	}
 
 }

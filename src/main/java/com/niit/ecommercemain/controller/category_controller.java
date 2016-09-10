@@ -65,6 +65,7 @@ public class category_controller {
 			
 			List<category> showall = cs.allcategory();
 			mv.addObject("category", showall);
+			mv.addObject("save_category",new category());
 		}
 		catch(Exception ex){
 			model.addAttribute("error", ex.getMessage());

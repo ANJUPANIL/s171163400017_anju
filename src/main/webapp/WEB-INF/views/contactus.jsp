@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +17,17 @@
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 </script>
 <title>Contacts</title>
+<style type="text/css">
+
+.panel
+{
+    margin-bottom: 20px;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+
+</style>
 </head>
 <body>
 <header id="topNav" class="topHead">
@@ -32,9 +45,13 @@
 				<button type="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-search"></span>
 				</button>&nbsp;
-				<button type="submit" class="btn btn-default">
+				<c:choose>
+				<c:when test="${empty userid or loggedout==true}">
+					<a href="login"><button type="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-shopping-cart"></span>
-				</button>
+				</button></a>
+				</c:when>
+				</c:choose>
 			</form>
 
 		</div>
@@ -46,16 +63,35 @@
 
 			<!-- LINKS -->
 			
-			<div class="pull-right nav hidden-xs">
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
-						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;<a
-					href="page-about-us.html"><i class="fa fa-angle-left"><span
-						class="glyphicon glyphicon-heart-empty"></span>Wish list</i></a>&nbsp;&nbsp; <a
-					href="page-about-us.html"><i class="fa fa-angle-right"><span
-						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
-					href="contact-us.html"><i class="fa fa-angle-right"><span
-						class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
-			</div>
+			<c:choose>
+					<c:when test="${empty userid or loggedout==true}">
+						<div class="pull-right nav hidden-xs">
+								<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+								class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
+				 				<a href="registration"><i class="fa fa-angle-right"><span
+									class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; 
+								<a href="login"><i class="fa fa-angle-right"><span
+									class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
+						</div>
+					</c:when>
+					<c:when test="${not empty userid }">
+						<div class="pull-right nav hidden-xs">
+							<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user">
+								</span>Welcome <%= session.getAttribute( "welcomemsg" )%> </i>&nbsp; &nbsp;
+							<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+								class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
+				
+							<a href="mycart"><i class="fa fa-angle-left" data-toggle="tooltip" data-placement="right" title="View your shopping cart"><span
+								class="glyphicon glyphicon-shopping-cart"></span>Cart(${cartsize})</i></a>&nbsp; &nbsp;
+				
+							<a href="logout"><i class="fa fa-angle-left"><span
+								class="glyphicon glyphicon-off"></span>Logout</i></a>
+					
+						
+					</div>
+					</c:when>
+				</c:choose>
+			
 			<!-- PHONE/EMAIL -->
 			<span class="quick-contact pull-left"> <i class="fa fa-phone"></i><span
 				class="glyphicon glyphicon-earphone"></span> 1800-555-1234 &bull; <a
@@ -79,49 +115,68 @@
 			<div class="container-fluid">
 
 				<ul class="nav navbar-nav">
-					<li><a href="#">HOME</a></li>
+					<li class="active"><a href="index">HOME</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">SHOP <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-
-							<li><a href="#">Mobiles</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Laptops</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#"> Tablets</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Desktops</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Car accessories</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Security systems</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Cameras</a></li>
+							
+							<li><c:forEach  var="category" items="${category}">
+								<li><a href="<c:url value='/productgallery?name=${category}' />">${category}</a>
+								</li>
+								<li role="separator" class="divider"></li>
+							</c:forEach></li>
+							
 						</ul></li>
+					<c:choose>
+					<c:when test="${empty userid or loggedout==true}">
 
-
-					<li><a href="#">ABOUT</a></li>
-					<li><a href="#">BLOG</a></li>
-					<li  class="active"><a href="contactus">CONTACTS</a></li>
+						<li><a href="about">ABOUT</a></li>
+					</c:when>
+					<c:when test="${not empty userid }">
+						<li><a href="profile">PROFILE</a></li>
+					</c:when>
+					</c:choose>	
+					
+					<li><a href="blog">BLOG</a></li>
+					<li><a href="contactus">CONTACTS</a></li>
 				</ul>
 			</div>
 		</nav>
 		
-	<!-- Contact us part -->	
-		<div class="container">
+	<!-- Contact us part -->
+	<h3 style="color:#0000CD">CONTACTS</h3><br>	
+	<div class="panel panel-default">
+  	<div class="panel-body">
+    <h4><b>Contact info</b></h4><br><br>
+
+		We are always ready to help you. There are many ways to contact us. 
+		You may drop us a line, give us a call or send an email, choose what suits you most.<br><br><br>
+		<p style="color:#7f8496;">
+		<b>Address:</b>The Company Name Inc. 9870 St Vincent Place, Glasgow, DC 45 Fr 45.<br>
+		<b>Telephone:</b> +1 800 603 6035<br>
+		<b>FAX:</b>+1 800 889 9898<br>
+		<b>E-mail:</b>mail@demolink.org<br>
+    	</p>
+  </div>
+</div>
+<div class="container">
+<div class="panel panel-default">
+  	<div class="panel-body">
+  	<h4><b>Contact Form</b></h4><br><br>
 	<div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="well well-sm">
+        
           <form class="form-horizontal" action="" method="post">
           <fieldset>
-            <legend class="text-center">Contact us</legend>
-    
+            <br>
+    	
             <!-- Name input-->
             <div class="form-group">
               <label class="col-md-3 control-label" for="name">Name</label>
               <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Your name" class="form-control" required="true" autofocus="true">
+                <input id="name" name="name" type="text" placeholder="Your name" class="form-control" required="true" >
               </div>
             </div>
     
@@ -152,64 +207,13 @@
         </div>
       </div>
 	</div>
+	</div>
+	</div>
 </div>
 <br>
 <br>
 <br>
 </body>
 
-<!-- footer part -->
-<footer role="contentinfo" class="site-footer" id="colophon" style=background:#b1b0b0;padding:20px 0;color:#a8a8a8;>
-  <div class="container">
-    <div class="row">
-     <!--   <div id="accordion" class="collapse-footer">-->
-        <div class="panel">
-          <div class="panel-heading">
-            <h4 class="panel-title"> <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="collapsed"> <span class="glyphicon glyphicon-chevron-down"></span> </a> </h4>
-          </div>
-         <!--  <div class="panel-collapse collapse" id="collapseOne" style="height: 0px;">--> 
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <h5 class="title"><span>Main Navigation</span></h5>
-                  <div class="menu-main-menu-container">
-                    <ul class="nav nav-footer" id="menu-main-menu-1">
-                      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-16"><a href="http://localhost/wpJoinRedHawk/">Home</a></li>
-                     
-                      <li><a href="#">About Us</a></li>
-                      <li><a href="#">Blog</a></li>
-                      <li><a href="#">Feedback</a></li>
-                      <li><a href="#">Contact Us</a></li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="col-lg-3  col-sm-6">
-                  <h4 class="title"><span>Get the latest news delivered daily!</span></h4>
-                  <p>Give us your email and you will be daily updated with the latest events, in detail!</p>
-                  <div class="clear"> </div>
-                  <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
-				</div>
-                  <a class="btn btn-primary btn-sm" href="#">Subcribe</a> </div>
-                  
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <!-- Copyright -->
-  <div class="copyright">
-    <div class="container">
-      <div class="row copyright-img">
-        <div class="col-lg-4 col-sm-4"> Total Control True Independence </div>
-        <div class="col-lg-8 col-sm-8 text-right" id="footertext"> Copyright © 2016 ElecTech </div>
-      </div>
-    </div>
-  </div>
-  <!-- /Copyright -->
+
 </html>

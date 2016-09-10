@@ -70,6 +70,19 @@ public class product_dao_impl implements product_dao
 		return (List<product>) query.list();
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<product> getproductbytype(String type) {
+		
+		return (List<product>)sessionFactory.getCurrentSession().createQuery("from product where status=true and product_type='" + type +"'").list();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<product> productbyname(String pname) {
+		return (List<product>)sessionFactory.getCurrentSession().createQuery("from product where status=true and name='" + pname +"'").list();
+	}
+
 	
 	
 }

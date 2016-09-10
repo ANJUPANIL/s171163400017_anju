@@ -149,7 +149,7 @@ request.setAttribute("selectedbrand","selectedbrand");
 
 		<tr class="form-group">
 				<td><form:label path="brands.brand_id">Brand</form:label></td>
-				<td><form:select path="brands.brand_id" class="form-control" items="${brand}" itemValue="brand_id" itemLabel="brand_name" />
+				<td><form:select path="brands.brand_id" class="form-control" items="${brand}" itemValue="brand_id" itemLabel="brand_name" onChange="categoryonchange?bid=${brands.brand_id}"/>
 					<br /> 
 						<form:errors path="brands.brand_id" cssClass="error" />
 				</td>

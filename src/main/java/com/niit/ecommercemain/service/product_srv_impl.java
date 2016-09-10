@@ -58,4 +58,15 @@ public class product_srv_impl implements product_srv
 		return pd.getbrandlist(categoryname,brandname);
 	}
 
+	@Override
+	public List<product> getproductbytype(String type) {
+		
+		return pd.getproductbytype(type);
+	}
+
+	@Override
+	public List<product> productbyname(String pname) {
+		return pd.productbyname(pname);
+	}
+
 }
