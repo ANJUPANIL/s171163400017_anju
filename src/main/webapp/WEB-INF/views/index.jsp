@@ -34,6 +34,12 @@
 }
  .navbar { margin-bottom:0px !important; }
 .carousel-caption { margin-top:0px !important }
+ .panel
+{
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
  
   </style>
 
@@ -238,7 +244,7 @@
   <div class="col-md-4">
   <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=New' />">NEW ARRIVALS</a></font></center></h3>
+    <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=New' />" >NEW ARRIVALS</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/newproduct1.jpg" width="150" height="125"></div>

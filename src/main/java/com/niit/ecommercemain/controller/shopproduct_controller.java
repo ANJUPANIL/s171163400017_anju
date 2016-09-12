@@ -39,6 +39,21 @@ public class shopproduct_controller {
 		System.out.println("Show product " +name);
 		ModelAndView mv = new ModelAndView("shopproduct");
 		List<product> allcatproduct = ps.getcategorylist(name);
+		if(allcatproduct.size()==0)
+		{
+			mv.addObject("emptymsg", "No products were found matching your selection.");
+			List<category> showbrand=cs.getbrandlist(name);
+			mv.addObject("brand",showbrand);
+			session.setAttribute("name", name);
+			List<category> showcat = cs.categorynamelist();
+			System.out.println("Category size: "+showcat.size());
+			mv.addObject("category", showcat);
+			
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+		}
+		else
+		{
 		System.out.println("Size  "+allcatproduct.size());
 		List<category> showbrand=cs.getbrandlist(name);
 		mv.addObject("brand",showbrand);
@@ -51,6 +66,7 @@ public class shopproduct_controller {
 		
 		List<cart> cartlist = c.getallcart(loggedinuser);
 		mv.addObject("cartsize",cartlist.size());
+		}
 		return mv;
 	
 	}
@@ -65,6 +81,17 @@ public class shopproduct_controller {
 		System.out.println("Show product " +cname+"  "+bname);
 		ModelAndView mv = new ModelAndView("shopproduct");
 		List<product> allcatproduct = ps.getbrandlist(cname,bname);
+		if(allcatproduct.size()==0)
+		{
+			mv.addObject("emptymsg", "No products were found matching your selection.");
+			List<category> showbrand=cs.getbrandlist(cname);
+			mv.addObject("brand",showbrand);
+			
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+		}
+		else
+		{
 		List<category> showbrand=cs.getbrandlist(cname);
 		mv.addObject("brand",showbrand);
 		mv.addObject("product", allcatproduct);
@@ -72,6 +99,7 @@ public class shopproduct_controller {
 		
 		List<cart> cartlist = c.getallcart(loggedinuser);
 		mv.addObject("cartsize",cartlist.size());
+		}
 		return mv;
 	
 	}
@@ -108,6 +136,15 @@ public class shopproduct_controller {
 		ModelAndView mv = new ModelAndView("productgallery");
 		
 		List<product> allcatproduct = ps.getcategorylist(name);
+		if(allcatproduct.size()==0)
+		{
+			mv.addObject("emptymsg", "No products were found matching your selection.");
+			session.setAttribute("quick", "gallery");
+			//mv.addObject("name", name);
+			session.setAttribute("name", name);
+		}
+		else{
+			
 		System.out.println("Size  "+allcatproduct.size());
 		List<category> showbrand=cs.getbrandlist(name);
 		mv.addObject("brand",showbrand);
@@ -115,6 +152,7 @@ public class shopproduct_controller {
 		session.setAttribute("quick", "gallery");
 		//mv.addObject("name", name);
 		session.setAttribute("name", name);
+		}
 		return mv;
 	}
 	
@@ -124,12 +162,21 @@ public class shopproduct_controller {
 		ModelAndView mv = new ModelAndView("producttype");
 		
 		List<product> allproduct = ps.getproductbytype(type);
+		if(allproduct.size()==0)
+		{
+			mv.addObject("emptymsg", "No products were found matching your selection.");
+			session.setAttribute("quick", "type");
+			//mv.addObject("name", name);
+			session.setAttribute("type", type);
+		}
+		else{
 		System.out.println("Size  "+allproduct.size());
 		
 		mv.addObject("product", allproduct);
 		session.setAttribute("quick", "type");
 		//mv.addObject("type", type);
 		session.setAttribute("type",type);
+		}
 		return mv;
 	}
 	
@@ -142,9 +189,18 @@ public class shopproduct_controller {
 		System.out.println("Show product " +cname+"  "+bname);
 		ModelAndView mv = new ModelAndView("productgallery");
 		List<product> allcatproduct = ps.getbrandlist(cname,bname);
+		if(allcatproduct.size()==0)
+		{
+			mv.addObject("emptymsg","No products were found matching your selection.");
+			List<category> showbrand=cs.getbrandlist(cname);
+			mv.addObject("brand",showbrand);
+		}
+		else
+		{
 		List<category> showbrand=cs.getbrandlist(cname);
 		mv.addObject("brand",showbrand);
 		mv.addObject("product", allcatproduct);
+		}
 	    return mv;
 	
 	}
@@ -154,27 +210,34 @@ public class shopproduct_controller {
 		HttpSession session = request.getSession();
 		String loggedinuser = (String)session.getAttribute("userid");
 		
-		
 		ModelAndView mv = new ModelAndView("searchproduct");
+		List<product> product= ps.productbyname(pname);
 		if (session.getAttribute("userid") == null)
-		{
-			
-				List<product> product= ps.productbyname(pname);
-				
-				mv.addObject("product", product);
-				
-			
-		}
-		else{
-			List<product> product= ps.productbyname(pname);
-			if(product!= null)
+		{	
+			if(product.size()==0)
 			{
-			mv.addObject("product", product);
-			List<cart> cartlist = c.getallcart(loggedinuser);
-			mv.addObject("cartsize",cartlist.size());
+				mv.addObject("emptymsg","No products were found matching your selection.");
+				
+				
 			}
 			else{
+				mv.addObject("product", product);
+				
+			}
+		}
+		else{
+			
+			if(product.size()==0)
+			{
 				mv.addObject("emptymsg","No products were found matching your selection.");
+				
+				List<cart> cartlist = c.getallcart(loggedinuser);
+				mv.addObject("cartsize",cartlist.size());
+			}
+			else{
+				mv.addObject("product", product);
+				List<cart> cartlist = c.getallcart(loggedinuser);
+				mv.addObject("cartsize",cartlist.size());
 			}
 			
 		}

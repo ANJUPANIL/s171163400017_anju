@@ -54,15 +54,15 @@ $(function(){
 			<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
 					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
 			</a>
-			<form class="navbar-form navbar-right" role="search">
+			<form class="navbar-form navbar-right" role="search" name="searchproduct" action="searchproduct" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+					<input type="text" class="form-control" placeholder="Search" name="pname">
 				</div>
-					<button type="submit" class="btn btn-default">
-						<span class="glyphicon glyphicon-search"></span>
-					</button>
-				
+				<button type="submit" class="btn btn-default" value="Search" >
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
 			</form>
+			
 			
 		</div>
 	</header>

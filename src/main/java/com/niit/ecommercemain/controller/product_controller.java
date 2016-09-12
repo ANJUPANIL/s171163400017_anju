@@ -65,7 +65,13 @@ public class product_controller {
 		System.out.println("onchange controller" +list.size());
 		return list;
 	}
-	
+	/*
+	@RequestMapping(value="/categoryonchange")
+	public void categoryonchange()
+	{
+		System.out.println("In Controller");
+	}
+	*/
 	@RequestMapping(value="/product")
 	public ModelAndView producthome()
 	{
@@ -115,6 +121,7 @@ public class product_controller {
 		return mv;
 		
 	}
+	
 	
 	@RequestMapping(value = "/editproduct",method=RequestMethod.GET)
 	public ModelAndView updateproduct(@RequestParam("id") String id) {

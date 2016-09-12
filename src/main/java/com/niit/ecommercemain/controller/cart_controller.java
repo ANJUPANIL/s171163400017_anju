@@ -56,8 +56,33 @@ public class cart_controller {
 			
 		}
 		else{
+			int flag=0;
 			System.out.println("in else");
-	
+			List<cart> cartcontent=cs.getallcart(loggedinuser);
+			mv = new ModelAndView("shopproduct");
+			for(int i=0;i<cartcontent.size();i++)
+			{
+				if(cartcontent.get(i).getProduct().getId().equals(id))
+				{
+					flag=1;
+				}
+			}
+			if(flag==1)
+			{
+				mv.addObject("msg","Already added to cart");
+				List<product> allcatproduct = ps.getcategorylist(name);
+				System.out.println("Size  "+allcatproduct.size());
+				List<category> showcat=c.getbrandlist(name);
+				mv.addObject("brand",showcat);
+				mv.addObject("product", allcatproduct);
+				session.setAttribute("name", name);
+				
+				List<cart> cartlist = cs.getallcart(loggedinuser);
+				mv.addObject("cartlist",cartlist);
+				mv.addObject("cartsize",cartlist.size());
+			}
+			else
+			{
 			cart cart= new cart();
 			product product= ps.getproductid(id);
 			System.out.println("cart obj");
@@ -76,11 +101,11 @@ public class cart_controller {
 			
 			
 			cs.savecart(cart);
-			mv = new ModelAndView("shopproduct");
+			
 			List<product> allcatproduct = ps.getcategorylist(name);
 			System.out.println("Size  "+allcatproduct.size());
 			List<category> showcat=c.getbrandlist(name);
-			mv.addObject("cat",showcat);
+			mv.addObject("brand",showcat);
 			mv.addObject("product", allcatproduct);
 			session.setAttribute("name", name);
 			
@@ -88,7 +113,10 @@ public class cart_controller {
 			mv.addObject("cartlist",cartlist);
 			mv.addObject("cartsize",cartlist.size());
 			
-				}	
+			
+				}
+			
+		}
 			return mv;
 			
 		}

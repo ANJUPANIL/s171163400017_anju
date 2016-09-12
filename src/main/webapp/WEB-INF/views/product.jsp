@@ -55,25 +55,19 @@ request.setAttribute("selectedbrand","selectedbrand");
 		
 	}
 	
-	function listcat($scope)
-	{
-		
-		
-		 var bid = $('#brand_id').val();
-		$.ajax({
-        type: "POST",
-        traditional: true,
-       url:"/product_controller/listcat",
-        data: JSON.stringify(Token),
-        success: function (result) {
-           alert("Token");
-           $scope.cats = data;
-        },
-        error: function (result) {
-          alert("oops");
-        }
-      });
-	}
+	$(function(){   // document and jquery ready
+	       $("#brand").on("change", function(e){
+	              var bid = $(this).val();
+
+	               $.ajax({
+	        type: "GET",
+	        url: 'http://localhost:8080/ecommercemain/categoryonchange' + bid,
+	        datatype: 'JSON',
+	        success: function (data) { alert('got here with data'); },
+	        error: function () { alert('something bad happened'); }
+	    });
+	        });
+	 }); 
 	
 	
 </script>
@@ -149,7 +143,7 @@ request.setAttribute("selectedbrand","selectedbrand");
 
 		<tr class="form-group">
 				<td><form:label path="brands.brand_id">Brand</form:label></td>
-				<td><form:select path="brands.brand_id" class="form-control" items="${brand}" itemValue="brand_id" itemLabel="brand_name" onChange="categoryonchange?bid=${brands.brand_id}"/>
+				<td><form:select path="brands.brand_id" id="brand" class="form-control" items="${brand}" itemValue="brand_id" itemLabel="brand_name" />
 					<br /> 
 						<form:errors path="brands.brand_id" cssClass="error" />
 				</td>
