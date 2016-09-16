@@ -95,11 +95,14 @@
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>
 			</button>
-			&nbsp; <a href="login"><button type="submit"
-					class="btn btn-default" data-toggle="tooltip"
-					data-placement="right" title="View your shopping cart">
-					<span class="glyphicon glyphicon-shopping-cart"></span>
-				</button></a>
+			&nbsp;
+			<c:choose>
+				<c:when test="${empty userid or loggedout==true}">
+					<a href="login"><button type="submit" class="btn btn-default">
+							<span class="glyphicon glyphicon-shopping-cart"></span>
+						</button></a>
+				</c:when>
+			</c:choose>
 		</form>
 
 	</div>
@@ -110,15 +113,37 @@
 
 
 		<!-- LINKS -->
+		<c:choose>
+			<c:when test="${empty userid or loggedout==true}">
+				<div class="pull-right nav hidden-xs">
+					<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
+					<a href="registration"><i class="fa fa-angle-right"><span
+							class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
+						href="login"><i class="fa fa-angle-right"><span
+							class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
+				</div>
+			</c:when>
+			<c:when test="${not empty userid }">
+				<div class="pull-right nav hidden-xs">
+					<i class="fa fa-angle-left" style="color: #0000CD"><span
+						class="glyphicon glyphicon-user"> </span>Welcome <%=session.getAttribute("welcomemsg")%>
+					</i>&nbsp; &nbsp; <a href="page-about-us.html"><i
+						class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 
-		<div class="pull-right nav hidden-xs">
-			<a href="page-about-us.html"><i class="fa fa-angle-left"><span
-					class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp; <a
-				href="registration"><i class="fa fa-angle-right"><span
-					class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
-				href="login"><i class="fa fa-angle-right"><span
-					class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
-		</div>
+					<a href="mycart"><i class="fa fa-angle-left"
+						data-toggle="tooltip" data-placement="right"
+						title="View your shopping cart"><span
+							class="glyphicon glyphicon-shopping-cart"></span>Cart(${cartsize})</i></a>&nbsp;
+					&nbsp; <a href="logout"><i class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-off"></span>Logout</i></a>
+
+
+				</div>
+			</c:when>
+		</c:choose>
+
 		<!-- PHONE/EMAIL -->
 		<span class="quick-contact pull-left"> <i class="fa fa-phone"></i><span
 			class="glyphicon glyphicon-earphone"></span> 1800-555-1234 &bull; <a
@@ -150,22 +175,36 @@
 				<ul class="dropdown-menu">
 
 					<li><c:forEach var="category" items="${category}">
-							<li><a
-								href="<c:url value='/productgallery?name=${category}' />">${category}</a>
+							<li><c:choose>
+								<c:when test="${empty userid or loggedout==true}">
+									<a href="<c:url value='/productgallery?name=${category}' />">${category}</a>
+								</c:when>
+								<c:when test="${not empty userid }">
+									<a href="<c:url value='/shopproduct?name=${category}' />">${category}</a>
+								</c:when>
+							</c:choose>
 							</li>
 							<li role="separator" class="divider"></li>
 						</c:forEach></li>
 
 				</ul></li>
+			<c:choose>
+				<c:when test="${empty userid or loggedout==true}">
 
+					<li><a href="about">ABOUT</a></li>
+				</c:when>
+				<c:when test="${not empty userid }">
+					<li><a href="userprofile">PROFILE</a></li>
+				</c:when>
+			</c:choose>
 
-			<li><a href="about">ABOUT</a></li>
 			<li><a href="blog">BLOG</a></li>
 			<li><a href="contactus">CONTACTS</a></li>
 		</ul>
+
+
 	</div>
 	</nav>
-
 	<div class="container">
 
 		<c:choose>

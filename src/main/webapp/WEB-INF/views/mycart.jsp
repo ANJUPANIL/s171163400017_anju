@@ -32,7 +32,9 @@
 	</header>
 		
 <div class="container">
-    <div class="row">
+	<c:choose>
+	<c:when test="${empty emptymsg==true}">
+    	<div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
                 <thead>
@@ -118,6 +120,19 @@
             </table>
         </div>
     </div>
+    </c:when>
+					<c:otherwise>
+						<hr>
+						<div class="alert alert-info">
+							
+							<strong>Info!</strong> ${emptymsg}
+							
+						</div>
+						<div align="right">
+						<a href="userhome"  class="btn btn-warning" role="button" ><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
+						</div><hr>
+					</c:otherwise>
+				</c:choose>
 </div>
 
 </body>

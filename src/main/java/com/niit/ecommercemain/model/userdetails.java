@@ -120,15 +120,7 @@ public class userdetails {
 	public void setUimage(String image) {
 		this.uimage = image;
 	}
-	transient private MultipartFile usrfile;
-
-	public MultipartFile getUsrfile() {
-		return usrfile;
-	}
-
-	public void setUsrfile(MultipartFile usrfile) {
-		this.usrfile = usrfile;
-	}
+	
 	@Column(name="user_address")
 	@NotEmpty(message = "Please enter your address.")
 	private String address;

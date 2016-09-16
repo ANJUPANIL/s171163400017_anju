@@ -129,6 +129,13 @@ public class cart_controller {
 		System.out.println("In add cart controller");
 		String loggedinuser = (String)session.getAttribute("userid");
 		List<cart> cartlist = cs.getallcart(loggedinuser);
+		if(cartlist.size()==0)
+		{
+			System.out.println("cart controller");
+			mv.addObject("emptymsg", "No products were found matching your selection.");
+		}
+		else{
+
 		System.out.println("cart controller");
 		mv.addObject("cartlist",cartlist);
 		
@@ -143,6 +150,7 @@ public class cart_controller {
 		System.out.println("hello");
 		System.out.println(grandtotal);
 		session.setAttribute("grandtotal",grandtotal);
+		}
 		return mv;
 		
 	}

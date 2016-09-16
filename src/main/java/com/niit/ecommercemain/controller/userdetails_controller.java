@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommercemain.model.brand;
 import com.niit.ecommercemain.model.cart;
 import com.niit.ecommercemain.model.category;
 import com.niit.ecommercemain.model.userdetails;
@@ -158,8 +159,9 @@ public class userdetails_controller {
 					mv.addObject("isadmin","true");
 				}
 				else{
-					mv = new ModelAndView("redirect:userhome");
+					mv = new ModelAndView("redirect:index");
 					mv.addObject("isadmin","false");
+					
 					System.out.println("its user"+ ud.getFname());
 					session.setAttribute("welcomemsg",ud.getFname());
 					session.setAttribute("userid", userid);
@@ -192,8 +194,12 @@ public class userdetails_controller {
 		}
 		
 		@RequestMapping("index")
-		public String homeindex(){
-			return "index";
+		public ModelAndView homeindex(HttpSession session){
+			String loggedinuser = (String)session.getAttribute("userid");
+			ModelAndView mv = new ModelAndView("index");
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+			return mv;
 		}
 		
 		@RequestMapping("/logout")
@@ -210,16 +216,83 @@ public class userdetails_controller {
 			return mv;
 		}
 		
-		@RequestMapping(value="/profile")
+		@RequestMapping(value="/userprofile")
 		public ModelAndView userprofile(HttpSession session)
 		{
 			System.out.println("profile");
 			String loggedinuser = (String)session.getAttribute("userid");
-			ModelAndView mv = new ModelAndView("profile");
+			ModelAndView mv = new ModelAndView("userprofile");
+			userdetails user=us.getuserdetailsid(loggedinuser);
+			mv.addObject("userdetails",user);
 			List<cart> cartlist = c.getallcart(loggedinuser);
 			mv.addObject("cartsize",cartlist.size());
 			return mv;
 			
 		}
+		
+		@RequestMapping(value="/userprofileedit")
+		public ModelAndView usereditprofile(HttpSession session,@RequestParam(value="click") String click)
+		{
+			System.out.println("profile");
+			String loggedinuser = (String)session.getAttribute("userid");
+			ModelAndView mv = new ModelAndView("userprofileedit");
+			userdetails user=us.getuserdetailsid(loggedinuser);
+			mv.addObject("userdetails",user);
+			List<cart> cartlist = c.getallcart(loggedinuser);
+			mv.addObject("cartsize",cartlist.size());
+			session.setAttribute("click",click);
+			
+			return mv;
+			
+		}
+		
+
+		@ModelAttribute("edit_profile")
+		public userdetails getuser() {
+			System.out.println("Edit profile attribute");
+			return new userdetails();
+		}
+
+		@RequestMapping(value = "/update_profile", method = RequestMethod.POST)
+		public ModelAndView editprofile(@Valid @ModelAttribute("edit_profile") userdetails u, HttpServletRequest request) {
+			ModelAndView mv;
+			HttpSession session=request.getSession();
+			String loggedinuser = (String)session.getAttribute("userid");
+			String click = (String)session.getAttribute("click");
+			
+			System.out.println("in editprofile");
+			userdetails old=us.getuserdetailsid(loggedinuser);
+			mv = new ModelAndView("userprofile");
+			if(session.getAttribute(click).equals("profile"))
+			{
+				u.setPassword(old.getPassword());
+				u.setUimage("null");
+				us.updateuserdetails(u);
+				userdetails user=us.getuserdetailsid(loggedinuser);
+				mv.addObject("userdetails",user);
+				List<cart> cartlist = c.getallcart(loggedinuser);
+				mv.addObject("cartsize",cartlist.size());
+			}
+			else if(session.getAttribute(click).equals("password")){
+				u.setFname(old.getFname());
+				u.setSname(old.getSname());
+				u.setLname(old.getLname());
+				u.setDob(old.getDob());
+				u.setAddress(old.getAddress());
+				u.setCity(old.getCity());
+				u.setContact(old.getContact());
+				u.setUser_id(loggedinuser);
+				u.setUimage("null");
+				us.updateuserdetails(u);
+				userdetails user=us.getuserdetailsid(loggedinuser);
+				mv.addObject("userdetails",user);
+				List<cart> cartlist = c.getallcart(loggedinuser);
+				mv.addObject("cartsize",cartlist.size());
+				
+			}
+			
+			return mv;
+		}
+		
 		
 }

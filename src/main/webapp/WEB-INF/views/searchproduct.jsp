@@ -286,8 +286,14 @@
 				<ul class="dropdown-menu">
 
 					<li><c:forEach var="category" items="${category}">
-							<li><a
-								href="<c:url value='/productgallery?name=${category}' />">${category}</a>
+							<li><c:choose>
+								<c:when test="${empty userid or loggedout==true}">
+									<a href="<c:url value='/productgallery?name=${category}' />">${category}</a>
+								</c:when>
+								<c:when test="${not empty userid }">
+									<a href="<c:url value='/shopproduct?name=${category}' />">${category}</a>
+								</c:when>
+								</c:choose>
 							</li>
 							<li role="separator" class="divider"></li>
 						</c:forEach></li>
@@ -299,7 +305,7 @@
 					<li><a href="about">ABOUT</a></li>
 				</c:when>
 				<c:when test="${not empty userid }">
-					<li><a href="profile">PROFILE</a></li>
+					<li><a href="userprofile">PROFILE</a></li>
 				</c:when>
 			</c:choose>
 

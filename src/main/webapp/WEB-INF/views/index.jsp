@@ -71,89 +71,133 @@
 
 
 <body>
-<header id="topNav" class="topHead">
-		<!-- remove class="topHead" if no topHead used! -->
-		<div class="container">
-			
-			<!-- Logo text or image -->
-			<a class="logo" href="index"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
-					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
-			</a>
-			<form class="navbar-form navbar-right" role="search" name="searchproduct" action="searchproduct" method="POST">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search" name="pname">
-				</div>
-				<button type="submit" class="btn btn-default" value="Search" >
-					<span class="glyphicon glyphicon-search"></span>
-				</button>&nbsp;
-				<a href="login"><button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="View your shopping cart">
-					<span class="glyphicon glyphicon-shopping-cart"></span>
-				</button></a>
-			</form>
-			
-			
-		</div>
+<header id="topNav" class="topHead"> <!-- remove class="topHead" if no topHead used! -->
+	<div class="container">
+
+		<!-- Logo text or image -->
+		<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+			&nbsp;<img src="resources/images/logo.jpg" alt="Electech" width="150"
+			height="100" />
+		</a>
+		<form class="navbar-form navbar-right" role="search"
+			name="searchproduct" action="searchproduct" method="POST">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search"
+					name="pname">
+			</div>
+			<button type="submit" class="btn btn-default" value="Search">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
+			&nbsp;
+			<c:choose>
+				<c:when test="${empty userid or loggedout==true}">
+					<a href="login"><button type="submit" class="btn btn-default">
+							<span class="glyphicon glyphicon-shopping-cart"></span>
+						</button></a>
+				</c:when>
+			</c:choose>
+		</form>
+
+	</div>
 	</header>
-	
+
 	<header id="topHead">
-		<div class="container">
+	<div class="container">
 
 
-			<!-- LINKS -->
-			
-			<div class="pull-right nav hidden-xs">
-				<a href="login"><i class="fa fa-angle-left"><span
-						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp; <a
-					href="registration"><i class="fa fa-angle-right"><span
-						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp; &nbsp; <a
-					href="login"><i class="fa fa-angle-right"><span
-						class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
-			</div>
-			<!-- PHONE/EMAIL -->
-			<span class="quick-contact pull-left"> <i class="fa fa-phone"></i><span
-				class="glyphicon glyphicon-earphone"></span> 1800-555-1234 &bull; <a
-				class="hidden-xs" href="mailto:mail@yourdomain.com">mail@domain.com</a>
-			</span> 
-			<!-- /LINKS -->
-			
-			<div>
-				<hr width=100% align=left>
-			</div>
+		<!-- LINKS -->
+		<c:choose>
+			<c:when test="${empty userid or loggedout==true}">
+				<div class="pull-right nav hidden-xs">
+					<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
+					<a href="registration"><i class="fa fa-angle-right"><span
+							class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
+						href="login"><i class="fa fa-angle-right"><span
+							class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
+				</div>
+			</c:when>
+			<c:when test="${not empty userid }">
+				<div class="pull-right nav hidden-xs">
+					<i class="fa fa-angle-left" style="color: #0000CD"><span
+						class="glyphicon glyphicon-user"> </span>Welcome <%=session.getAttribute("welcomemsg")%>
+					</i>&nbsp; &nbsp; <a href="page-about-us.html"><i
+						class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 
-			<!-- TOP NAV -->
+					<a href="mycart"><i class="fa fa-angle-left"
+						data-toggle="tooltip" data-placement="right"
+						title="View your shopping cart"><span
+							class="glyphicon glyphicon-shopping-cart"></span>Cart(${cartsize})</i></a>&nbsp;
+					&nbsp; <a href="logout"><i class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-off"></span>Logout</i></a>
 
 
+				</div>
+			</c:when>
+		</c:choose>
+
+		<!-- PHONE/EMAIL -->
+		<span class="quick-contact pull-left"> <i class="fa fa-phone"></i><span
+			class="glyphicon glyphicon-earphone"></span> 1800-555-1234 &bull; <a
+			class="hidden-xs" href="mailto:mail@yourdomain.com">mail@domain.com</a>
+		</span>
+		<!-- /LINKS -->
+
+		<div>
+			<hr width=100% align=left>
 		</div>
+
+		<!-- TOP NAV -->
+
+
+	</div>
 	</header>
-	
-<!-- Logo part -->
 
-<!-- nav -->
+	<!-- Logo part -->
+
+	<!-- nav -->
 	<nav class="navbar navbar-inverse navbar-fixed">
-			<div class="container-fluid">
+	<div class="container-fluid">
 
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="index">HOME</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">SHOP <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							
-							<li><c:forEach  var="category" items="${category}">
-								<li><a href="<c:url value='/productgallery?name=${category}' />">${category}</a>
-								</li>
-								<li role="separator" class="divider"></li>
-							</c:forEach></li>
-							
-						</ul></li>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="index">HOME</a></li>
+			
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown" role="button" aria-haspopup="true"
+				aria-expanded="false">SHOP <span class="caret"></span></a>
+				<ul class="dropdown-menu">
 
+					<li><c:forEach var="category" items="${category}">
+							<li><c:choose>
+								<c:when test="${empty userid or loggedout==true}">
+									<a href="<c:url value='/productgallery?name=${category}' />">${category}</a>
+								</c:when>
+								<c:when test="${not empty userid }">
+									<a href="<c:url value='/shopproduct?name=${category}' />">${category}</a>
+								</c:when>
+							</c:choose></li>
+							<li role="separator" class="divider"></li>
+						</c:forEach></li>
+
+				</ul></li>
+			<c:choose>
+				<c:when test="${empty userid or loggedout==true}">
 
 					<li><a href="about">ABOUT</a></li>
-					<li><a href="blog">BLOG</a></li>
-					<li><a href="contactus">CONTACTS</a></li>
-				</ul>
-			</div>
-		</nav>
+				</c:when>
+				<c:when test="${not empty userid }">
+					<li><a href="userprofile">PROFILE</a></li>
+				</c:when>
+			</c:choose>
+
+			<li><a href="blog">BLOG</a></li>
+			<li><a href="contactus">CONTACTS</a></li>
+		</ul>
+
+
+	</div>
+	</nav>
 		
 <!-- slider part -->
 	
@@ -292,7 +336,7 @@
 
 <div class="container">
 	<div class="row well"> <div class="col-xs-8 col-sm-6 col-md-12">
-		<h3><center><font color="blue">Browse Our Categories</font></center></h3><br>
+		<h3><center><font color="blue"><a href="userhome">Browse Our Categories</a></font></center></h3><br>
               
 <!-- vertical 1 -->
  

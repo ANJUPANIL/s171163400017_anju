@@ -123,7 +123,7 @@
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
                 <h1>Create Account </h1>
-                	<form:form method="POST" commandName="save_userdetails" action="saveuserdetails" >
+                	<form:form method="POST" commandName="save_userdetails" action="saveuserdetails">
                         <div class="form-group">
                         	<div class="col-sm-4 form-group">
                             	<form:label path="fname" >First Name</form:label>
@@ -174,7 +174,7 @@
                             <form:errors path="password" cssClass="error"/>
                         </div>
                         <div class="form-group">
-                            
+                            <b>Confirm Password</b> <br>
                             <input type="password" name="cpass" id="confirm_password" class="form-control" placeholder="Confirm Password" required="true">
                         </div>
                        

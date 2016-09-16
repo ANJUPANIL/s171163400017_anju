@@ -96,7 +96,7 @@
 	<div class="container-fluid">
 
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="userhome">HOME</a></li>
+			<li class="active"><a href="index">HOME</a></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false">SHOP <span class="caret"></span></a>
@@ -110,7 +110,7 @@
 						</c:forEach></li>
 
 				</ul></li>
-			<li><a href="#">PROFILE</a></li>
+			<li><a href="userprofile">PROFILE</a></li>
 			<li><a href="blog">BLOG</a></li>
 			<li><a href="contactus">CONTACTS</a></li>
 		</ul>
