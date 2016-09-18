@@ -99,37 +99,8 @@ public class userdetails_controller {
 		
 		
 	}
-	@RequestMapping(value = "/edituserdetails",method=RequestMethod.GET)
-	public ModelAndView updateuserdetails(@RequestParam("id") String id) {
-		
-		System.out.println("in updateuserdetails id:"+id);
-		userdetails olduserdetails = us.getuserdetailsid(id);
-		return new ModelAndView("edituserdetails","udata", olduserdetails);
-	}
 	
-	@ModelAttribute("edit_userdetails")
-	public userdetails getuserdetails() {
-		return new userdetails();
-	}
-
-	@RequestMapping(value = "/update_userdetails", method = RequestMethod.POST)
-	public ModelAndView edituserdetails(@Valid @ModelAttribute("edit_userdetails") userdetails c) {
-		ModelAndView mv;
-		us.updateuserdetails(c);
-		System.out.println("in edituserdetails id:");
-		mv = new ModelAndView("userdetails");
-		List<userdetails> showuserdetails = us.alluserdetails();
-		mv.addObject("userdetails", showuserdetails);
-		return mv;
-	}
 	
-	//Delete Operation
-		@RequestMapping(value = "/deluserdetails")
-		public String removeCategory(@RequestParam("id") String id){
-		us.deleteuserdetails(id);
-			return "redirect:/userdetails";
-		}
-		
 		@ModelAttribute("check_login")
 		public userlogin getCategoryObject(){
 			return new userlogin();
@@ -255,12 +226,13 @@ public class userdetails_controller {
 
 		@RequestMapping(value = "/update_profile", method = RequestMethod.POST)
 		public ModelAndView editprofile(@Valid @ModelAttribute("edit_profile") userdetails u, HttpServletRequest request) {
+			System.out.println("in editprofile");
 			ModelAndView mv;
 			HttpSession session=request.getSession();
 			String loggedinuser = (String)session.getAttribute("userid");
 			String click = (String)session.getAttribute("click");
 			
-			System.out.println("in editprofile");
+			
 			userdetails old=us.getuserdetailsid(loggedinuser);
 			mv = new ModelAndView("userprofile");
 			if(session.getAttribute(click).equals("profile"))

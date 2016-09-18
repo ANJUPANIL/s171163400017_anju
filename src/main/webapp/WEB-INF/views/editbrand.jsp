@@ -43,6 +43,7 @@
 				<div class="form-group">
 				<tr>
 					<td style="width: 25%">
+					
 						<form:label path="brand_name">Brand Name:</form:label>
 					</td>
 					<td> 

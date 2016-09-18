@@ -82,7 +82,7 @@
 		<form class="navbar-form navbar-right" role="search"
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search"
+				<input type="text" class="form-control" placeholder="Search" data-toggle="tooltip" data-placement="right" title="Search your required products"
 					name="pname">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">

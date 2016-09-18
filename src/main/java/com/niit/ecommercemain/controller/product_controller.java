@@ -59,10 +59,13 @@ public class product_controller {
 	}
 	
 	@RequestMapping(value="/categoryonchange")
+	@ResponseBody
 	public List<category> categoryonchange(@RequestParam("id") String bid)
 	{
+		System.out.println("b" +bid);
 		List<category> list=cs.categorylist(bid);
 		System.out.println("onchange controller" +list.size());
+		System.out.println("olist"+list.get(0).getName());
 		return list;
 	}
 	/*

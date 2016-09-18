@@ -150,6 +150,9 @@ public class cart_controller {
 		System.out.println("hello");
 		System.out.println(grandtotal);
 		session.setAttribute("grandtotal",grandtotal);
+		
+		
+		mv.addObject("cartsize",cartlist.size());
 		}
 		return mv;
 		
@@ -170,9 +173,10 @@ public class cart_controller {
 		String id=request.getParameter("id");
 		String pid=request.getParameter("pid");
 		String quantity=request.getParameter("quantity");
+		
 		System.out.println("QTy " + quantity);
 		int q=Integer.valueOf(quantity);
-		System.out.println("QTy  after conversion" + q);
+		
 		double grandtotal=0;
 		
 		HttpSession session = request.getSession();
@@ -187,6 +191,7 @@ public class cart_controller {
 		System.out.println("cart obj");
 		cart.setProduct(product);
 		cart.setQuantity(q);
+		System.out.println("QTy  after conversion" + cart.getQuantity());
 		cart.setStatus(false);
 		userdetails u=us.getuserdetailsid(loggedinuser);
 		cart.setUser(u);
@@ -199,6 +204,7 @@ public class cart_controller {
 		System.out.println(cart.getUser().getUser_id());
 		
 		cs.updatecart(cart);
+		System.out.println("Quantity" +cart.getQuantity());
 		List<cart> cartlist = cs.getallcart(loggedinuser);
 		mv.addObject("cartlist",cartlist);
 		mv.addObject("totalamount",cs.gettotalamount(loggedinuser));
@@ -211,6 +217,7 @@ public class cart_controller {
 		mv.addObject("grandtotal", grandtotal);
 		
 		System.out.println(grandtotal);
+		mv.addObject("cartsize",cartlist.size());
 		session.setAttribute("grandtotal",grandtotal);
 		
 		return mv;

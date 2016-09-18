@@ -19,6 +19,32 @@
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <title>Edit product</title>
+<script type="text/javascript">
+$(function($scope){   // document and jquery ready
+    $("#brand").on("change", function(e){
+           var bid = $(this).val();
+           
+            $.ajax({
+     type: "GET",
+     url: 'http://localhost:8080/ecommercemain/categoryonchange?id=' + bid,
+     datatype: 'JSON',
+     contentType: 'application/json; charset=utf-8',
+     success: function (data) {
+     	$("#category").empty();
+     	for(var i=0;i<data.length;i++)
+     		{
+     		$("#category").append("<option value='" + data[i].id+ "'>" + data[i].name + "</option>");
+     		
+     		
+     		}
+     	
+     	 },
+     error: function () { alert('something bad happened'); }
+ });
+     });
+}); 
+
+</script>
 </head>
 <body>
 <form:form method="POST" commandName="edit_product"
@@ -58,30 +84,13 @@
 					</td>
 				</tr>
 				
-			<tr class="form-group">
-							<td><form:label path="categoryobj.id">Category:</form:label></td>
-							<td>
-								<form:select path="categoryobj.id" class="form-control">
-                            	<c:forEach items="${category}" var="catlist">
-                            	<c:choose>
-                                <c:when test="${catlist.id == pdata.categoryobj.id}">
-                                    <form:option value="${catlist.id}" selected="${catlist.id}">${catlist.name}</form:option>
-                                </c:when>
-                                <c:otherwise>
-                                    <form:option value="${catlist.id}">${catlist.name}</form:option>
-                                </c:otherwise>
-                            </c:choose>
-                               
-                            </c:forEach>
-								</form:select> <br/>
-							<form:errors path="categoryobj.id" cssClass="error" /></td>
-				</tr>
+			
 				
 				<tr class="form-group">
 							<td><form:label path="brands.brand_id">Brand:</form:label></td>
 							<td> 
 								
-								<form:select path="brands.brand_id" class="form-control">
+								<form:select path="brands.brand_id" class="form-control" id="brand">
                             	<c:forEach items="${brand}" var="brandlist">
                             	<c:choose>
                                 <c:when test="${brandlist.brand_id == pdata.brands.brand_id}">
@@ -98,6 +107,22 @@
 							<form:errors path="brands.brand_id" cssClass="error" /></td>
 				</tr>
 				
+				<tr class="form-group">
+							<td><form:label path="categoryobj.id">Category:</form:label></td>
+							<td>
+								<form:select path="categoryobj.id" class="form-control" id="category">
+                            	<c:forEach items="${category}" var="catlist">
+                            	<c:choose>
+                                <c:when test="${catlist.id == pdata.categoryobj.id}">
+                                    <form:option value="${catlist.id}" selected="${catlist.id}">${catlist.name}</form:option>
+                                </c:when>
+                                
+                            </c:choose>
+                               
+                            </c:forEach>
+								</form:select> <br/>
+							<form:errors path="categoryobj.id" cssClass="error" /></td>
+				</tr>
 				<tr class="form-group">
 							<td><form:label path="product_type">Type:</form:label></td>
 							<td><form:input path="product_type" class="form-control" value="${pdata.product_type}" /><br /> 
