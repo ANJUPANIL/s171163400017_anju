@@ -15,5 +15,7 @@ public interface userdetails_dao {
 	public boolean isvaliduser(String userid,String password);
 	public userlogin getdetailsbyid(String userid); 
 	public void saveuser(String userid,String password);
+	public void updatepassword(String userid,String password);
+	
 
 }

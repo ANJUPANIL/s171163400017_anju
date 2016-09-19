@@ -164,29 +164,44 @@ $(document).ready(function(){
                         </div>
                          <div class="form-group">
                             <form:label path="contact" >Contact</form:label>
-                            <form:input path="contact" class="form-control"  required="true" pattern="[0-9]{10}" title="Enter 10 digit contact number" value="${userdetails.contact}"/>
+                            <form:input path="contact" class="form-control"  required="true"  pattern="[0-9]{10}" title="Enter 10 digit contact number" value="${userdetails.contact}"/>
                             <form:errors path="contact" cssClass="error"/>
                         </div>
                          <div class="form-group">
-                            <form:label path="user_id" >Email ID</form:label>
-                            <form:input path="user_id" class="form-control" placeholder="somebody@example.com" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="${userdetails.user_id}"/>
-                            <form:errors path="user_id" cssClass="error"/>
+                            
+                            <form:hidden path="user_id" id="user_id" value="${userdetails.user_id}"/>
+                            
+                            
+                            <form:hidden path="password"  value="${userdetails.password}" id="password" />
+                           
                         </div>
                         </c:when>
                         <c:when test="${click=='password'}">
                         <div class="form-group">
                             <form:label path="password" >Old Password</form:label>
-                            <form:password path="password" class="form-control" id="password" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
+                            <form:password path="password" class="form-control"  placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
                             <form:errors path="password" cssClass="error"/>
                         </div>
                         <div class="form-group">
                             <form:label path="password" >New Password</form:label>
-                            <form:password path="password" class="form-control" id="password" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
+                            <form:password path="password" class="form-control" id="newpassword" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
                             <form:errors path="password" cssClass="error"/>
                         </div>
                         <div class="form-group">
                             <b>Confirm Password</b> <br>
                             <input type="password" name="cpass" id="confirm_password" class="form-control" placeholder="Confirm Password" required="true">
+                        </div>
+                        <div>
+                        	<form:hidden path="user_id"  value="${userdetails.user_id}" id="user_id" />
+                        	<form:hidden path="fname"  value="${userdetails.fname}" />
+                        	<form:hidden path="sname"  value="${userdetails.sname}" />
+                        	<form:hidden path="lname"  value="${userdetails.lname}" />
+                        	<form:hidden path="dob"  value="${userdetails.dob}" />
+                        	<form:hidden path="city"  value="${userdetails.city}" />
+                        	<form:hidden path="address"  value="${userdetails.address}" />
+                        	<form:hidden path="contact"  value="${userdetails.contact}" />
+                        
+                        
                         </div>
                        
                         </c:when>

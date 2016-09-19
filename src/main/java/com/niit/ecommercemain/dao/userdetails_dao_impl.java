@@ -37,6 +37,7 @@ public class userdetails_dao_impl implements userdetails_dao
 	public void updateuserdetails(userdetails userdetails) {
 		sessionFactory.getCurrentSession().update(userdetails);
 		
+		
 	}
 	
 	@Override
@@ -72,5 +73,14 @@ public class userdetails_dao_impl implements userdetails_dao
 		sessionFactory.getCurrentSession().save(u);
 		sessionFactory.getCurrentSession().flush();
 	}
+
+	@Override
+	public void updatepassword(String userid, String password) {
+		
+		sessionFactory.getCurrentSession().createQuery("update userlogin set password=password where user_id = '"+userid+"'").executeUpdate();
+	}
+
+	
+	
 	
 }

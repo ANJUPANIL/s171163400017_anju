@@ -166,20 +166,18 @@ public class cart_controller {
 		return "redirect:/mycart";
 	}
 	
-	@RequestMapping(value="/updatecart",method=RequestMethod.GET)
-	public ModelAndView updatecart(HttpServletRequest request)
+	@RequestMapping(value = "/updatecart", method = RequestMethod.POST)
+	public ModelAndView updatecarquantity(HttpServletRequest request,HttpSession session)throws Exception
 	{
 		System.out.println("Inside update cart");
 		String id=request.getParameter("id");
 		String pid=request.getParameter("pid");
-		String quantity=request.getParameter("quantity");
+		int quantity=Integer.valueOf(request.getParameter("quantity"));
 		
 		System.out.println("QTy " + quantity);
-		int q=Integer.valueOf(quantity);
-		
+		System.out.println("product id " +pid);
+		System.out.println("cart id " + id);
 		double grandtotal=0;
-		
-		HttpSession session = request.getSession();
 		String loggedinuser = (String)session.getAttribute("userid");
 		
 		ModelAndView mv = new ModelAndView("mycart");
@@ -189,8 +187,9 @@ public class cart_controller {
 		product product= ps.getproductid(pid);
 		System.out.println("Product name:" +product.getName());
 		System.out.println("cart obj");
+		cart.setId(id);
 		cart.setProduct(product);
-		cart.setQuantity(q);
+		cart.setQuantity(quantity);
 		System.out.println("QTy  after conversion" + cart.getQuantity());
 		cart.setStatus(false);
 		userdetails u=us.getuserdetailsid(loggedinuser);

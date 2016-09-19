@@ -211,6 +211,7 @@ public class userdetails_controller {
 			mv.addObject("userdetails",user);
 			List<cart> cartlist = c.getallcart(loggedinuser);
 			mv.addObject("cartsize",cartlist.size());
+			
 			session.setAttribute("click",click);
 			
 			return mv;
@@ -225,37 +226,37 @@ public class userdetails_controller {
 		}
 
 		@RequestMapping(value = "/update_profile", method = RequestMethod.POST)
-		public ModelAndView editprofile(@Valid @ModelAttribute("edit_profile") userdetails u, HttpServletRequest request) {
+		public ModelAndView editprofile(HttpServletRequest request,@Valid @ModelAttribute("edit_profile") userdetails u, Model model) {
 			System.out.println("in editprofile");
+			
 			ModelAndView mv;
 			HttpSession session=request.getSession();
 			String loggedinuser = (String)session.getAttribute("userid");
 			String click = (String)session.getAttribute("click");
-			
+			String password=request.getParameter("newpassword");
+
+			System.out.println("in editprofile click" + click);
+			System.out.println("in editprofile pass" + password);
+			//userlogin userlogin=new userlogin();
 			
 			userdetails old=us.getuserdetailsid(loggedinuser);
 			mv = new ModelAndView("userprofile");
-			if(session.getAttribute(click).equals("profile"))
+			if(click.equals("profile"))
 			{
+				u.setUser_id(loggedinuser);
 				u.setPassword(old.getPassword());
 				u.setUimage("null");
 				us.updateuserdetails(u);
+				
 				userdetails user=us.getuserdetailsid(loggedinuser);
 				mv.addObject("userdetails",user);
 				List<cart> cartlist = c.getallcart(loggedinuser);
 				mv.addObject("cartsize",cartlist.size());
 			}
-			else if(session.getAttribute(click).equals("password")){
-				u.setFname(old.getFname());
-				u.setSname(old.getSname());
-				u.setLname(old.getLname());
-				u.setDob(old.getDob());
-				u.setAddress(old.getAddress());
-				u.setCity(old.getCity());
-				u.setContact(old.getContact());
-				u.setUser_id(loggedinuser);
-				u.setUimage("null");
-				us.updateuserdetails(u);
+			else if(click.equals("password")){
+				System.out.println("inside else password");
+				us.updatepassword(loggedinuser, password);
+				
 				userdetails user=us.getuserdetailsid(loggedinuser);
 				mv.addObject("userdetails",user);
 				List<cart> cartlist = c.getallcart(loggedinuser);

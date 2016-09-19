@@ -106,14 +106,14 @@
 
 	<c:choose>
 	<c:when test="${empty emptymsg==true}">
-	<form:form method="POST" commandName="cart"
-		action="${pageContext.request.contextPath}/updatecart">
+	<form method="POST" action="updatecart">
     	<div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th class="text-center">Product Name</th>
+                        <th class="text-center">Category</th>
                         <th class="text-center">Price</th>
                         <th class="text-center">Quantity </th>
                         <th class="text-center">Discount</th>
@@ -128,13 +128,17 @@
                         ${cartlist.product.name}
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
+                        ${cartlist.product.categoryobj.name}
+                        </td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
 						${cartlist.product.price }
                         </td>                       
                         <td class="col-sm-1 col-md-1">
                        
                         
-                        <form:input path="quantity" type="text" class="form-control" id="quantity" name="quantity" value="${cartlist.quantity}" style="text-align: right" />
-                        
+                        <input  type="text" class="form-control"  name="quantity" value="${cartlist.quantity}" style="text-align: right" />
+                        <input type="text" name="id" value="${cartlist.id}"  hidden="true"/>
+                       	<input type="text" name="pid" value="${cartlist.product.id}" hidden="true" />
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${cartlist.product.discount}%</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${cartlist.total}</strong></td>
@@ -150,8 +154,8 @@
                         <td>   </td>
                         <td><h5> </h5></td>
                         
-                         <td class="col-sm-1 col-md-1">
-                       		 <a href="updatecart?id=${cartlist.id}&pid=${cartlist.product.id}" type="submit" class="btn btn-primary" role="button"> Update Cart</a>
+                         <td class="col-sm-1 col-md-1"><button type="submit" class="btn btn-primary">Update Cart</button>
+                       		
                             
                         </td>
                         
@@ -204,7 +208,7 @@
             </table>
         </div>
     </div>
-    </form:form>
+    </form>
     </c:when>
 					<c:otherwise>
 						<hr>

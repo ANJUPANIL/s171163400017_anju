@@ -109,7 +109,7 @@ $(document).ready(function(){
 <div class="container">
       <div class="row">
       <div class="col-md-5 toppad  pull-right col-md-offset-3 ">
-           <a href="edit.html" >Edit Profile</a>
+           <a href="userprofileedit?click=profile" >Edit Profile</a>
        <br>
 		<p class=" text-info"><%= new java.util.Date() %> </p>
       </div>

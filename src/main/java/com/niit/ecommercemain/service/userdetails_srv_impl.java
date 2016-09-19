@@ -60,5 +60,12 @@ public class userdetails_srv_impl implements userdetails_srv
 		
 		cd.saveuser(userid, password);
 	}
+	
+	@Override
+	public void updatepassword(String userid, String password) {
+		cd.updatepassword(userid, password);
+		
+	}
+	
 
 }
