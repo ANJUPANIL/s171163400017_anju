@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+   <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -104,9 +105,9 @@
 			</span> 
 			</div>
 			<div class="pull-right nav hidden-xs">
-				 <a href="index" data-toggle="tooltip" data-placement="right" title="Back to home..Click here..."><i class="fa fa-angle-right"><span
+				 <a href="${flowExecutionUrl}&_eventId_home" data-toggle="tooltip" data-placement="right" title="Back to home..Click here..."><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-home"></span></i> Home</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-				 <a href="login" data-toggle="tooltip" data-placement="right" title="Already have an account?Signin here..."><i class="fa fa-angle-right"><span
+				 <a href="${flowExecutionUrl}&_eventId_login" data-toggle="tooltip" data-placement="right" title="Already have an account?Signin here..."><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-log-in"></span></i> Login</a>&nbsp;&nbsp; 
 			<!-- /LINKS -->
 			</div>
@@ -123,49 +124,55 @@
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
                 <h1>Create Account </h1>
-                	<form:form method="POST" commandName="save_userdetails" action="saveuserdetails">
+                	<form:form modelAttribute="userdetails">
                         <div class="form-group">
                         	<div class="col-sm-4 form-group">
                             	<form:label path="fname" >First Name</form:label>
-                            	<form:input path="fname" class="form-control"  required="true" autofocus="true" />
-                            	<form:errors path="fname" cssClass="error"/></td>
+                            	<form:input path="fname" class="form-control" id="fname" required="true" autofocus="true" />
+                            	<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('fname')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
                         	</div>
                         
                         	<div class="col-sm-4 form-group">
                             	<form:label path="sname" >Second Name</form:label>
-                            	<form:input path="sname" class="form-control"  required="true" />
+                            	<form:input path="sname" class="form-control" id="sname"  required="true" />
                             	<form:errors path="sname" cssClass="error"/>
                         	</div>
                         	<div class="col-sm-4 form-group">
                             	<form:label path="lname" >Last Name</form:label>
-                            	<form:input path="lname" class="form-control" required="true" />
+                            	<form:input path="lname" class="form-control" id="lname" required="true" />
                             	<form:errors path="lname" cssClass="error"/>
                         	</div>
                         </div> 
                         <div class="form-group">
                             <form:label path="dob" >Date of Birth</form:label>
-                            <form:input path="dob" class="form-control" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required="true"  title="dd/mm/yyyy"/>
+                            <form:input path="dob" class="form-control" id="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required="true"  title="dd/mm/yyyy"/>
                             <form:errors path="dob" cssClass="error"/>
                         </div>
                         <div class="form-group">
                             <form:label path="address" >Address</form:label>
-                            <form:textarea name="Text1" cols="40" rows="5"  path="address" class="form-control" required="true" />
+                            <form:textarea name="Text1" cols="40" rows="5" id="address" path="address" class="form-control" required="true" />
                             <form:errors path="address" cssClass="error"/>
                         </div>
                         
                          <div class="form-group">
                             <form:label path="city">City</form:label>
-                            <form:input path="city" class="form-control" required="true" />
+                            <form:input path="city" class="form-control" id="city" required="true" />
                             <form:errors path="city" cssClass="error"/>
                         </div>
                          <div class="form-group">
                             <form:label path="contact" >Contact</form:label>
-                            <form:input path="contact" class="form-control"  required="true" pattern="[0-9]{10}" title="Enter 10 digit contact number"/>
+                            <form:input path="contact" class="form-control" id="contact" required="true" pattern="[0-9]{10}" title="Enter 10 digit contact number"/>
                             <form:errors path="contact" cssClass="error"/>
                         </div>
                          <div class="form-group">
                             <form:label path="user_id" >Email ID</form:label>
-                            <form:input path="user_id" class="form-control" placeholder="somebody@example.com" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+                            <form:input path="user_id" class="form-control" id="user_id" placeholder="somebody@example.com" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
                             <form:errors path="user_id" cssClass="error"/>
                         </div>
                         <div class="form-group">
@@ -177,8 +184,8 @@
                             <b>Confirm Password</b> <br>
                             <input type="password" name="cpass" id="confirm_password" class="form-control" placeholder="Confirm Password" required="true">
                         </div>
-                       
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Register" onclick="return Validate()" >
+                       <input name="_eventId_submit" type="submit" value="Submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" />
+                       <!--  <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Register" onclick="return Validate()" > -->
                         
                     </form:form>
                  <p style="color:#FF0000"> ${msg}</p>

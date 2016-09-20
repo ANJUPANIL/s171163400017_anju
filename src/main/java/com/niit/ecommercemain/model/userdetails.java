@@ -1,5 +1,7 @@
 package com.niit.ecommercemain.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,10 +13,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import javassist.SerialVersionUID;
+
 @Entity
 @Table(name="Register")
 @Component
-public class userdetails {
+public class userdetails implements Serializable{
+	
+	public static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="user_id")
@@ -110,16 +116,7 @@ public class userdetails {
 		this.password = password;
 	}
 	
-	@Column(name="user_image")
-	private String uimage;
 	
-	public String getUimage() {
-		return uimage;
-	}
-
-	public void setUimage(String image) {
-		this.uimage = image;
-	}
 	
 	@Column(name="user_address")
 	@NotEmpty(message = "Please enter your address.")

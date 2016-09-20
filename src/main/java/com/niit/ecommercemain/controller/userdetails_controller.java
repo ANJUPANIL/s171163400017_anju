@@ -245,7 +245,7 @@ public class userdetails_controller {
 			{
 				u.setUser_id(loggedinuser);
 				u.setPassword(old.getPassword());
-				u.setUimage("null");
+				
 				us.updateuserdetails(u);
 				
 				userdetails user=us.getuserdetailsid(loggedinuser);

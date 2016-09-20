@@ -77,7 +77,7 @@ public class userdetails_dao_impl implements userdetails_dao
 	@Override
 	public void updatepassword(String userid, String password) {
 		
-		sessionFactory.getCurrentSession().createQuery("update userlogin set password=password where user_id = '"+userid+"'").executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update userlogin set password='"+password+"' where user_id = '"+userid+"'").executeUpdate();
 	}
 
 	
