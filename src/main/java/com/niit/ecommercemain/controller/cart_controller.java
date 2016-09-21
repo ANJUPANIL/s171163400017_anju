@@ -222,7 +222,19 @@ public class cart_controller {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/deliveryaddress")
+	public ModelAndView deliveryaddress(HttpServletRequest request,HttpSession session)throws Exception
+	{
+		ModelAndView mv = new ModelAndView("deliveryaddress");
+		return mv;
+		
+	}
 	
-	
-	
+	@RequestMapping(value = "/orderdetails")
+	public ModelAndView orderdetails(HttpServletRequest request,HttpSession session)throws Exception
+	{
+		ModelAndView mv = new ModelAndView("orderdetails");
+		return mv;
+		
+	}
 }

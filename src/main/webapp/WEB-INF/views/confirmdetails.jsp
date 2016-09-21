@@ -77,13 +77,7 @@
 				class="hidden-xs" href="mailto:mail@yourdomain.com">mail@domain.com</a>
 			</span> 
 			</div>
-			<div class="pull-right nav hidden-xs">
-				 <a href="${flowExecutionUrl}&_eventId_home" data-toggle="tooltip" data-placement="right" title="Back to home..Click here..."><i class="fa fa-angle-right"><span
-						class="glyphicon glyphicon-home"></span></i> Home</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-				 <a href="${flowExecutionUrl}&_eventId_login" data-toggle="tooltip" data-placement="right" title="Already have an account?Signin here..."><i class="fa fa-angle-right"><span
-						class="glyphicon glyphicon-log-in"></span></i> Login</a>&nbsp;&nbsp; 
-			<!-- /LINKS -->
-			</div>
+			
 			<div>
 				<hr width=100% color="green" align=left>
 			</div>
@@ -143,8 +137,8 @@
 
 						</div>
 						<center>
-						<input name="_eventId_edit" type="submit" value="Edit"  class="btn btn-primary" style="width: 120px;" />&nbsp;&nbsp;&nbsp;&nbsp;
-						<input name="_eventId_submit" type="submit" value="Confirm Details"  class="btn btn-success" style="width: 120px;" />
+						<input name="_eventId_edit" type="submit" value="Edit Details"  class="btn btn-primary" style="width: 150px;" />&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name="_eventId_submit" type="submit" value="Confirm Details"  class="btn btn-success" style="width: 150px;" />
 						</center>
 					</form:form>
 					<p style="color: #FF0000">${msg}</p>

@@ -104,7 +104,7 @@
 			<div class="pull-right nav hidden-xs">
 				 <a href="index" data-toggle="tooltip" data-placement="right" title="Back to home..Click here..."><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-home"></span></i> Home</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-				 <a href="registration" data-toggle="tooltip" data-placement="right" title="New to Eletech?Register here..."><i class="fa fa-angle-right"><span
+				 <a href="register" id="registration"data-toggle="tooltip" data-placement="right" title="New to Eletech?Register here..."><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; 
 			<!-- /LINKS -->
 			</div>

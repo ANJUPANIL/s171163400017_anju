@@ -152,6 +152,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
+                        <td>   </td>
                         <td><h5> </h5></td>
                         
                          <td class="col-sm-1 col-md-1"><button type="submit" class="btn btn-primary">Update Cart</button>
@@ -166,6 +167,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
+                        <td>   </td>
                         <td><h5>Subtotal</h5></td>
                         <td class="text-right"><h5><strong>${grandtotal}</strong></h5></td>
                     </tr>
@@ -174,10 +176,12 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
+                        <td>   </td>
                         <td><h5>Estimated shipping</h5></td>
                         <td class="text-right"><h5><strong>&#8377;50</strong></h5></td>
                     </tr>
                     <tr>
+                        <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
@@ -197,11 +201,12 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
+                        <td>   </td>
                         <td>
                         <a href="userhome"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
                         </td>
                         <td>
-                        <a href="#"  class="btn btn-success" role="button">Check out<span class="glyphicon glyphicon-play"></span></a>
+                        <a href="deliveryaddress"  class="btn btn-success" role="button">Check out<span class="glyphicon glyphicon-play"></span></a>
                        </td>
                     </tr>
                 </tbody>

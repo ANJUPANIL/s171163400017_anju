@@ -21,10 +21,16 @@
 
 	<view-state id="confirmdetails" view="confirmdetails" model="flowScope.userdetails">
 		<transition on="edit" to="start" />
-		<transition on="submit" to="welcome" />
+		<transition on="submit" to="savedetails" />
 	</view-state>
+	
+	<action-state id="savedetails">
+	<evaluate expression="registrationHandler.savedetails(userdetails,messageContext)"></evaluate>
+		<transition on="success" to="welcome" />
+		<transition on="failure" to="start" />
+</action-state>
 
-	<end-state id="welcome" view="login" />
+	<end-state id="welcome" view="welcome" />
 
 	<end-state id="toHome" view="externalRedirect:contextRelative:index.jsp" />
 	

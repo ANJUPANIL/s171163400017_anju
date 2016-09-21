@@ -1,10 +1,14 @@
 package com.niit.ecommercemain.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -136,6 +140,8 @@ public class userdetails implements Serializable{
 	@Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
 	private String password;
 		
-	
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private Set<orderdetails> order;
 	
 }
