@@ -25,7 +25,7 @@ public class cart_dao_impl implements cart_dao
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<cart> getallcart(String userid) {
-		return(List<cart>)sessionFactory.getCurrentSession().createQuery("from cart where user.user_id is'"+userid+"'").list();
+		return(List<cart>)sessionFactory.getCurrentSession().createQuery("from cart where status=false and user_id is'"+userid+"'").list();
 	}
 
 	@Override
@@ -59,6 +59,12 @@ public class cart_dao_impl implements cart_dao
 		cart cart = new cart();
 		cart.setId(id);
 		sessionFactory.getCurrentSession().update(cart);
+		
+	}
+
+	@Override
+	public void updatecartstatus(String id) {
+		sessionFactory.getCurrentSession().createQuery("update cart set status=true from cart where id = '"+id+"'").executeUpdate();
 		
 	}
 	

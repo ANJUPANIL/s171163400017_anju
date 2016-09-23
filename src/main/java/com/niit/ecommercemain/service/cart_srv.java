@@ -17,5 +17,7 @@ public interface cart_srv {
 	public double gettotalamount(String userid);
 	
 	public void updatebyid(String id);
+	
+	public void updatecartstatus(String id);
 
 }

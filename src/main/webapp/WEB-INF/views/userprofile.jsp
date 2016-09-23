@@ -101,7 +101,7 @@ $(document).ready(function(){
 							
 						</ul></li>
 					<li><a href="userprofile">PROFILE</a></li>
-					<li><a href="blog">BLOG</a></li>
+					
 					<li><a href="contactus">CONTACTS</a></li>
 				</ul>
 			</div>

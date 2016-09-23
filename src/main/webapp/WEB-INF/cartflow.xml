@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	
+	<var name="pay" class="com.niit.ecommercemain.model.payment" />
+	
+	<on-start>
+		<evaluate expression="cartHandler.initflow()" result="flowScope.details" />
+	</on-start>
+
+	<view-state id="start" view="deliveryaddress" model="flowScope.details">
+		<transition on="submit" to="setdetails"></transition>
+	</view-state>
+	
+	<action-state id="setdetails">
+		<evaluate expression="cartHandler.setdetails(details)"></evaluate>
+		<transition on="success" to="orderdetails" />
+	</action-state>
+	
+	<action-state id="validate">
+		<evaluate
+			expression="cartHandler.validateDetails(flowScope.details,pay,messageContext)"></evaluate>
+		<transition on="success" to="savedetails" />
+		<transition on="failure" to="start" />
+	</action-state>
+
+	<view-state id="orderdetails" view="orderdetails" model="flowScope.details">
+		<transition on="edit" to="start" />
+		<transition on="submit" to="validate" />
+	</view-state>
+	
+	
+
+	<action-state id="savedetails">
+		<evaluate expression="cartHandler.savedetails(flowScope.details,pay,messageContext)"></evaluate>
+		<transition on="success" to="thankyou" />
+	</action-state>
+
+	<view-state id="thankyou" view="thankyou" model="flowScope.details">
+		<transition on="submit" to="welcome" />
+	</view-state>
+
+
+
+	<end-state id="welcome" view="index" />
+
+
+	<end-state id="toException"
+		view="externalRedirect:contextRelative:exception.jsp" />
+
+	<!-- these events are available in every state -->
+	<global-transitions>
+
+		<transition on="error" to="toException" />
+	</global-transitions>
+</flow>

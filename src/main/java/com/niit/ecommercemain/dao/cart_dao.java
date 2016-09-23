@@ -20,5 +20,7 @@ public interface cart_dao
 	
 	public void updatebyid(String id);
 	
+	public void updatecartstatus(String id);
+	
 	
 }

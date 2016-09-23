@@ -1,5 +1,6 @@
 package com.niit.ecommercemain.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,9 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="Brand")
 @Component
-public class brand {
+public class brand  implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="brand_id")
 	@NotEmpty(message="Please enter a valid brand Id")

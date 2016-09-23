@@ -43,5 +43,11 @@ public class cart_srv_impl implements cart_srv
 		cd.updatebyid(id);
 		
 	}
+
+	@Override
+	public void updatecartstatus(String id) {
+		cd.updatecartstatus(id);
+		
+	}
 	
 }

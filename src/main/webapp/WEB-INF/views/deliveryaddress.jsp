@@ -1,12 +1,15 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Param"%>
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -16,25 +19,17 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 	
 </script>
-
-
-<title>Shop Product</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<title>Delivery Address</title>
+<style type="text/css">
+.panel {
+	margin-bottom: 20px;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+</style>
 </head>
-<script>
-	$(document).ready(function() {
-
-		$(".tip-right").tooltip({
-			placement : 'right'
-		});
-
-	});
-
-	function myFunction() {
-		alert("${msg}")
-
-	}
-</script>
-
 <body>
 	<header id="topNav" class="topHead"> <!-- remove class="topHead" if no topHead used! -->
 	<div class="container">
@@ -71,7 +66,7 @@
 					class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp; <a
 				href="mycart"><i class="fa fa-angle-left" data-toggle="tooltip"
 				data-placement="right" title="View your shopping cart"><span
-					class="glyphicon glyphicon-shopping-cart"></span>Cart(${cartsize})</i></a>&nbsp;
+					class="glyphicon glyphicon-shopping-cart"></span>Cart(<%=session.getAttribute("cartsize")%>)</i></a>&nbsp;
 			&nbsp; <a href="logout"><i class="fa fa-angle-left"><span
 					class="glyphicon glyphicon-off"></span>Logout</i></a>
 
@@ -117,114 +112,91 @@
 	</div>
 	</nav>
 
-	<h3>
-		<b><%=session.getAttribute("name")%></b>
-	</h3>
+	<!-- panel preview -->
+	<form:form modelAttribute="details">
+	<div class="col-sm-6">
+		<h4>Order Delivery Details</h4>
+		
+		<div class="panel panel-default">
+			<div class="panel-body form-horizontal payment-form">
+				<b>Your details</b><br />
+				<br />
+				<div class="form-group">
+					<label for="concept" class="col-sm-3 control-label">Name</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="name" name="name"
+							value="${details.user.fname } ${details.user.sname } ${details.user.lname } "
+						disabled="true">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="description" class="col-sm-3 control-label">Email
+						ID</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="user_id"
+							name="user_id" value="${details.user.user_id}" disabled="true">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="amount" class="col-sm-3 control-label">Contact</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="amount" name="amount" value="${details.user.contact}"
+							disabled="true">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="status" class="col-sm-3 control-label">Address</label>
+					<div class="col-sm-9">
+						<textarea class="form-control" id="address" rows="5"
+							name="address" disabled="true">${details.user.address}</textarea>
+					</div>
+				</div>
 
-	<div class="container">
+
+			</div>
+		</div>
+		
+	</div>
+	<!-- / panel preview -->
+	<br />
+	<br />
+	<div class="col-sm-5">
+
 		<div class="row">
-			<div class="col-md-9 well admin-content">
+			<div class="panel panel-default">
+				<div class="panel-body form-horizontal payment-form">
+					<div class="form-group">
 
-				<section id="plans">
-				<div class="container">
-					<div class="row">
-						<c:choose>
-							<c:when test="${empty emptymsg==true}">
-								<c:forEach items="${product}" var="product">
-									<!-- item -->
-									<div class="col-md-4 text-center">
-										<div class="panel panel-warning panel-pricing">
-											<div class="panel-heading">
-												<i class="fa fa-desktop"></i> <a
-													href="quicklook?pid=${product.id}"><img
-													src="${product.product_image}" width="200px" height="200px"
-													data-toggle="tooltip" data-placement="right"
-													title="Quick View" /></a> </i>
-											</div>
-											<div class="panel-body text-center">
-												<p style="color: red">${product.product_type}</p>
-												<h4>
-													<p>
-														<strong>${product.name}</strong>
-													</p>
-												</h4>
-											</div>
-											<ul class="list-group text-center">
-												<li class="list-group-item"><b>Brand : </b><i
-													class="fa fa-check"></i>${product.brands.brand_name}</li>
-												<li class="list-group-item"><b>Description : </b><i
-													class="fa fa-check"></i> ${product.des}</li>
-												<li class="list-group-item"><b>Price : </b><i
-													class="fa fa-check"></i> ${product.price}</li>
-												<li class="list-group-item"><b>Discount : </b><i
-													class="fa fa-check"></i> ${product.discount}</li>
-											</ul>
-
-											<div class="panel-footer">
-												<a href="<c:url value='/addcart?id=${product.id}' />"
-													class="btn btn-lg btn-block btn-primary">Add to Cart</a>
-											</div>
-										</div>
-									</div>
-									<!-- /item -->
-
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								
-								<div class="alert alert-info col-md-8 ">
-
-									<strong>Info!</strong> ${emptymsg}
-								</div>
-								
-
-
-							</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-				</section>
-			</div>
-			<h4>
-				<i style="color: red">${msg}</i>
-			</h4>
-			<div class="col-md-3">
-				<ul class="nav nav-pills nav-stacked admin-menu ">
-
-					<li align="center" class="btn btn-lg btn-block btn-primary">SHOP</li>
-
-					<li><c:forEach var="category" items="${category}">
-							<li><a
-								href="<c:url value='/shopproduct?name=${category}' />">${category}</a>
-							</li>
-							<li role="separator" class="divider"></li>
-						</c:forEach></li>
-
-				</ul>
-			</div>
-			<br />
-
-			<div class="col-md-3">
-				<div class="panel panel-primary">
-					<div class="panel-heading" align="center">Filter By Brand</div>
-					<div class="panel-body">
-						<div class="form-group">
-							<ul class="nav nav-pills nav-stacked admin-menu ">
-								<c:forEach items="${brand}" var="brand">
-
-									<li><a
-										href="shopbrandproduct?name=<%= request.getParameter("name") %>&bname=${brand.brands.brand_name}">${brand.brands.brand_name}</a>
-									<li>
-								</c:forEach>
-							</ul>
+						<label path="billing_address">Billing Address</label>
+						<div style="margin-right: 20px; margin-left: 20px;">
+							<textarea name="billing_address" cols="30" rows="5" id="billing_address"
+								path="billing_address" class="form-control" required="true" >${details.user.address}</textarea>
+						
 						</div>
+						
+						
+						<hr style="border: 1px dashed #dddddd;">
 
-
+						<b>Shipping Address</b> <label path="shipping_address"> </label>
+						<div style="margin-right: 20px; margin-left: 20px;">
+							<textarea name="shipping_address" cols="30" rows="5" id="shipping_address"
+								path="shipping_address" class="form-control" required="true">${details.user.address}</textarea>
+						</div>
 					</div>
 				</div>
+
 			</div>
+
+
 
 		</div>
+		<input class="btn btn-warning pull-right" name="_eventId_submit"
+			type="submit" value="Deliver to this address" /> <br />
+		<br /> <br />
+		<br />
+	
 	</div>
+	</form:form>
+
 </body>
 </html>

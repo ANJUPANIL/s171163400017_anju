@@ -95,7 +95,7 @@
 
 				</ul></li>
 			<li><a href="userprofile">PROFILE</a></li>
-			<li><a href="blog">BLOG</a></li>
+			
 			<li><a href="contactus">CONTACTS</a></li>
 		</ul>
 	</div>
@@ -206,7 +206,7 @@
                         <a href="userhome"  class="btn btn-warning" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
                         </td>
                         <td>
-                        <a href="deliveryaddress"  class="btn btn-success" role="button">Check out<span class="glyphicon glyphicon-play"></span></a>
+                        <a href="checkout" id="deliveryaddress" class="btn btn-success" role="button">Check out<span class="glyphicon glyphicon-play"></span></a>
                        </td>
                     </tr>
                 </tbody>

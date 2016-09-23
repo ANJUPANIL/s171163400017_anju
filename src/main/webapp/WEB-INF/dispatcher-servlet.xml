@@ -72,6 +72,7 @@
 		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
 		<!-- here the id is mapped to invoke this flow -->
 		<webflow:flow-location id="register" path="/registrationflow.xml" />
+		<webflow:flow-location id="checkout" path="/cartflow.xml" />
 	</webflow:flow-registry>
 
 	<webflow:flow-builder-services id="flowBuilderServices"

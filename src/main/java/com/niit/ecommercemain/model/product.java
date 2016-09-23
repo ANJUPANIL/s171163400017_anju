@@ -3,6 +3,7 @@ package com.niit.ecommercemain.model;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name="Product")
 @Component
-public class product {
+
+public class product implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="product_id")
 	private String id;

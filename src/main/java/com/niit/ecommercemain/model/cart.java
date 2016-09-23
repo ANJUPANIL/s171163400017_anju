@@ -1,5 +1,6 @@
 package com.niit.ecommercemain.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,11 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="Cart")
 @Component
-public class cart {
+public class cart implements Serializable  {
+	
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Column
 	@GeneratedValue
