@@ -136,6 +136,9 @@ public class cartHandler {
 		details.setGrandtotal((double)session.getAttribute("grandtotal"));
 		details.setCartobj(c.get(i));
 		ordersrv.saveorderdetails(details);
+		String id=details.getCartobj().getId();
+		System.out.println("card handler update status : " +id);
+		cartsrv.updatecartstatus(id);
 		
 		}
 		this.pay.setCardNumber(request.getParameter("cardnumber"));

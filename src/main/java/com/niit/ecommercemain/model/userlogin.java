@@ -36,21 +36,34 @@ public class userlogin {
 		this.password = password;
 	}
 
-	public int getRole() {
+	
+
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	@Column
+	private boolean enabled;
 
 	@Column(name="user_password")
 	@NotEmpty(message = "Please enter your password.")
 	@Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
 	private String password;
 	
-	@Column(name = "role",columnDefinition = "INT default 2")
-	private int role;
+	@Column
+	private String role;
 	
 
 }

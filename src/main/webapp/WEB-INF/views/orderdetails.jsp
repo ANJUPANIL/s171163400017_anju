@@ -215,7 +215,7 @@ hr{
 		<div class="pull-right nav hidden-xs">
 			<i class="fa fa-angle-left" style="color: #0000CD"><span
 				class="glyphicon glyphicon-user"> </span>Welcome <%=session.getAttribute("welcomemsg")%>
-			</i>&nbsp; &nbsp; <a href="page-about-us.html"><i
+			</i>&nbsp; &nbsp; <a href="vieworders"><i
 				class="fa fa-angle-left"><span
 					class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp; <a
 				href="mycart"><i class="fa fa-angle-left" data-toggle="tooltip"
@@ -277,7 +277,7 @@ hr{
       <b>Order Id : </b>${details.order_no}
     </div>
     <div class="col-sm-4">
-      <b>Order Date :</b><%= new java.util.Date()%> 
+      <b>Order Date :</b><%= new java.util.Date().getDate()%> - <%= new java.util.Date().getMonth()%> - <%= new java.util.Date().getYear()%>
     </div>
   </div>
 </div>
@@ -423,19 +423,48 @@ hr{
                                         <option value="8">Discover</option>
                                     </select>
                                 </div>
+                                <!-- to display validation messages -->
+							<c:forEach
+								items="${flowRequestContext.messageContext.getMessagesBySource('CreditCardType')}"
+								var="err">
+								<div>
+									<span>${err.text}</span>
+								</div>
+							</c:forEach>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Credit Card Number:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="cardnumber" /></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="cardnumber"/></div>
+                            	<c:forEach
+								items="${flowRequestContext.messageContext.getMessagesBySource('cardnumber')}"
+								var="err">
+								<div>
+									<span>${err.text}</span>
+								</div>
+							</c:forEach>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Name On Card:</strong></div>
                                 <div class="col-md-12"><input type="text" class="form-control" name="car_name" /></div>
+                            	<c:forEach
+								items="${flowRequestContext.messageContext.getMessagesBySource('car_name')}"
+								var="err">
+								<div>
+									<span>${err.text}</span>
+								</div>
+							</c:forEach>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Card CVV:</strong></div>
                                 <div class="col-md-12"><input type="text" class="form-control" name="car_code"  /></div>
-                            </div>
+                            <c:forEach
+								items="${flowRequestContext.messageContext.getMessagesBySource('car_code')}"
+								var="err">
+								<div>
+									<span>${err.text}</span>
+								</div>
+							</c:forEach>
+							</div>
                             
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -457,6 +486,13 @@ hr{
                                         <option value="11">11</option>
                                         <option value="12">12</option>
                                 </select>
+                                <c:forEach
+								items="${flowRequestContext.messageContext.getMessagesBySource('expmonth')}"
+								var="err">
+								<div>
+									<span>${err.text}</span>
+								</div>
+								</c:forEach>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <select class="form-control" name="expyear">
@@ -473,8 +509,15 @@ hr{
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
                                 </select>
+                                <c:forEach
+								items="${flowRequestContext.messageContext.getMessagesBySource('expyear')}"
+								var="err">
+								<div>
+									<span>${err.text}</span>
+								</div>
+							</c:forEach>
                                 </div>
-                            </div>
+                            </div><br/><br/><br/><br/>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <span>Pay secure using your credit card.</span>
@@ -488,7 +531,7 @@ hr{
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
-                            
+                            <br/><br/><br/><br/>
                         </div>
                     </div>
                     <!--CREDIT CART PAYMENT END-->

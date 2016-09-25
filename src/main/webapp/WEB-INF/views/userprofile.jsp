@@ -57,7 +57,7 @@ $(document).ready(function(){
 			<div class="pull-right nav hidden-xs">
 				<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user">
 								</span>Welcome <%= session.getAttribute( "welcomemsg" )%> </i>&nbsp; &nbsp;
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+				<a href="vieworders"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 				
 				<a href="mycart"><i class="fa fa-angle-left" data-toggle="tooltip" data-placement="right" title="View your shopping cart"><span

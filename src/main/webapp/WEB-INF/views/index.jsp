@@ -1,7 +1,10 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Redirect"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -103,13 +106,17 @@
 
 	<header id="topHead">
 	<div class="container">
-
-
+	
+		<div class="pull-right nav hidden-xs">
+		
+		</div>
+		
 		<!-- LINKS -->
+		
 		<c:choose>
 			<c:when test="${empty userid or loggedout==true}">
 				<div class="pull-right nav hidden-xs">
-					<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+					<a href="login"><i class="fa fa-angle-left"><span
 							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 					<a href="register" id="registration"><i class="fa fa-angle-right"><span
 							class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
@@ -117,11 +124,22 @@
 							class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
 				</div>
 			</c:when>
-			<c:when test="${not empty userid }">
+			</c:choose>
+			<!--<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a href="adminhome"><i class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-home"></span>Admin Home</i></a>&nbsp; &nbsp;
+`			&nbsp;
+					&nbsp; <a href="logout"><i class="fa fa-angle-left"><span
+							class="glyphicon glyphicon-off"></span>Logout</i></a>
+
+			</sec:authorize>-->
+			
+			<c:choose>
+			<c:when test="${isadmin==false and not empty userid }">
 				<div class="pull-right nav hidden-xs">
 					<i class="fa fa-angle-left" style="color: #0000CD"><span
 						class="glyphicon glyphicon-user"> </span>Welcome <%=session.getAttribute("welcomemsg")%>
-					</i>&nbsp; &nbsp; <a href="page-about-us.html"><i
+					</i>&nbsp; &nbsp; <a href="vieworders"><i
 						class="fa fa-angle-left"><span
 							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 
@@ -151,8 +169,10 @@
 		<!-- TOP NAV -->
 
 
+
 	</div>
 	</header>
+
 
 	<!-- Logo part -->
 
@@ -286,7 +306,7 @@
 
 <div class="row">
   <div class="col-md-4">
-  <div class="panel panel-default">
+  <div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=New' />" >NEW ARRIVALS</a></font></center></h3>
   </div>
@@ -301,7 +321,7 @@
   </div>
 </div></div>
 
-  <div class="col-md-4"><div class="panel panel-default">
+  <div class="col-md-4"><div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=On Sale' />">ON SALE</a></font></center></h3>
   </div>
@@ -316,7 +336,7 @@
     
   </div>
 </div></div>
-  <div class="col-md-4"><div class="panel panel-default">
+  <div class="col-md-4"><div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=Top Rated' />">TOP RATED PRODUCTS</a></font></center></h3>
   </div>

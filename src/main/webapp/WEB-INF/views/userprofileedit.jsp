@@ -24,6 +24,16 @@ $(document).ready(function(){
 
 });
 
+function Validate() {
+	var password = document.getElementById("newpassword").value;
+	var confirmPassword = document.getElementById("cpass").value;
+	if (password != confirmPassword) {
+		alert("Passwords do not match.");
+		return false;
+	}
+	return true;
+}
+
 </script>
 
 </head>
@@ -57,7 +67,7 @@ $(document).ready(function(){
 			<div class="pull-right nav hidden-xs">
 				<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user">
 								</span>Welcome <%= session.getAttribute( "welcomemsg" )%> </i>&nbsp; &nbsp;
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+				<a href="vieworders"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 				
 				<a href="mycart"><i class="fa fa-angle-left" data-toggle="tooltip" data-placement="right" title="View your shopping cart"><span
@@ -184,12 +194,12 @@ $(document).ready(function(){
                         </div>
                         <div class="form-group">
                             <form:label path="password" >New Password</form:label>
-                            <form:password path="password" class="form-control" id="newpassword" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
+                            <form:password path="password" class="form-control" id="newpassword" name="newpassword" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
                             <form:errors path="password" cssClass="error"/>
                         </div>
                         <div class="form-group">
                             <b>Confirm Password</b> <br>
-                            <input type="password" name="cpass" id="confirm_password" class="form-control" placeholder="Confirm Password" required="true">
+                            <input type="password" name="cpass" id="cpass" class="form-control" placeholder="Confirm Password" required="true">
                         </div>
                         <div>
                         	<form:hidden path="user_id"  value="${userdetails.user_id}" id="user_id" />
@@ -209,7 +219,7 @@ $(document).ready(function(){
                         
                        <div class="pull-right">
                         <button type="submit" class="btn btn-success"
-							style="width: 100px;">Save</button>
+							style="width: 100px;" onclick="return Validate()">Save</button>
                         </div>
                     </form:form>
                   

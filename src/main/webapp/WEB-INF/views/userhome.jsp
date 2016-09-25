@@ -84,7 +84,7 @@ $(function(){
 		<c:choose>
 			<c:when test="${empty userid or loggedout==true}">
 				<div class="pull-right nav hidden-xs">
-					<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+					<a href="login"><i class="fa fa-angle-left"><span
 							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 					<a href="registration"><i class="fa fa-angle-right"><span
 							class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
@@ -96,7 +96,7 @@ $(function(){
 				<div class="pull-right nav hidden-xs">
 					<i class="fa fa-angle-left" style="color: #0000CD"><span
 						class="glyphicon glyphicon-user"> </span>Welcome <%=session.getAttribute("welcomemsg")%>
-					</i>&nbsp; &nbsp; <a href="page-about-us.html"><i
+					</i>&nbsp; &nbsp; <a href="vieworders"><i
 						class="fa fa-angle-left"><span
 							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 

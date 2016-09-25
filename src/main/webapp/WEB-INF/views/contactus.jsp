@@ -67,7 +67,7 @@
 			<c:choose>
 					<c:when test="${empty userid or loggedout==true}">
 						<div class="pull-right nav hidden-xs">
-								<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+								<a href="login"><i class="fa fa-angle-left"><span
 								class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 				 				<a href="registration"><i class="fa fa-angle-right"><span
 									class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; 
@@ -79,7 +79,7 @@
 						<div class="pull-right nav hidden-xs">
 							<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user">
 								</span>Welcome <%= session.getAttribute( "welcomemsg" )%> </i>&nbsp; &nbsp;
-							<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+							<a href="vieworders"><i class="fa fa-angle-left"><span
 								class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
 				
 							<a href="mycart"><i class="fa fa-angle-left" data-toggle="tooltip" data-placement="right" title="View your shopping cart"><span
@@ -154,7 +154,7 @@
 		
 	<!-- Contact us part -->
 	<h3 style="color:#0000CD">CONTACTS</h3><br>	
-	<div class="panel panel-default">
+	<div class="panel panel-info">
   	<div class="panel-body">
     <h4><b>Contact info</b></h4><br><br>
 
@@ -169,7 +169,7 @@
   </div>
 </div>
 <div class="container">
-<div class="panel panel-default">
+<div class="panel panel-info">
   	<div class="panel-body">
   	<h4><b>Contact Form</b></h4><br><br>
 	<div class="row">

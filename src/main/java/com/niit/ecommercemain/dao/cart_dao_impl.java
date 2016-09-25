@@ -64,7 +64,7 @@ public class cart_dao_impl implements cart_dao
 
 	@Override
 	public void updatecartstatus(String id) {
-		sessionFactory.getCurrentSession().createQuery("update cart set status=true from cart where id = '"+id+"'").executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update cart set status=true where id = '"+id+"'").executeUpdate();
 		
 	}
 	

@@ -91,7 +91,7 @@
 			<!-- LINKS -->
 			
 			<div class="pull-right nav hidden-xs">
-				<a href="page-about-us.html"><i class="fa fa-angle-left"><span
+				<a href="login"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp; <a
 					href="registration"><i class="fa fa-angle-right"><span
 						class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
@@ -151,7 +151,7 @@
 			</div>
 		</nav>
 		<h3 style="color:#0000CD">&nbsp;&nbsp;ABOUT</h3><br>
-		<div class="panel panel-default">
+		<div class="panel panel-info">
   		<div class="panel-body">
     		<b>About Our Store</b><br><br>
     		<p align="justify">

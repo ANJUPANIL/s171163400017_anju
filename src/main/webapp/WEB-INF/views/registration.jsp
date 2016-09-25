@@ -272,8 +272,8 @@
 						</div>
 						<input name="_eventId_submit" type="submit" value="Submit"
 							id="btn-login"
-							class="btn btn-custom btn-lg btn-block btn-success" />
-						<!--  <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Register" onclick="return Validate()" > -->
+							class="btn btn-custom btn-lg btn-block btn-success" onclick="return Validate()" />
+						<!--  <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block btn-success" value="Register" " > -->
 
 					</form:form>
 					

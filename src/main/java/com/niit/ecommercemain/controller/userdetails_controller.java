@@ -1,5 +1,6 @@
 package com.niit.ecommercemain.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -123,7 +124,7 @@ public class userdetails_controller {
 				u = us.getdetailsbyid(userid);
 				mv = new ModelAndView("index");
 				mv.addObject("loggedinuser",u.getUser_id());
-				if(u.getRole() == 1)
+				if(u.getRole() == "ROLE_ADMIN")
 				{
 					System.out.println("its admin");
 					mv = new ModelAndView("redirect:adminhome");
@@ -170,6 +171,10 @@ public class userdetails_controller {
 			ModelAndView mv = new ModelAndView("index");
 			List<cart> cartlist = c.getallcart(loggedinuser);
 			mv.addObject("cartsize",cartlist.size());
+			List<category> showcat = catsrv.categorynamelist();
+			System.out.println("Category size: "+showcat.size());
+			
+			session.setAttribute("category", showcat);
 			return mv;
 		}
 		
@@ -233,7 +238,7 @@ public class userdetails_controller {
 			HttpSession session=request.getSession();
 			String loggedinuser = (String)session.getAttribute("userid");
 			String click = (String)session.getAttribute("click");
-			String password=request.getParameter("newpassword");
+			String password=request.getParameter("cpass");
 
 			System.out.println("in editprofile click" + click);
 			System.out.println("in editprofile pass" + password);
@@ -267,5 +272,51 @@ public class userdetails_controller {
 			return mv;
 		}
 		
+		@RequestMapping(value = "/securelogin")
+		public ModelAndView login(@RequestParam(value = "authfailed", required = false) String error,
+				@RequestParam(value = "logout", required = false) String logout, Model model, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			System.out.println("secure login");
+			ModelAndView mv;
+			if (error != null) {
+				System.out.println("Errors in username and password");
+				model.addAttribute("error", "Invalid username and password");
+				mv = new ModelAndView("login");
+				return mv;
+			} else if (logout != null) {
+				System.out.println("logout id not equal to null");
+				mv = new ModelAndView("index");
+				mv.addObject("loggedout", "true");
+				List<category> allcategory = catsrv.allcategory();
+				mv.addObject("category", allcategory);
+				return mv;
+
+			}
+		
+			mv = new ModelAndView("login");
+			try {
+				if (request.getUserPrincipal().getName() != null) {
+					userdetails u = us.getuserdetailsid(request.getUserPrincipal().getName());
+					userlogin ulogin=us.getdetailsbyid(request.getUserPrincipal().getName());
+					System.out.println("username: " + u.getUser_id());
+					//System.out.println("role : " + u.getRole());
+					if (ulogin.getRole().equals("ROLE_ADMIN")) {
+						System.out.println("isadmin : " + request.getUserPrincipal().getName());
+						
+						mv.addObject("isadmin", request.getUserPrincipal().getName());
+
+					} else if (ulogin.getRole().equals("ROLE_USER")) {
+						System.out.println("loggedinuser" + request.getUserPrincipal().getName());
+						mv.addObject("loggedinuser", request.getUserPrincipal().getName());
+						session.setAttribute("userid", request.getUserPrincipal().getName());
+
+					}
+				}
+			} catch (NullPointerException e) {
+
+			}
+
+			return mv;
+		}
 		
 }

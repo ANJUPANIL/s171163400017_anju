@@ -70,6 +70,8 @@ public class userdetails_dao_impl implements userdetails_dao
 		userlogin u = new userlogin();
 		u.setUser_id(userid);
 		u.setPassword(password);
+		u.setRole("ROLE_USER");
+		u.setEnabled(true);
 		sessionFactory.getCurrentSession().save(u);
 		sessionFactory.getCurrentSession().flush();
 	}

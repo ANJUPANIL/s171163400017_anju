@@ -1,0 +1,31 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+      http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+      http://www.springframework.org/schema/context
+ 	  http://www.springframework.org/schema/context/spring-context-4.1.xsd 
+      http://www.springframework.org/schema/security  
+      http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+	
+	<http auto-config="true">
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/adminhome" access="hasRole('ROLE_ADMIN')" />
+		
+		<form-login login-page="/login" default-target-url="/"
+			username-parameter="j_username" 
+			password-parameter="j_password"
+			login-processing-url="/j_spring_security_check"
+			authentication-failure-url="/securelogin?authfailed" />
+		<csrf disabled="true" />
+	</http>
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="myDataSource"
+				users-by-username-query="select user_id,user_password,enabled from userlogin where user_id=?"
+				authorities-by-username-query="select u1.user_id,u2.role_name from userlogin u1,role u2 where
+				u1.role=u2.role_name and user_id=?" />
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>  
