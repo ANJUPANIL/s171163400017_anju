@@ -20,11 +20,39 @@
 <title>Edit Category</title>
 </head>
 <body>
+<header id="topNav" class="topHead">
+		<!-- remove class="topHead" if no topHead used! -->
+		<div class="container">
+			
+			<!-- Logo text or image -->
+			<a class="logo" href="/"><img 
+					src="resources/images/logo.jpg" width="150" height="100" style="margin-left:20px" />
+			</a>
+			<div class="pull-right nav hidden-xs">
+				<i class="fa fa-angle-left" style="color:#0000CD">
+						<span class="glyphicon glyphicon-user"></span>Welcome Admin</i>&nbsp; &nbsp;
+				<a href="logout"><i class="fa fa-angle-left"><span
+						class="glyphicon glyphicon-off"></span>Logout</i></a>
+		</div>
+	</header>
+	<nav class="navbar navbar-inverse navbar-fixed">
+			<div class="container-fluid">
+
+				<ul class="nav navbar-nav">
+					<li><a href="adminhome">HOME</a></li>
+					<li><a href="brand">BRAND</a></li>
+					<li class="active"><a href="category">CATEGORY</a></li>
+					<li><a href="supplier">SUPPLIER</a></li>
+					<li><a href="product">PRODUCT</a></li>
+				</ul>
+			</div>
+	</nav>
+	
 <form:form method="POST" commandName="edit_category"
 		action="${pageContext.request.contextPath}/update_category">
 			<div align="center" class="table-responsive">
-			<h2>Edit Category&nbsp;&nbsp;&nbsp;</h2>
-   							
+			<h2>Edit Category Details</h2>
+   				<br>			
    				<table style="width: 40%" class="table-striped table-condensed">
    					
     				<tr class="form-group" style="font-weight: bold;">

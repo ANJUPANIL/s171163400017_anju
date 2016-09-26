@@ -37,7 +37,12 @@ public class brand_controller {
 	@RequestMapping(value="/brand")
 	public ModelAndView brandhome()
 	{
-		return new ModelAndView("brand");
+		brand b=new brand();
+		ModelAndView mv=new ModelAndView("brand");
+		System.out.println("brand loaded");
+		String bid=b.getBrand_id();
+		mv.addObject("brandid",bid );
+		return mv;
 	}
 	
 	@ModelAttribute("save_brand")

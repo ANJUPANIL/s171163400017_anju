@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -162,7 +163,11 @@ public class product implements Serializable {
 	public void setProduct_image(String product_image) {
 		this.product_image = product_image;
 	}
-	
+	public product() {
+
+		this.id = "P" + UUID.randomUUID().toString().substring(30).toUpperCase();
+		
+	}
 	
 	public String getFilePath(String path1,String contextPath)
 	{

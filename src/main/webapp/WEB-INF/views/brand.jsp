@@ -60,8 +60,8 @@
 		<div class="container">
 			
 			<!-- Logo text or image -->
-			<a class="logo" href="/">&nbsp;&nbsp; &nbsp;<img 
-					src="resources/images/logo.jpg" width="150" height="100" />
+			<a class="logo" href="/"><img 
+					src="resources/images/logo.jpg" width="150" height="100" style="margin-left:20px" />
 			</a>
 			<div class="pull-right nav hidden-xs">
 				<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user"></span>Welcome Admin</i>&nbsp; &nbsp;
@@ -84,21 +84,10 @@
 
 <form:form method="POST" commandName="save_brand"
 		action="${pageContext.request.contextPath}/savebrand">
-			<div align="center" class="table-responsive">
+			<div align="center" class="table-responsive" >
 			<h2><b>Create New Brand</b></h2><br>
    				<table style="width: 40%" >
-   					<div class="form-group">
-    				<tr>
-					<td style="width: 25%">
-						<form:label path="brand_id">Brand ID:</form:label>
-					</td>
-					<td> 
-						<form:input path="brand_id" size="40"  class="form-control" required="true" autofocus="true" /><br /> 
-						<form:errors path="brand_id" cssClass="error" />
-					</td>
-				
-				</tr>
-				</div>
+   					
 				<div class="form-group">
 				<tr>
 					<td style="width: 25%">

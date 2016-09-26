@@ -2,6 +2,7 @@ package com.niit.ecommercemain.model;
 
 import java.io.Serializable;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -76,4 +77,10 @@ public class category implements Serializable {
 	public void setDes(String des) {
 		this.des = des;
 	}
+	
+	 public category() {
+
+			this.id = "C" + UUID.randomUUID().toString().substring(30).toUpperCase();
+			
+		}
 }

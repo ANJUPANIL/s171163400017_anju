@@ -44,6 +44,17 @@ public class orderdetails implements Serializable {
 	
 	@Column
 	private Double grandtotal;
+	
+	@Column
+	private String status;
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getOrder_date() {
 		return order_date;
@@ -129,7 +140,7 @@ public class orderdetails implements Serializable {
 	
 	public orderdetails() {
 
-		this.order_no = "OD" + UUID.randomUUID().toString().substring(24).toUpperCase();
+		this.order_no = "OD" + UUID.randomUUID().toString().substring(30).toUpperCase();
 	}
 	
 }

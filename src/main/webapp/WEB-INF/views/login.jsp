@@ -96,9 +96,9 @@
 	<div class="container">
 
 		<!-- Logo text or image -->
-		<a class="logo" href="/"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img
+		<a class="logo" href="/"><img
 			src="resources/images/logo.jpg" alt="Electech" width="150"
-			height="100" />
+			height="100" style="margin-left:20px" />
 		</a>
 
 		<!-- PHONE/EMAIL -->

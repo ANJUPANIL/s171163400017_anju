@@ -33,9 +33,8 @@
 	<div class="container">
 
 		<!-- Logo text or image -->
-		<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-			&nbsp;<img src="resources/images/logo.jpg" alt="Electech" width="150"
-			height="100" />
+		<a class="logo" href="index.jsp"> <img src="resources/images/logo.jpg" alt="Electech" width="150"
+			height="100" style="margin-left:20px"/>
 		</a>
 		<form class="navbar-form navbar-right" role="search"
 			name="searchproduct" action="searchproduct" method="POST">
@@ -112,8 +111,11 @@
 	
 	
 		<h3 style="color:#0000CD">&nbsp;&nbsp;Orders</h3><br>
+		<c:choose>
+	<c:when test="${empty emptymsg==true}">
 			<div class="panel panel-info">
 				<div class="panel-body ">
+				
 					<br><b>Your Order Details</b>
 					<div align="center" class="table-responsive">
 				<br>
@@ -147,6 +149,19 @@
 				</div>
 
 			</div>
+			</c:when>
+			<c:otherwise>
+						<hr>
+						<div class="alert alert-info" style="margin-left:20px;margin-right:20px">
+							
+							<strong>Info!</strong> ${emptymsg}
+							
+						</div>
+						<div align="right">
+						<a href="userhome"  class="btn btn-warning" role="button" ><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
+						</div><hr>
+					</c:otherwise>
+			</c:choose>
 		
 	
 </body>

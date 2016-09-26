@@ -35,9 +35,8 @@
 	<div class="container">
 
 		<!-- Logo text or image -->
-		<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-			&nbsp;<img src="resources/images/logo.jpg" alt="Electech" width="150"
-			height="100" />
+		<a class="logo" href="index.jsp"><img src="resources/images/logo.jpg" alt="Electech" width="150"
+			height="100" style="margin-left:20px" />
 		</a>
 		<form class="navbar-form navbar-right" role="search"
 			name="searchproduct" action="searchproduct" method="POST">

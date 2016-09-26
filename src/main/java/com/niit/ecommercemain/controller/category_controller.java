@@ -43,6 +43,7 @@ public class category_controller {
 		ModelAndView mv = new ModelAndView("category");
 		List<brand> showbrand=bs.allbrand();
 		mv.addObject("brand",showbrand);
+		
 		return mv;
 	}
 	
@@ -65,6 +66,8 @@ public class category_controller {
 			
 			List<category> showall = cs.allcategory();
 			mv.addObject("category", showall);
+			List<brand> showbrand=bs.allbrand();
+			mv.addObject("brand",showbrand);
 			mv.addObject("save_category",new category());
 		}
 		catch(Exception ex){

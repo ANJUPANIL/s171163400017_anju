@@ -2,6 +2,7 @@ package com.niit.ecommercemain.model;
 
 import java.io.Serializable;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -65,6 +66,10 @@ public class brand  implements Serializable{
     @JoinColumn(name="brand_id")
     private Set<product> product;
 
-	
+    public brand() {
+
+		this.brand_id = "B" + UUID.randomUUID().toString().substring(30).toUpperCase();
+		
+	}
 
 }

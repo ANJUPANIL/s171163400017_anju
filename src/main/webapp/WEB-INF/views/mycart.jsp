@@ -24,9 +24,8 @@
 	<div class="container">
 
 		<!-- Logo text or image -->
-		<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-			&nbsp;<img src="resources/images/logo.jpg" alt="Electech" width="150"
-			height="100" />
+		<a class="logo" href="index.jsp"> <img src="resources/images/logo.jpg" alt="Electech" width="150"
+			height="100" style="margin-left:20px"/>
 		</a>
 		<form class="navbar-form navbar-right" role="search"
 			name="searchproduct" action="searchproduct" method="POST">
@@ -101,12 +100,13 @@
 	</div>
 	</nav>
 
-<h3 style="color:#0000CD">CART</h3>		
+<h3 style="color:#0000CD;margin-left:40px">CART</h3>		
 <div class="container">
 
 	<c:choose>
 	<c:when test="${empty emptymsg==true}">
-	<form method="POST" action="updatecart">
+	
+	
     	<div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -123,6 +123,7 @@
                 </thead>
                 <tbody id="tbody">
                 <c:forEach items="${cartlist}" var="cartlist">
+                <form method="POST" action="updatecart">
                     <tr>
                         <td class="col-sm-1 col-md-1" style="text-align: left">
                         ${cartlist.product.name}
@@ -136,7 +137,7 @@
                         <td class="col-sm-1 col-md-1">
                        
                         
-                        <input  type="text" class="form-control"  name="quantity" value="${cartlist.quantity}" style="text-align: right" />
+                        <input  type="text" class="form-control" id="quantity" name="quantity" value="${cartlist.quantity}" style="text-align: right" />
                         <input type="text" name="id" value="${cartlist.id}"  hidden="true"/>
                        	<input type="text" name="pid" value="${cartlist.product.id}" hidden="true" />
                         </td>
@@ -155,12 +156,13 @@
                         <td>   </td>
                         <td><h5> </h5></td>
                         
-                         <td class="col-sm-1 col-md-1"><button type="submit" class="btn btn-primary">Update Cart</button>
-                       		
-                            
+                         <td class="col-sm-1 col-md-1">
+                         	  <button type="submit" class="btn btn-primary">Update Cart</button>
+                         	<!-- <a href="updatecart?id=${cartlist.id}&pid=${cartlist.product.id}&quantity=<%= request.getParameter("quantity") %>" class="btn btn-primary" role="button" ><span class="glyphicon glyphicon-remove"></span> Update cart</a>-->
                         </td>
                         
                     </tr>
+                    </form>
                     </c:forEach>
                     <tr>
                         <td>   </td>
@@ -213,7 +215,7 @@
             </table>
         </div>
     </div>
-    </form>
+    
     </c:when>
 					<c:otherwise>
 						<hr>
@@ -226,7 +228,7 @@
 						<a href="userhome"  class="btn btn-warning" role="button" ><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
 						</div><hr>
 					</c:otherwise>
-				</c:choose>
+		</c:choose>
 </div>
 
 </body>

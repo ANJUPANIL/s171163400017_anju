@@ -168,6 +168,7 @@ public class userdetails_controller {
 		@RequestMapping("index")
 		public ModelAndView homeindex(HttpSession session){
 			String loggedinuser = (String)session.getAttribute("userid");
+			System.out.println("Index controller :" + loggedinuser);
 			ModelAndView mv = new ModelAndView("index");
 			List<cart> cartlist = c.getallcart(loggedinuser);
 			mv.addObject("cartsize",cartlist.size());

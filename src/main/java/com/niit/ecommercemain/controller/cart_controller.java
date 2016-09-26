@@ -132,7 +132,8 @@ public class cart_controller {
 		if(cartlist.size()==0)
 		{
 			System.out.println("cart controller");
-			mv.addObject("emptymsg", "No products were found matching your selection.");
+			mv.addObject("emptymsg", "Your Shopping cart is empty.");
+			mv.addObject("cartsize",cartlist.size());
 		}
 		else{
 
@@ -202,6 +203,8 @@ public class cart_controller {
 		System.out.println(cart.getTotal());
 		System.out.println(cart.getUser().getUser_id());
 		
+		
+		//cs.updatebyid(id);
 		cs.updatecart(cart);
 		System.out.println("Quantity" +cart.getQuantity());
 		List<cart> cartlist = cs.getallcart(loggedinuser);

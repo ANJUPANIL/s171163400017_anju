@@ -44,6 +44,8 @@
     margin-left: 10px;
 }
  
+ 
+ 
   </style>
 
     <script type="text/javascript">
@@ -78,9 +80,8 @@
 	<div class="container">
 
 		<!-- Logo text or image -->
-		<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-			&nbsp;<img src="resources/images/logo.jpg" alt="Electech" width="150"
-			height="100" />
+		<a class="logo" href="index"> <img src="resources/images/logo.jpg" alt="Electech" width="150"
+			height="100" style="margin-left:20px" />
 		</a>
 		<form class="navbar-form navbar-right" role="search"
 			name="searchproduct" action="searchproduct" method="POST">
@@ -135,7 +136,7 @@
 			</sec:authorize>-->
 			
 			<c:choose>
-			<c:when test="${isadmin==false and not empty userid }">
+			<c:when test="${not empty userid }">
 				<div class="pull-right nav hidden-xs">
 					<i class="fa fa-angle-left" style="color: #0000CD"><span
 						class="glyphicon glyphicon-user"> </span>Welcome <%=session.getAttribute("welcomemsg")%>
@@ -221,11 +222,13 @@
 		
 <!-- slider part -->
 	
-	<div id="carousel-example" class="carousel slide" data-ride="carousel">
+	<div id="carousel-example" class="carousel slide" data-ride="carousel" style="width:830; background-color:white; height:450px; overflow:scroll; overflow-x: Hidden;overflow-y: hidden;">
 	<ol class="carousel-indicators">
 			<li data-target="#carousel-example" data-slide-to="0" class="active"></li>
 			<li data-target="#carousel-example" data-slide-to="1"></li>
 			<li data-target="#carousel-example" data-slide-to="2"></li>
+			<li data-target="#carousel-example" data-slide-to="3"></li>
+			<li data-target="#carousel-example" data-slide-to="4"></li>
 		</ol>
 
 		<div class="carousel-inner">
@@ -234,7 +237,7 @@
 					src="resources/images/banner02.jpg"
 						width="1600" height="600">
 				<div class="carousel-caption">
-					<button type="button" class="btn btn-primary">SHOP NOW!</button>
+					
 					<p>
 						<font face="Monotype Corsiva" size="4px">Enjoy the fabulous
 							experience while shopping......!</font>
@@ -300,7 +303,7 @@
 		</a>
 	</div>
 	<br>
-	<br>
+	
 	
 <!-- Panel 1 -->
 
@@ -378,7 +381,7 @@
                 <div class="item active">
                     <div class="row">
                         <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="http://dotstrap.com/"> <img src="resources/images/mobile.jpg" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/mobile.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">
@@ -391,7 +394,7 @@
                 <div class="item ">
                     <div class="row">
                         <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="http://dotstrap.com/"> <img src="resources/images/laptop.jpg" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/laptop.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">
@@ -404,7 +407,7 @@
                 <div class="item ">
                     <div class="row">
                       <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="http://dotstrap.com/"> <img src="resources/images/tablet.jpg" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/tablet.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">
@@ -417,7 +420,7 @@
                 <div class="item ">
                     <div class="row">
                       <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="http://dotstrap.com/"> <img src="resources/images/desktop.jpg" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/desktop.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">
@@ -458,7 +461,7 @@
                 <div class="item active">
                     <div class="row">
                         <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="http://dotstrap.com/"> <img src="resources/images/car.jpg" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/car.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">
@@ -471,7 +474,7 @@
                 <div class="item ">
                     <div class="row">
                         <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="http://dotstrap.com/"> <img src="resources/images/security.jpg" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/security.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">
@@ -484,7 +487,7 @@
                 <div class="item ">
                     <div class="row">
                       <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="http://dotstrap.com/"> <img src="resources/images/camera.png" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/camera.png" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">
@@ -538,31 +541,27 @@
                   <div class="menu-main-menu-container">
                     <ul class="nav nav-footer" id="menu-main-menu-1">
                       <li class="active"><a href="index">Home</a></li>
-                      
+                      <li><a href="userhome">Shop</a></li>
                       <li><a href="about">About</a></li>
-                      <li><a href="blog">Blog</a></li>
+                      
                       
                       <li><a href="contactus">Contacts</a></li>
                     </ul>
                   </div>
                 </div>
-                
-                <div class="col-lg-3  col-sm-6">
-                  <h4 class="title"><span>Get the latest news delivered daily!</span></h4>
-                  <p>Give us your email and you will be daily updated with the latest events, in detail!</p>
-                  <div class="clear"> </div>
-                  <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-md" placeholder="Email Address" required="true">
-				</div>
-                  <a class="btn btn-primary btn-sm" href="#">Subcribe</a> </div>
-                  
-              </div>
+                <div align ="center">
+                <a  href="index"> <img src="resources/images/logo.jpg"  width="150"
+			height="100" />
+		</a><br/>
+               <p style="color: #0000CD"> Comfort is a very important thing nowadays because it is a condition of satisfaction and
+               <br/> calmness. It is clear that our way of life must be as comfortable as possible.
+              </p></div>   
             </div>
           </div>
         </div>
       </div>
    
-  
+ 
   <!-- Copyright -->
   <div class="copyright">
     <div class="container">
@@ -572,5 +571,7 @@
       </div>
     </div>
   </div>
+   </div>
+  </footer>
   <!-- /Copyright -->
 </html>

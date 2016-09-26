@@ -34,9 +34,19 @@ public class order_controller {
 		System.out.println("In add cart controller");
 		String loggedinuser = (String)session.getAttribute("userid");
 		List<orderdetails>orderlist=order.getallorderdetails(loggedinuser);
-		mv.addObject("orderlist",orderlist);
-		
 		List<cart> cartlist = cart.getallcart(loggedinuser);
+		
+		if(orderlist.size()==0)
+		{
+			System.out.println("cart controller");
+			mv.addObject("emptymsg", "Your order list is empty.");
+			
+		}
+		else{
+			mv.addObject("orderlist",orderlist);
+		}
+		
+		
 		mv.addObject("cartsize",cartlist.size());
 		return mv;
 	}

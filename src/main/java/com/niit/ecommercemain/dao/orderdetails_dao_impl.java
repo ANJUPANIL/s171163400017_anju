@@ -19,7 +19,7 @@ public class orderdetails_dao_impl implements orderdetails_dao
 	private SessionFactory sessionFactory;
 	@Override
 	public void saveorderdetails(orderdetails cat) {
-		
+		cat.setStatus("d");
 		sessionFactory.getCurrentSession().save(cat);
 		
 	}

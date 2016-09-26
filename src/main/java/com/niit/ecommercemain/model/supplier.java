@@ -1,6 +1,7 @@
 package com.niit.ecommercemain.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -124,7 +125,11 @@ public class supplier implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public supplier() {
 
+		this.id = "S" + UUID.randomUUID().toString().substring(30).toUpperCase();
+		
+	}
 	
 
 }

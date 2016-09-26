@@ -66,8 +66,8 @@
 		<div class="container">
 			
 			<!-- Logo text or image -->
-			<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<img 
-					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" />
+			<a class="logo" href="index.jsp"> <img 
+					src="resources/images/logo.jpg" alt="Electech" width="150" height="100" style="margin-left:20px" />
 			</a>
 			<form class="navbar-form navbar-right" role="search" name="searchproduct" action="searchproduct" method="POST">
 				<div class="form-group">
@@ -160,7 +160,7 @@
     		  wishes and make our life more pleasant. We must admit that our way of life depends on quality of 
     		  different goods of popular brands.  You know, we have many devoted customers all over the world, and this fact proves that we sell only quality commodities. 
     		  Recipe of our success is a fair price and premium quality.We understand that it is very complicated to amaze present clients, they are so whimsical, but our products are very flexible and reliable.</p>
-  			<img src="resources/images/about.png" ><br><br>
+  			<center><img src="resources/images/about.png"  ></center><br><br>
   			<p align="justify">
   			Here you can find something more than just home electronics; you can find real comfort and satisfaction here! 
   			Our goods are the combination of perfect design and an ideal functionality. We have a tremendous variety of different models. 

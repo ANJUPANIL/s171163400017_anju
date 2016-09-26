@@ -27,6 +27,7 @@
     height: 241px;
     border: none;
     overflow: hidden;
+    
 }
 .panel.panel-card .panel-heading {
     position: relative;
@@ -119,8 +120,8 @@
 		<div class="container">
 			
 			<!-- Logo text or image -->
-			<a class="logo" href="/">&nbsp;&nbsp; &nbsp;<img 
-					src="resources/images/logo.jpg" width="150" height="100" />
+			<a class="logo" href="/"><img 
+					src="resources/images/logo.jpg" width="150" height="100" style="margin-left:20px"/>
 			</a>
 			<div class="pull-right nav hidden-xs">
 				<i class="fa fa-angle-left" style="color:#0000CD"><span class="glyphicon glyphicon-user"></span>Welcome Admin</i>&nbsp; &nbsp;
@@ -281,6 +282,7 @@
 	    </div>
     </div>
 </section>
-	
+
+<br><br>
 </body>
 </html>

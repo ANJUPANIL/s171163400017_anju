@@ -57,8 +57,8 @@
 		<div class="container">
 			
 			<!-- Logo text or image -->
-			<a class="logo" href="/">&nbsp;&nbsp; &nbsp;<img 
-					src="resources/images/logo.jpg" width="150" height="100" />
+			<a class="logo" href="/"><img 
+					src="resources/images/logo.jpg" width="150" height="100" style="margin-left:20px" />
 			</a>
 			<div class="pull-right nav hidden-xs">
 				<i class="fa fa-angle-left" style="color:#0000CD">
@@ -84,10 +84,10 @@
 <form:form method="POST" commandName="save_category"
 		action="${pageContext.request.contextPath}/savecategory">
 			<div align="center" class="table-responsive">
-			<h2><b>Create New category</b></h2><br>
+			<h2><b>Create New Category</b></h2><br>
    				<table style="width: 40%" >
    					
-    				<tr class="form-group">
+    				<!--  <tr class="form-group">
 					<td style="width: 25%">
 						<form:label path="id">Category ID:</form:label>
 					</td>
@@ -96,7 +96,7 @@
 						<form:errors path="id" cssClass="error" />
 					</td>
 				
-				</tr>
+				</tr>-->
 				
 				
 				<tr class="form-group">

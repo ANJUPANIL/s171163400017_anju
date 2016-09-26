@@ -189,9 +189,8 @@ hr{
 	<div class="container">
 
 		<!-- Logo text or image -->
-		<a class="logo" href="index.jsp"> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-			&nbsp;<img src="resources/images/logo.jpg" alt="Electech" width="150"
-			height="100" />
+		<a class="logo" href="index.jsp"> <img src="resources/images/logo.jpg" alt="Electech" width="150"
+			height="100" style="margin-left:20px" />
 		</a>
 		<form class="navbar-form navbar-right" role="search"
 			name="searchproduct" action="searchproduct" method="POST">
@@ -277,8 +276,8 @@ hr{
       <b>Order Id : </b>${details.order_no}
     </div>
     <div class="col-sm-4">
-      <b>Order Date :</b><%= new java.util.Date().getDate()%> - <%= new java.util.Date().getMonth()%> - <%= new java.util.Date().getYear()%>
-    </div>
+        <b>Order Date :</b><%= new java.util.Date()%>
+   </div>
   </div>
 </div>
 	<!-- panel preview -->
