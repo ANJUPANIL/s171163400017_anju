@@ -189,26 +189,27 @@
 						<br>
 
 
-						<div id="products" class="row list-group">
+						<div id="products" class="row list-group" style="width:1200px;height:300px">
 
 							<c:forEach items="${product}" var="product">
 
 								<div class="item  col-md-4">
 									<div class="thumbnail">
-										<br> <img class="group list-group-image"
+										<br> <img class="group list-group-image" style="width:200px;height:300px"
 											src="${product.product_image}" alt="" /><br>
 										<div class="caption">
 											<h4 class="group inner list-group-item-heading">
 												${product.name}</h4>
 											<p style="color: #7f8496;">
 												<b>Category :</b> ${product.categoryobj.name}&nbsp;&nbsp; <i
-													style="color: red">${product.product_type} </i>
+													style="color: red">${product.product_type} </i>&nbsp;&nbsp;<i style="background-color:yellow">${product.discount} %off</i>
 											</p>
-											<p class="group inner list-group-item-text"><b style="color: #7f8496;">Product
-												description... </b>${product.des}.</p>
+											<!--  <p class="group inner list-group-item-text"><b style="color: #7f8496;">Product
+												description... </b>${product.des}.</p>-->
 											<div class="row">
 												<div class="col-xs-12 col-md-6">
-													<p class="lead">${product.price}/-</p>
+													<p class="lead">${product.price}/-   
+													</p>
 												</div>
 												<div class="col-xs-12 col-md-6">
 													<a class="btn btn-success"

@@ -104,7 +104,7 @@
 						<form:label path="name">Category Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" required="true"/><br /> 
+						<form:input path="name" size="40" class="form-control" required="true" autofocus="true"/><br /> 
 						<form:errors path="name" cssClass="error" />
 					</td>
 				</tr>

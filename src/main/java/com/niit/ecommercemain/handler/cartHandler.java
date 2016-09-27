@@ -68,7 +68,8 @@ public class cartHandler {
 
 	public String validateDetails(orderdetails details,payment pay,MessageContext messageContext){
 		String status = "success";
-		
+		messageContext.addMessage(new MessageBuilder().error().source(
+				"msg").defaultText("Please enter required data!!").build());
 		
 		if(details.getBilling_address().isEmpty()){
 			messageContext.addMessage(new MessageBuilder().error().source(

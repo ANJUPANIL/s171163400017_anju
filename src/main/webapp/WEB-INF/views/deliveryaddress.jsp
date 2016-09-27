@@ -189,12 +189,20 @@
 
 
 		</div>
+		<c:forEach
+								items="${flowRequestContext.messageContext.getMessagesBySource('msg')}"
+								var="err">
+								<div style="color: #FF0000" size="5px">
+									<span>${err.text}</span>
+								</div>
+							</c:forEach>
 		<input class="btn btn-warning pull-right" name="_eventId_submit"
 			type="submit" value="Deliver to this address" /> <br />
 		<br /> <br />
 		<br />
 	
 	</div>
+	
 	</form:form>
 
 </body>

@@ -183,8 +183,28 @@ hr{
 
     
 </style>
+<script type="text/javascript">
+
+function fun()
+{
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+
+var yyyy = today.getFullYear();
+if(dd<10){
+    dd='0'+dd
+} 
+if(mm<10){
+    mm='0'+mm
+} 
+var today = dd+'/'+mm+'/'+yyyy;
+document.getElementById("DATE").value = today;
+}
+</script>
+
 </head>
-<body>
+<body onload="fun()">
 	<header id="topNav" class="topHead"> <!-- remove class="topHead" if no topHead used! -->
 	<div class="container">
 
@@ -276,7 +296,7 @@ hr{
       <b>Order Id : </b>${details.order_no}
     </div>
     <div class="col-sm-4">
-        <b>Order Date :</b><%= new java.util.Date()%>
+        <b>Order Date : </b><input name="order_date" id="DATE"  style="background-color:white">
    </div>
   </div>
 </div>
@@ -354,7 +374,7 @@ hr{
 
 			</div>
 
-<input type="text" value=<%=new java.util.Date()%> name="order_date" hidden="true">
+
 
 
 

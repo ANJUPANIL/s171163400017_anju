@@ -314,13 +314,13 @@
     <h3 class="panel-title"><center><font color="blue"><a href="<c:url value='/producttype?type=New' />" >NEW ARRIVALS</a></font></center></h3>
   </div>
   <div class="panel-body"><div class="col-md-6">
-    <img src="resources/images/newproduct1.jpg" width="150" height="125"></div>
-   <div class="col-md-4"> <h5><font color="blue">Desktop</font></h5>
-    <p>Twisted Veins Three 3 Pack of 3-ft High Speed</p></div>
+    <img src="resources/images/car.jpg" width="150" height="125"></div>
+   <div class="col-md-4"> <h5><font color="blue">Car Accessories</font></h5>
+    <p>iOttieHLCRIO132 Touch MountCharger </p></div>
     <div><hr width=100% align=left></div>
-  <br><div class="col-md-6"><img src="resources/images/newproduct2.jpg" width="150" height="125"></div>
+  <br><div class="col-md-6"><img src="resources/images/camera.jpg" width="150" height="125"></div>
   <div class="col-md-4"> <h5><font color="blue">Cameras</font></h5>
-    <p>TaoTronics Car HD Dashboard Camera </p></div>
+    <p>Canon EOS 700D Digital SLR Camera</p></div>
   </div>
 </div></div>
 
@@ -334,7 +334,7 @@
     <p>BOSS Audio BV9986BI In Dash</p></div>
     <div><hr width=100% align=left></div>
   <br><div class="col-md-6"><img src="resources/images/onsale2.jpg" width="150" height="125"></div>
-  <div class="col-md-4"> <h5><font color="blue">Desktop</font></h5>
+  <div class="col-md-4"> <h5><font color="blue">Desktops</font></h5>
     <p>Logitech Wireless Illuminated Keyboard</p></div>
     
   </div>
@@ -345,11 +345,11 @@
   </div>
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/toprated1.png" width="150" height="125"></div>
-   <div class="col-md-4"> <h5><font color="blue">Laptop</font></h5>
+   <div class="col-md-4"> <h5><font color="blue">Laptops</font></h5>
     <p>MacBook Air</p></div>
     <div><hr width=100% align=left></div>
   <br><div class="col-md-6"><img src="resources/images/toprated2.jpg" width="150" height="125"></div>
-  <div class="col-md-4"> <h5><font color="blue">Tablet</font></h5>
+  <div class="col-md-4"> <h5><font color="blue">Tablets</font></h5>
     <p>iPad Air </p></div>
     
   </div>
@@ -487,7 +487,7 @@
                 <div class="item ">
                     <div class="row">
                       <div class="col-xs-6 col-sm-5 col-md-6">
-                            <a href="#"> <img src="resources/images/camera.png" width="150" height="150" class="thumbnail"
+                            <a href="#"> <img src="resources/images/camera.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" /></a>
                         </div>
                         <div class="col-xs-6 col-sm-5 col-md-6">

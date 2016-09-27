@@ -103,26 +103,27 @@ public class payment implements Serializable {
 		return serialVersionUID;
 	}
 	@Column
-	
+	@NotEmpty(message="Please enter valid card number")
 	private String cardNumber;
 	
 	@Column
-	
+	@NotEmpty(message="Please select valid card expiry month")
 	private String expiryMonth;
 	
 	@Column
+	@NotEmpty(message="Please select expiry year")
 		private String expiryYear;
 	
 	@Column
-	
+	@NotEmpty(message="Please enter card CVNumber")
 	private String cvNumber;
 	
 	@Column
-	
+	@NotEmpty(message="Please enter name on card")
 	private String nameOnCard;
 	
 	@Column
-	
+	@NotEmpty(message="Please select valid card type")
 	private String cardtype;
 	
 	public String getCardtype() {

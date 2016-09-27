@@ -125,13 +125,12 @@
 			<div class="col-md-9 well admin-content">
 
 				<section id="plans">
-				<div class="container">
-					<div class="row">
+				
 						<c:choose>
 							<c:when test="${empty emptymsg==true}">
 								<c:forEach items="${product}" var="product">
 									<!-- item -->
-									<div class="col-md-4 text-center">
+									<div class="col-md-5 text-center" style="width:275px;height:500px">
 										<div class="panel panel-warning panel-pricing">
 											<div class="panel-heading">
 												<i class="fa fa-desktop"></i> <a
@@ -151,17 +150,17 @@
 											<ul class="list-group text-center">
 												<li class="list-group-item"><b>Brand : </b><i
 													class="fa fa-check"></i>${product.brands.brand_name}</li>
-												<li class="list-group-item"><b>Description : </b><i
-													class="fa fa-check"></i> ${product.des}</li>
+												<!--  <li class="list-group-item"><b>Description : </b><i
+													class="fa fa-check"></i> ${product.des}</li>-->
 												<li class="list-group-item"><b>Price : </b><i
-													class="fa fa-check"></i> ${product.price}</li>
-												<li class="list-group-item"><b>Discount : </b><i
-													class="fa fa-check"></i> ${product.discount}</li>
+													class="fa fa-check"></i> ${product.price}&nbsp;&nbsp;&nbsp;<i style="background-color:yellow">${product.discount} %off</i></li>
+												
 											</ul>
 
 											<div class="panel-footer">
 												<a href="<c:url value='/addcart?id=${product.id}' />"
-													class="btn btn-lg btn-block btn-primary">Add to Cart</a>
+													class="btn btn-block btn-primary"><span
+					class="glyphicon glyphicon-shopping-cart"></span>  Add to Cart</a>
 											</div>
 										</div>
 									</div>
@@ -170,18 +169,17 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								
+
 								<div class="alert alert-info col-md-8 ">
 
 									<strong>Info!</strong> ${emptymsg}
 								</div>
-								
+
 
 
 							</c:otherwise>
 						</c:choose>
-					</div>
-				</div>
+					
 				</section>
 			</div>
 			<h4>

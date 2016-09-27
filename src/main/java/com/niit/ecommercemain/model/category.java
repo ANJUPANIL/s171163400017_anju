@@ -32,6 +32,7 @@ public class category implements Serializable {
 	private String name;
 	
 	@Column(name="category_des")
+	@NotEmpty(message="Please enter category description")
 	private String des;
 	
 	@Column(name="status")

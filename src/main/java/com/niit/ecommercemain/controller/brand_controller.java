@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,24 +52,34 @@ public class brand_controller {
 	}
 	
 	@RequestMapping(value = "/savebrand", method = RequestMethod.POST)
-	public ModelAndView savebrand(@Valid @ModelAttribute("save_brand") brand b, Model model) {
+	public ModelAndView savebrand(@Valid @ModelAttribute("save_brand") brand b, BindingResult result,Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
 		System.out.println("Brand ID :" + b.getBrand_id());
 		System.out.println("Brand Name :" + b.getBrand_name());
 		mv = new ModelAndView("brand");
+		
 		try
 		{
+			if (result.hasErrors())
+			{
+				return mv;
+			}else
+			{
 			bs.savebrand(b);
 			
 			List<brand> showall = bs.allbrand();
 			mv.addObject("brand", showall);
 			mv.addObject("save_brand",new brand());
+			return mv;
+			}
 		}
 		catch(Exception ex){
 			model.addAttribute("error", ex.getMessage());
+			return mv;
 		}
-		return mv;
+		
+		
 		
 	}
 	@RequestMapping(value = "/editbrand",method=RequestMethod.GET)

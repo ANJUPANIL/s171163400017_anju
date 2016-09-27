@@ -68,6 +68,7 @@
 				<a href="logout"><i class="fa fa-angle-left"><span
 						class="glyphicon glyphicon-off"></span>Logout</i></a>
 		</div>
+		</div>
 	</header>
 	<nav class="navbar navbar-inverse navbar-fixed">
 			<div class="container-fluid">
@@ -88,17 +89,16 @@
 			<h2><b>Create New Brand</b></h2><br>
    				<table style="width: 40%" >
    					
-				<div class="form-group">
-				<tr>
+				<tr class="form-group">
 					<td style="width: 25%">
 						<form:label path="brand_name">Brand Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="brand_name" size="40" class="form-control" required="true" /><br /> 
+						<form:input path="brand_name" size="40" class="form-control" required="true" autofocus="true"/><br /> 
 						<form:errors path="brand_name" cssClass="error" />
 					</td>
 				</tr>
-				</div>
+				
 				<tr>
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td colspan="2">

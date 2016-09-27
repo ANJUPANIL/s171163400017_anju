@@ -2,7 +2,8 @@
     pageEncoding="ISO-8859-1"%>
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
-    
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@ page import="java.util.Date,java.text.SimpleDateFormat,java.text.ParseException"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,11 +57,11 @@
           return false;
       });
   });
-
+    
     </script>
 
 </head>
-<body>
+<body >
 <header id="topNav" class="topHead">
 		<!-- remove class="topHead" if no topHead used! -->
 		<div class="container">
@@ -150,6 +151,9 @@
 				</ul>
 			</div>
 		</nav>
+		
+
+
 		<h3 style="color:#0000CD">&nbsp;&nbsp;ABOUT</h3><br>
 		<div class="panel panel-info">
   		<div class="panel-body">

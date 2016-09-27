@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,12 +32,15 @@ public class product implements Serializable {
 	private String id;
 	
 	@Column(name="product_name")
+	@NotEmpty(message="Please enter product name")
 	private String name;
 	
 	@Column(name="product_des")
+	@NotEmpty(message="Please enter product description")
 	private String des;
 	
 	@Column(name="product_type")
+	@NotEmpty(message="Please select product type")
 	private String product_type;
 	
 	@OneToOne

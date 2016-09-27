@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -31,15 +32,19 @@ public class orderdetails implements Serializable {
 	private String oid;
 	
 	@Column
+	@NotEmpty(message="Please enter a valid order no")
 	private String order_no;
 	
 	@Column
+	@NotEmpty(message="Please enter your billing address")
 	private String billing_address;
 	
 	@Column
+	@NotEmpty(message="Please enter ayour shpping address")
 	private String shipping_address;
 	
 	@Column
+	@NotEmpty(message="Please enter a valid orderdate")
 	private String order_date;
 	
 	@Column

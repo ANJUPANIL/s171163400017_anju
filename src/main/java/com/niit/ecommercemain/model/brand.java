@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +29,7 @@ public class brand  implements Serializable{
 	private String brand_id;
 	
 	@Column(name="brand_name")
-	@NotEmpty(message="Pease enter a brand name")
+	@NotBlank(message="Please enter a brand name")
 	private String brand_name;
 	
 	@Column(name="status")

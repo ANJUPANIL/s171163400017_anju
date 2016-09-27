@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,27 +54,37 @@ public class category_controller {
 	}
 	
 	@RequestMapping(value = "/savecategory", method = RequestMethod.POST)
-	public ModelAndView savecategory(@Valid @ModelAttribute("save_category") category c, Model model) {
+	public ModelAndView savecategory(@Valid @ModelAttribute("save_category") category c,BindingResult result, Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
 		System.out.println("category ID :" + c.getId());
 		System.out.println("category Name :" + c.getName());
 		mv = new ModelAndView("category");
-		
+		List<brand> showbrand=bs.allbrand();
+		mv.addObject("brand",showbrand);
 		try
 		{
+			if (result.hasErrors())
+			{
+				
+				return mv;
+			}else
+			{
+		
 			cs.savecategory(c);
 			
 			List<category> showall = cs.allcategory();
 			mv.addObject("category", showall);
-			List<brand> showbrand=bs.allbrand();
-			mv.addObject("brand",showbrand);
+			
 			mv.addObject("save_category",new category());
+			return mv;
+			}
 		}
 		catch(Exception ex){
 			model.addAttribute("error", ex.getMessage());
+			return mv;
 		}
-		return mv;
+		
 		
 	}
 	@RequestMapping(value = "/editcategory",method=RequestMethod.GET)
@@ -104,6 +115,9 @@ public class category_controller {
 		mv = new ModelAndView("category");
 		List<category> showcategory = cs.allcategory();
 		mv.addObject("category", showcategory);
+		List<brand> showbrand=bs.allbrand();
+		mv.addObject("brand",showbrand);
+		
 		return mv;
 	}
 	

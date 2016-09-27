@@ -149,15 +149,14 @@ function onchangecontroller($scope, $http) {
 					<td style="width: 25%"><form:label path="name">Name:</form:label>
 					</td>
 					<td><form:input path="name" size="40" class="form-control"
-							required="true" /><br /> <form:errors path="name"
+							required="true" autofocus="true" /><br /> <form:errors path="name"
 							cssClass="error" /></td>
 				</tr>
 
 				<tr class="form-group">
 					<td style="width: 25%"><form:label path="des">Description:</form:label>
 					</td>
-					<td><form:input path="des" size="40" class="form-control"
-							required="true" /><br /> <form:errors path="des"
+					<td><form:textarea path="des" class="form-control" rows="5" cols="30" required="true"/><br /> <form:errors path="des"
 							cssClass="error" /></td>
 				</tr>
 
