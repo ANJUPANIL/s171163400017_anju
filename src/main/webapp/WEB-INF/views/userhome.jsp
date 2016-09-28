@@ -235,14 +235,14 @@ $(function(){
                     
                     <img src="resources/images/desktop.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" />
-                    <h4>Desktop</h4>
+                    <h4>Desktops</h4>
                 </div>
                 <div class="panel-footer"><c:choose>
 								<c:when test="${empty userid or loggedout==true}">
-									<a href="<c:url value='/productgallery?name=Desktop' />" style="color:#0000CD">SHOP NOW!!</a>
+									<a href="<c:url value='/productgallery?name=Desktops' />" style="color:#0000CD">SHOP NOW!!</a>
 								</c:when>
 								<c:when test="${not empty userid }">
-									<a href="<c:url value='/shopproduct?name=Desktop' />" style="color:#0000CD">SHOP NOW!!</a>
+									<a href="<c:url value='/shopproduct?name=Desktops' />" style="color:#0000CD">SHOP NOW!!</a>
 								</c:when>
 							</c:choose></div>
             </div>

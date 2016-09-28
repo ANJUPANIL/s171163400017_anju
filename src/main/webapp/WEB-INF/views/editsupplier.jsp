@@ -100,19 +100,19 @@
 				
 				<tr class="form-group">
 							<td><form:label path="pin">Pincode:</form:label></td>
-							<td><form:input path="pin" class="form-control" value="${sdata.pin}" required="true" /><br /> 
+							<td><form:input path="pin" class="form-control" value="${sdata.pin}" required="true" pattern="[0-9]{6}" /><br /> 
 							<form:errors path="pin" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="email">Email ID:</form:label></td>
-							<td><form:input path="email" class="form-control" value="${sdata.email}" required="true" /><br /> 
+							<td><form:input path="email" class="form-control" value="${sdata.email}" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br /> 
 							<form:errors path="email" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="contact">Contact :</form:label></td>
-							<td><form:input path="contact" class="form-control" value="${sdata.contact}" required="true" /><br /> 
+							<td><form:input path="contact" class="form-control" value="${sdata.contact}" required="true" pattern="[0-9]{10}"/><br /> 
 							<form:errors path="contact" cssClass="error" /></td>
 				</tr>
 				

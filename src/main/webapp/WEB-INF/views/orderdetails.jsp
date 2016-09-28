@@ -453,7 +453,7 @@ document.getElementById("DATE").value = today;
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Credit Card Number:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="cardnumber" title="Enter minimum 13 valid card number"/></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="cardnumber" title="Enter minimum 13 valid card number" pattern="[0-9]{13,16}"/></div>
                             	
                             </div>
                             <c:forEach
@@ -476,7 +476,7 @@ document.getElementById("DATE").value = today;
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Card CVV:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" title="Enter 3 digit valid  Cvvnumber" /></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" title="Enter 3 digit valid  Cvvnumber" pattern="[0-9]{3}" /></div>
                             <c:forEach
 								items="${flowRequestContext.messageContext.getMessagesBySource('car_code')}"
 								var="err">

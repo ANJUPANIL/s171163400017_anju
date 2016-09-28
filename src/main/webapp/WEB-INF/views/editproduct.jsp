@@ -181,7 +181,7 @@ $(function($scope){   // document and jquery ready
 				
 				<tr class="form-group">
 							<td><form:label path="price">Price:</form:label></td>
-							<td><form:input path="price" class="form-control" value="${pdata.price}" required="true"/><br /> 
+							<td><form:input path="price" class="form-control" value="${pdata.price}" required="true" pattern="[0-9]{1,6}"/><br /> 
 							<form:errors path="price" cssClass="error" /></td>
 				</tr>
 				

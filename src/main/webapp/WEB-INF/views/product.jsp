@@ -208,7 +208,7 @@ function onchangecontroller($scope, $http) {
 				<tr class="form-group">
 					<td><form:label path="price">Price:</form:label></td>
 					<td><form:input path="price" class="form-control"
-							required="true" /><br /> <form:errors path="price"
+							required="true" pattern="[0-9]{1,6}" /><br /> <form:errors path="price"
 							cssClass="error" /></td>
 				</tr>
 
