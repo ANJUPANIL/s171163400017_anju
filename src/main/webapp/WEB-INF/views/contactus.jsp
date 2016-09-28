@@ -40,7 +40,7 @@
 			</a>
 			<form class="navbar-form navbar-right" role="search" name="searchproduct" action="searchproduct" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search" name="pname">
+					<input type="text" class="form-control" placeholder="Search" name="pname" required="true">
 				</div>
 				<button type="submit" class="btn btn-default" value="Search" >
 					<span class="glyphicon glyphicon-search"></span>
@@ -69,7 +69,7 @@
 						<div class="pull-right nav hidden-xs">
 								<a href="login"><i class="fa fa-angle-left"><span
 								class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
-				 				<a href="registration"><i class="fa fa-angle-right"><span
+				 				<a href="register" id="registration"><i class="fa fa-angle-right"><span
 									class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; 
 								<a href="login"><i class="fa fa-angle-right"><span
 									class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
@@ -162,9 +162,9 @@
 		You may drop us a line, give us a call or send an email, choose what suits you most.<br><br><br>
 		<p style="color:#7f8496;">
 		<b>Address:</b>The Company Name Inc. 9870 St Vincent Place, Glasgow, DC 45 Fr 45.<br>
-		<b>Telephone:</b> +1 800 603 6035<br>
+		<b>Telephone:</b> +1800-555-1234 <br>
 		<b>FAX:</b>+1 800 889 9898<br>
-		<b>E-mail:</b>mail@demolink.org<br>
+		<b>E-mail:</b>mail@domain.com<br>
     	</p>
   </div>
 </div>

@@ -216,7 +216,7 @@ document.getElementById("DATE").value = today;
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search"
-					name="pname">
+					name="pname" required="true">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>
@@ -453,15 +453,16 @@ document.getElementById("DATE").value = today;
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Credit Card Number:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="cardnumber"/></div>
-                            	<c:forEach
+                                <div class="col-md-12"><input type="text" class="form-control" name="cardnumber" title="Enter minimum 13 valid card number"/></div>
+                            	
+                            </div>
+                            <c:forEach
 								items="${flowRequestContext.messageContext.getMessagesBySource('cardnumber')}"
 								var="err">
 								<div>
 									<span>${err.text}</span>
 								</div>
 							</c:forEach>
-                            </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Name On Card:</strong></div>
                                 <div class="col-md-12"><input type="text" class="form-control" name="car_name" /></div>
@@ -475,7 +476,7 @@ document.getElementById("DATE").value = today;
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Card CVV:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_code"  /></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" title="Enter 3 digit valid  Cvvnumber" /></div>
                             <c:forEach
 								items="${flowRequestContext.messageContext.getMessagesBySource('car_code')}"
 								var="err">

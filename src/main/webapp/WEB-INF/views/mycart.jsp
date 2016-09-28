@@ -31,7 +31,7 @@
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search"
-					name="pname">
+					name="pname" required="true">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>
@@ -125,7 +125,7 @@
                 <c:forEach items="${cartlist}" var="cartlist">
                 <form method="POST" action="updatecart">
                     <tr>
-                        <td class="col-sm-1 col-md-1" style="text-align: left">
+                        <td class="col-sm-1 col-md-2" style="text-align: center">
                         ${cartlist.product.name}
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">

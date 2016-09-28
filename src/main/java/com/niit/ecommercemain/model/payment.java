@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -104,6 +105,7 @@ public class payment implements Serializable {
 	}
 	@Column
 	@NotEmpty(message="Please enter valid card number")
+	@Size(min=13,max=16,message = "Enter minimum 13 valid card number")
 	private String cardNumber;
 	
 	@Column
@@ -112,10 +114,11 @@ public class payment implements Serializable {
 	
 	@Column
 	@NotEmpty(message="Please select expiry year")
-		private String expiryYear;
+	private String expiryYear;
 	
 	@Column
 	@NotEmpty(message="Please enter card CVNumber")
+	@Size(min=3,max=3,message = "Enter 3 digit CVV number")
 	private String cvNumber;
 	
 	@Column

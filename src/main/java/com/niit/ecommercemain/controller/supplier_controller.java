@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,7 +46,7 @@ public class supplier_controller {
 	}
 	
 	@RequestMapping(value = "/savesupplier", method = RequestMethod.POST)
-	public ModelAndView savesupplier(@Valid @ModelAttribute("save_supplier") supplier s, Model model) {
+	public ModelAndView savesupplier(@Valid @ModelAttribute("save_supplier") supplier s,BindingResult result,Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
 		System.out.println("supplier ID :" + s.getId());
@@ -54,15 +55,25 @@ public class supplier_controller {
 		
 		try
 		{
+			if (result.hasErrors())
+			{
+				
+				return mv;
+			}else
+			{
+		
 			sup.savesupplier(s);
 			List<supplier> showall = sup.allsupplier();
 			mv.addObject("supplier", showall);
 			mv.addObject("save_supplier",new supplier());
+			return mv;
+			}
 		}
 		catch(Exception ex){
 			model.addAttribute("error", ex.getMessage());
+			return mv;
 		}
-		return mv;
+		
 		
 	}
 	@RequestMapping(value = "/editsupplier",method=RequestMethod.GET)
@@ -80,14 +91,29 @@ public class supplier_controller {
 	}
 
 	@RequestMapping(value = "/update_supplier", method = RequestMethod.POST)
-	public ModelAndView editsupplier(@Valid @ModelAttribute("edit_supplier") supplier c) {
-		ModelAndView mv;
+	public ModelAndView editsupplier(@Valid @ModelAttribute("edit_supplier") supplier c,BindingResult result,Model model) {
+		ModelAndView mv = new ModelAndView("supplier");;
+		try
+		{
+			if (result.hasErrors())
+			{
+				
+				return mv;
+			}else
+			{
 		sup.updatesupplier(c);
 		System.out.println("in editsupplier id:");
-		mv = new ModelAndView("supplier");
+		
 		List<supplier> showsupplier = sup.allsupplier();
 		mv.addObject("supplier", showsupplier);
 		return mv;
+			}
+		}
+		catch(Exception ex){
+			model.addAttribute("error", ex.getMessage());
+			return mv;
+		}
+		
 	}
 	
 	//Delete Operation

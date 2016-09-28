@@ -156,7 +156,7 @@ function onchangecontroller($scope, $http) {
 				<tr class="form-group">
 					<td style="width: 25%"><form:label path="des">Description:</form:label>
 					</td>
-					<td><form:textarea path="des" class="form-control" rows="5" cols="30" required="true"/><br /> <form:errors path="des"
+					<td><form:textarea path="des" class="form-control" rows="5" cols="30" /><br /> <form:errors path="des"
 							cssClass="error" /></td>
 				</tr>
 

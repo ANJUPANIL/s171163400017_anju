@@ -139,9 +139,7 @@ public class userdetails implements Serializable{
 	@NotEmpty(message = "Please enter your password.")
 	@Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
 	private String password;
-		
-	@OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="user_id")
-    private Set<orderdetails> order;
+	
+	
 	
 }

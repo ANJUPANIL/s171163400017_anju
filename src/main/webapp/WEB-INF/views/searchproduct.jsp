@@ -185,6 +185,18 @@
 		})
 
 	}(window.jQuery);
+	
+	$(document).ready(function(){
+
+        $(".tip-right").tooltip({placement : 'right'});
+
+    });
+    
+	 $(document).ready(function(){
+
+	        $(".tip-right").tooltip({placement : 'right'});
+
+	    });
 </script>
 </head>
 <body>
@@ -199,7 +211,8 @@
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search"
-					name="pname">
+					data-toggle="tooltip" data-placement="right" title="Search your required products"
+					name="pname" required="true">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>
@@ -228,7 +241,7 @@
 				<div class="pull-right nav hidden-xs">
 					<a href="login"><i class="fa fa-angle-left"><span
 							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
-					<a href="registration"><i class="fa fa-angle-right"><span
+					<a href="register" id="registration"><i class="fa fa-angle-right"><span
 							class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
 						href="login"><i class="fa fa-angle-right"><span
 							class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
@@ -333,7 +346,7 @@
 					<!--/span-->
 
 
-					<div class="col-md-4">
+					<div class="col-md-5">
 						<h3 style="color: #0000CD">
 							<b>${product[0].name}</b>
 						</h3>

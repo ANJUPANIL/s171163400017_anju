@@ -96,14 +96,27 @@ public class brand_controller {
 	}
 
 	@RequestMapping(value = "/update_brand", method = RequestMethod.POST)
-	public ModelAndView editbrand(@Valid @ModelAttribute("edit_brand") brand c) {
-		ModelAndView mv;
+	public ModelAndView editbrand(@Valid @ModelAttribute("edit_brand") brand c,BindingResult result,Model model) {
+		ModelAndView mv = new ModelAndView("brand");
+		try
+		{
+			if (result.hasErrors())
+			{
+				return mv;
+			}else
+			{
 		bs.updatebrand(c);
 		System.out.println("in editbrand id:");
-		mv = new ModelAndView("brand");
+		
 		List<brand> showbrand = bs.allbrand();
 		mv.addObject("brand", showbrand);
 		return mv;
+			}
+		}
+			catch(Exception ex){
+				model.addAttribute("error", ex.getMessage());
+				return mv;
+			}
 	}
 	
 	//Delete Operation

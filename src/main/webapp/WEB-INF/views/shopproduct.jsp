@@ -47,7 +47,7 @@
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search"
-					name="pname">
+					name="pname" required="true">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>

@@ -87,7 +87,7 @@
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search" data-toggle="tooltip" data-placement="right" title="Search your required products"
-					name="pname">
+					name="pname" required="true">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>
@@ -251,7 +251,7 @@
 					<h2>
 						<font color="black">iPhone 6s</font>
 					</h2>
-					<button type="button" class="btn btn-primary">SHOP NOW!</button>
+					<!--  <button type="button" class="btn btn-primary">SHOP NOW!</button>-->
 					<p>
 						<font face="Monotype Corsiva" size="4px">Enjoy the fabulous
 							experience while shopping......!</font>
@@ -286,7 +286,7 @@
 					src="resources/images/banner-01.jpg"
 					width="1600" height="600">
 				<div class="carousel-caption">
-					<button type="button" class="btn btn-primary">SHOP NOW!</button>
+					<!--  <button type="button" class="btn btn-primary">SHOP NOW!</button>-->
 					<p>
 						<font face="Monotype Corsiva" size="4px">Enjoy the fabulous
 							experience while shopping......!</font>
@@ -346,11 +346,11 @@
   <div class="panel-body"><div class="col-md-6">
     <img src="resources/images/toprated1.png" width="150" height="125"></div>
    <div class="col-md-4"> <h5><font color="blue">Laptops</font></h5>
-    <p>MacBook Air</p></div>
+    <p>Apple MacBookAir MJVE2HN/A</p></div>
     <div><hr width=100% align=left></div>
   <br><div class="col-md-6"><img src="resources/images/toprated2.jpg" width="150" height="125"></div>
   <div class="col-md-4"> <h5><font color="blue">Tablets</font></h5>
-    <p>iPad Air </p></div>
+    <p>Apple iPad Air4(White,16GB) </p></div>
     
   </div>
 </div></div></div><br>

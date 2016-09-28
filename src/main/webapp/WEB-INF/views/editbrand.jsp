@@ -75,7 +75,7 @@
 						<form:label path="brand_name">Brand Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="brand_name" size="40" class="form-control" value="${bdata.brand_name}"/><br /> 
+						<form:input path="brand_name" size="40" class="form-control" value="${bdata.brand_name}" required="true"/><br /> 
 						<form:errors path="brand_name" cssClass="error" />
 					</td>
 				</tr>

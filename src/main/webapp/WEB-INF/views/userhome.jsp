@@ -57,7 +57,7 @@ $(function(){
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search"
-					name="pname">
+					name="pname" required="true">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>
@@ -85,7 +85,7 @@ $(function(){
 				<div class="pull-right nav hidden-xs">
 					<a href="login"><i class="fa fa-angle-left"><span
 							class="glyphicon glyphicon-hand-right"></span>Orders</i></a>&nbsp; &nbsp;
-					<a href="registration"><i class="fa fa-angle-right"><span
+					<a href="register" id="registration"><i class="fa fa-angle-right"><span
 							class="glyphicon glyphicon-user"></span></i> Register</a>&nbsp;&nbsp; <a
 						href="login"><i class="fa fa-angle-right"><span
 							class="glyphicon glyphicon-log-in"></span></i> Sign In</a>
@@ -269,7 +269,7 @@ $(function(){
             <div class="panel panel-default">
                 <div class="panel-body" align="center">                    
                     
-                    <img src="resources/images/camera.png" width="150" height="150" class="thumbnail"
+                    <img src="resources/images/camera.jpg" width="150" height="150" class="thumbnail"
                                 alt="Image" />
                     <h4>Cameras</h4>
                 </div>

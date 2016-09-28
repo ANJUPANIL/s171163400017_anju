@@ -108,17 +108,32 @@ public class category_controller {
 	}
 
 	@RequestMapping(value = "/update_category", method = RequestMethod.POST)
-	public ModelAndView editcategory(@Valid @ModelAttribute("edit_category") category c) {
-		ModelAndView mv;
-		cs.updatecategory(c);
-		System.out.println("in editcategory id:");
-		mv = new ModelAndView("category");
-		List<category> showcategory = cs.allcategory();
-		mv.addObject("category", showcategory);
+	public ModelAndView editcategory(@Valid @ModelAttribute("edit_category") category c,BindingResult result, Model model) {
+		ModelAndView mv = new ModelAndView("category");
 		List<brand> showbrand=bs.allbrand();
 		mv.addObject("brand",showbrand);
+		try{
+		if (result.hasErrors())
+		{
+			
+			return mv;
+		}else
+		{
+			cs.updatecategory(c);
+			System.out.println("in editcategory id:");
+		
+			List<category> showcategory = cs.allcategory();
+			mv.addObject("category", showcategory);
+		
 		
 		return mv;
+		}
+		
+	}
+	catch(Exception ex){
+		model.addAttribute("error", ex.getMessage());
+		return mv;
+	}
 	}
 	
 	//Delete Operation

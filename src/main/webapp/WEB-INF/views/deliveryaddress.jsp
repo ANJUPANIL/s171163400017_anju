@@ -42,7 +42,7 @@
 			name="searchproduct" action="searchproduct" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search"
-					name="pname">
+					name="pname" required="true">
 			</div>
 			<button type="submit" class="btn btn-default" value="Search">
 				<span class="glyphicon glyphicon-search"></span>
@@ -192,7 +192,7 @@
 		<c:forEach
 								items="${flowRequestContext.messageContext.getMessagesBySource('msg')}"
 								var="err">
-								<div style="color: #FF0000" size="5px">
+								<div style="color: #FF0000";font-size="8px">
 									<span>${err.text}</span>
 								</div>
 							</c:forEach>

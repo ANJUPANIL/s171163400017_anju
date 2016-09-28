@@ -48,7 +48,7 @@ function Validate() {
 			</a>
 			<form class="navbar-form navbar-right" role="search" name="searchproduct" action="searchproduct" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search" name="pname">
+					<input type="text" class="form-control" placeholder="Search" name="pname" required="true">
 				</div>
 				<button type="submit" class="btn btn-default" value="Search" >
 					<span class="glyphicon glyphicon-search"></span>
@@ -188,9 +188,11 @@ function Validate() {
                         </c:when>
                         <c:when test="${click=='password'}">
                         <div class="form-group">
-                            <form:label path="password" >Old Password</form:label>
-                            <form:password path="password" class="form-control"  placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
-                            <form:errors path="password" cssClass="error"/>
+                          <!--    <form:label path="password" >Old Password</form:label>
+                            <form:password path="password" class="form-control" id="password" name="password" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
+                            <form:errors path="password" cssClass="error"/>-->
+                            <label >Old Password</label>
+                            <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="Password" required="true" pattern=".{6,15}" title="Your password must between 6 and 15 characters"/>
                         </div>
                         <div class="form-group">
                             <form:label path="password" >New Password</form:label>
@@ -210,13 +212,16 @@ function Validate() {
                         	<form:hidden path="city"  value="${userdetails.city}" />
                         	<form:hidden path="address"  value="${userdetails.address}" />
                         	<form:hidden path="contact"  value="${userdetails.contact}" />
+                        	
                         
                         
                         </div>
                        
                         </c:when>
                         </c:choose>
-                        
+                        <h4>
+				<i style="color: red">${msg}</i>
+			</h4>
                        <div class="pull-right">
                         <button type="submit" class="btn btn-success"
 							style="width: 100px;" onclick="return Validate()">Save</button>

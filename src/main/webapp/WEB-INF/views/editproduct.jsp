@@ -97,7 +97,7 @@ $(function($scope){   // document and jquery ready
 						<form:label path="name">Product Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" value="${pdata.name}"/><br /> 
+						<form:input path="name" size="40" class="form-control" value="${pdata.name}" required="true"/><br /> 
 						<form:errors path="name" cssClass="error" />
 					</td>
 				</tr>
@@ -107,7 +107,7 @@ $(function($scope){   // document and jquery ready
 						<form:label path="des">Description:</form:label>
 					</td>
 					<td> 
-						<form:input cols="40" rows="5" path="des" class="form-control" value="${pdata.des}" /><br /> 
+						<form:input cols="40" rows="5" path="des" class="form-control" value="${pdata.des}" required="true"/><br /> 
 						<form:errors path="des" cssClass="error" />
 					</td>
 				</tr>
@@ -153,7 +153,7 @@ $(function($scope){   // document and jquery ready
 				</tr>
 				<tr class="form-group">
 							<td><form:label path="product_type">Type:</form:label></td>
-							<td><form:input path="product_type" class="form-control" value="${pdata.product_type}" /><br /> 
+							<td><form:input path="product_type" class="form-control" value="${pdata.product_type}" required="true" /><br /> 
 							<form:errors path="product_type" cssClass="error" /></td>
 							
 				</tr>
@@ -181,13 +181,13 @@ $(function($scope){   // document and jquery ready
 				
 				<tr class="form-group">
 							<td><form:label path="price">Price:</form:label></td>
-							<td><form:input path="price" class="form-control" value="${pdata.price}" /><br /> 
+							<td><form:input path="price" class="form-control" value="${pdata.price}" required="true"/><br /> 
 							<form:errors path="price" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="discount">Discount:</form:label></td>
-							<td><form:input path="discount" class="form-control" value="${pdata.discount}" /><br /> 
+							<td><form:input path="discount" class="form-control" value="${pdata.discount}" required="true"/><br /> 
 							<form:errors path="discount" cssClass="error" /></td>
 				</tr>
 				

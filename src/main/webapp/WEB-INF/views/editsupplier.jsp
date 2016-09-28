@@ -71,7 +71,7 @@
 						<form:label path="name">Supplier Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" value="${sdata.name}"/><br /> 
+						<form:input path="name" size="40" class="form-control" value="${sdata.name}" required="true"/><br /> 
 						<form:errors path="name" cssClass="error" />
 					</td>
 				</tr>
@@ -81,38 +81,38 @@
 						<form:label path="address">Address:</form:label>
 					</td>
 					<td> 
-						<form:input cols="40" rows="5" path="address" class="form-control" value="${sdata.address}" /><br /> 
+						<form:input cols="40" rows="5" path="address" class="form-control" value="${sdata.address}" required="true" /><br /> 
 						<form:errors path="address" cssClass="error" />
 					</td>
 				</tr>
 				
 			  <tr class="form-group">
 							<td><form:label path="city">City:</form:label></td>
-							<td><form:input path="city" class="form-control" value="${sdata.city}" /><br /> 
+							<td><form:input path="city" class="form-control" value="${sdata.city}" required="true" /><br /> 
 							<form:errors path="city" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="state">State:</form:label></td>
-							<td><form:input path="state" class="form-control" value="${sdata.state}" /><br /> 
+							<td><form:input path="state" class="form-control" value="${sdata.state}" required="true" /><br /> 
 							<form:errors path="state" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="pin">Pincode:</form:label></td>
-							<td><form:input path="pin" class="form-control" value="${sdata.pin}" /><br /> 
+							<td><form:input path="pin" class="form-control" value="${sdata.pin}" required="true" /><br /> 
 							<form:errors path="pin" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="email">Email ID:</form:label></td>
-							<td><form:input path="email" class="form-control" value="${sdata.email}" /><br /> 
+							<td><form:input path="email" class="form-control" value="${sdata.email}" required="true" /><br /> 
 							<form:errors path="email" cssClass="error" /></td>
 				</tr>
 				
 				<tr class="form-group">
 							<td><form:label path="contact">Contact :</form:label></td>
-							<td><form:input path="contact" class="form-control" value="${sdata.contact}" /><br /> 
+							<td><form:input path="contact" class="form-control" value="${sdata.contact}" required="true" /><br /> 
 							<form:errors path="contact" cssClass="error" /></td>
 				</tr>
 				

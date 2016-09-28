@@ -70,7 +70,7 @@
 						<form:label path="name">Category Name:</form:label>
 					</td>
 					<td> 
-						<form:input path="name" size="40" class="form-control" value="${cdata.name}"/><br /> 
+						<form:input path="name" size="40" class="form-control" value="${cdata.name}" required="true"/><br /> 
 						<form:errors path="name" cssClass="error" />
 					</td>
 				</tr>
@@ -100,7 +100,7 @@
 						<form:label path="des">Description:</form:label>
 					</td>
 					<td> 
-						<form:input path="des" size="40" class="form-control" value="${cdata.des}"/><br /> 
+						<form:input path="des" size="40" class="form-control" value="${cdata.des}" required="true"/><br /> 
 						<form:errors path="des" cssClass="error" />
 					</td>
 				</tr>

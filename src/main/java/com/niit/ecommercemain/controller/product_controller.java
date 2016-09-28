@@ -96,32 +96,45 @@ public class product_controller {
 	}
 	
 	@RequestMapping(value = "/saveproduct", method = RequestMethod.POST)
-	public ModelAndView saveproduct(@Valid @ModelAttribute("save_product") product c, Model model) {
+	public ModelAndView saveproduct(@Valid @ModelAttribute("save_product") product c,BindingResult result, Model model) {
 		System.out.println("save controller");
 		ModelAndView mv;
 		System.out.println("product ID :" + c.getId());
 		System.out.println("product Name :" + c.getName());
 		System.out.println("product image :" + c.getProduct_image());
 		mv = new ModelAndView("product");
+		List<brand> showbrand = bs.allbrand();
+		List<supplier> showsupplier = s.allsupplier();
+		
+		mv.addObject("brand", showbrand);
+		mv.addObject("supplier", showsupplier);
 		String path = srv.getRealPath("/");
 		String res =c.getFilePath(path, srv.getContextPath());
 		System.out.println(res);
 		
 		try
 		{
+			if (result.hasErrors())
+			{
+				
+				return mv;
+			}else
+			{
 			
 			ps.saveproduct(c);
 			List<product> showall = ps.allproduct();
 			mv.addObject("product", showall);
 			mv.addObject("path",res);
 			mv.addObject("save_product",new product());
-			
+			return mv;
+			}
 		}
 		catch(Exception ex)
 		{
 			model.addAttribute("error", ex.getMessage());
+			return mv;
 		}
-		return mv;
+		
 		
 	}
 	
@@ -148,19 +161,33 @@ public class product_controller {
 	}
 
 	@RequestMapping(value = "/update_product", method = RequestMethod.POST)
-	public ModelAndView editproduct(@Valid @ModelAttribute("edit_product") product c) {
+	public ModelAndView editproduct(@Valid @ModelAttribute("edit_product") product c,BindingResult result, Model model) {
 		String pimage=oldproduct.getProduct_image();
 		System.out.println("pimage"+pimage);
+		ModelAndView mv=new ModelAndView("product");
+		List<brand> showbrand = bs.allbrand();
+		List<supplier> showsupplier = s.allsupplier();
 		
+		mv.addObject("brand", showbrand);
+		mv.addObject("supplier", showsupplier);
 		String path = srv.getRealPath("/");
 		String res = c.getFilePath(path, srv.getContextPath());
+		try
+		{
+			if (result.hasErrors())
+			{
+				
+				return mv;
+			}else
+			{
+			
 		if (res == "fail")
 		{
-			ModelAndView mv;
+			
 			c.setProduct_image(pimage);
 			ps.updateproduct(c);
 			System.out.println("in editproduct id:");
-			mv = new ModelAndView("product");
+			
 			List<product> showproduct = ps.allproduct();
 			mv.addObject("product", showproduct);
 			return mv;
@@ -168,16 +195,25 @@ public class product_controller {
 		
 		}
 		else {
-			ModelAndView mv;
+			
 			System.out.println("in updateproduct image:"+c.getProduct_image());
 			ps.updateproduct(c);
 			System.out.println("in editproduct id:");
-			mv = new ModelAndView("product");
+			
 			List<product> showproduct = ps.allproduct();
 			mv.addObject("product", showproduct);
 			return mv;
 	
 			}
+			}
+		}
+			catch(Exception ex)
+			{
+				model.addAttribute("error", ex.getMessage());
+				return mv;
+			}
+			
+		
 		
 	}
 	
